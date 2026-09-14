@@ -38,9 +38,13 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
           children: [
             Text(
               '$clickCounter',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 160,
-                fontWeight: FontWeight.w100,
+                color: clickCounter > 0
+                    ? Colors.green
+                    : clickCounter < 0
+                        ? Colors.red
+                        : Colors.blue,
               ),
             ),
             Text(
