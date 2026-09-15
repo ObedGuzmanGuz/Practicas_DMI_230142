@@ -58,29 +58,75 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
       ),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            clickCounter++;
-          });
-        },
-        child: const Icon(Icons.audiotrack_rounded),
-      ),
-      SizedBox(height: 20,),
-
-
-          FloatingActionButton(
-        onPressed: () {
-          setState(() {
+    //       children: [
+    //          FloatingActionButton(
+    //   shape: const StadiumBorder(),
+    //   onPressed: () {
+    //     clickCounter = 0;
+    //     setState(() {
+          
+    //     });
+    //   },
+    //   child: const Icon(Icons.refresh_outlined), //boton de recargar
+    // ),
+    //         FloatingActionButton(
+    //     onPressed: () {
+    //       setState(() {
+    //         clickCounter++;
+    //       });
+    //     },
+    //     child: const Icon(Icons.plus_one),
+    //   ),
+   
+      children:[
+          CustomButton(icon: Icons.refresh_rounded,
+          onPressed: () {
+            clickCounter = 0;
+            setState(() {
+              
+            });
+          },
+          ),
+          const SizedBox(height: 10),
+          CustomButton(icon: Icons.exposure_minus_1_outlined,
+          onPressed: () {
             clickCounter--;
-          });
-        },
-        child: const Icon(Icons.exposure_minus_1_outlined),
-      ),
+            setState(() {
+            });
+          },
+          ),
+          const SizedBox(height: 10),
+          CustomButton(icon: Icons.plus_one,
+          onPressed: () {
+            clickCounter++;
+            setState(() {});
+          },),
           ],
 
       )
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+
+final IconData icon;
+final VoidCallback? onPressed;
+
+
+  const CustomButton({
+    super.key, required this.icon,
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      //shape: const StadiumBorder(),
+      enableFeedback:true,
+      elevation: 20,
+      onPressed: onPressed,
+      child:  Icon(icon),
     );
   }
 }
