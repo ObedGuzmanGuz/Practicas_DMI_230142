@@ -63,7 +63,11 @@ Fue generada con **Archify** a partir de los componentes reales del proyecto.
 
 ### Arquitectura interactiva
 
-[Ver arquitectura interactiva](arquitectura/arquitectura_contador_flutter.html)
+
+La arquitectura representa la estructura y el funcionamiento principal de la aplicación Flutter.  
+Fue generada con **Archify** a partir de los componentes reales del proyecto.
+
+[Ver arquitectura interactiva](https://obedguzmanguz.github.io/Practicas_DMI_230142/hello_world_ap/arquitectura/arquitectura_contador_flutter.html)
 
 ## Tecnologías utilizadas
 
