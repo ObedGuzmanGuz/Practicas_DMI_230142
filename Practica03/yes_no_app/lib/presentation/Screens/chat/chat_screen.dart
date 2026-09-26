@@ -14,16 +14,17 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Padding(
-          padding: EdgeInsets.all(4.0),
-          child: CircleAvatar(
-            backgroundImage: NetworkImage(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAnRk4deYvshsw_gou8Ntnp8AY0bZvRlCaMP9A_i-nlQ&s'),
-          ),
-        ),
-        title: const Text('Ese wey'),
-        centerTitle: false,
+  leading: const Padding(
+    padding: EdgeInsets.all(4.0),
+    child: CircleAvatar(
+      backgroundImage: NetworkImage(
+        'https://tse3.mm.bing.net/th/id/OIP.BSpQpG1m2sG-wtrRqDYfigHaEk?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       ),
+    ),
+  ),
+  title: const Text('Milky chance'),
+  centerTitle: false,
+),
       body: _ChatView(),
     );
   }

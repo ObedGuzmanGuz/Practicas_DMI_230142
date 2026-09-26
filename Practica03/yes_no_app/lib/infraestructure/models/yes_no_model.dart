@@ -23,9 +23,18 @@ class YesNoModel {
         "image": image,
       };
 
-  Message toMessageEntity() => Message(
-    text: answer == 'yes' ? 'Si' : 'No', 
+  Message toMessageEntity() {
+  final translatedAnswer = switch (answer) {
+    'yes' => 'Sí',
+    'no' => 'No',
+    'maybe' => 'Tal vez',
+    _ => throw const FormatException('Respuesta desconocida'),
+  };
+
+  return Message(
+    text: translatedAnswer,
     fromWho: FromWho.hers,
-    imageUrl: image
+    imageUrl: image.isEmpty ? null : image,
   );
+}
 }

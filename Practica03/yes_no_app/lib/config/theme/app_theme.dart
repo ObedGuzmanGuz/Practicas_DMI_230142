@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-const Color _customColor = Color(0xFF49149F);
+const Color _customColor = Color.fromARGB(255, 202, 18, 18);
 
 const List<Color> _colorThemes = [
   _customColor,
   Colors.blue,
-  Colors.teal,
+  Color.fromARGB(255, 103, 155, 44),
   Colors.green,
-  Colors.yellow,
+  Color.fromARGB(255, 255, 230, 3),
   Colors.orange,
   Colors.pink,
 ];
