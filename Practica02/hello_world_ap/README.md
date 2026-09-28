@@ -58,16 +58,24 @@ El valor se muestra en **verde** cuando el contador es mayor que cero.
 
 ## Arquitectura
 
-La arquitectura representa la estructura y el funcionamiento principal de la aplicación Flutter.  
-Fue generada con **Archify** a partir de los componentes reales del proyecto.
+[Ver el HTML de la arquitectura interactiva](arquitectura/arquitectura_contador_flutter.html).
+Para consultarlo localmente, abre ese archivo en el navegador con doble clic; no requiere Flutter.
 
-### Arquitectura interactiva
+El dibujo se generó y validó con **Archify** a partir del código real. Incluye un visor
+integrado en español con detalles de archivos, las seis plataformas, conexiones,
+zoom y navegación por teclado. La aplicación está en `Practica02/hello_world_ap`,
+aunque la rama de trabajo sea `Practica03`.
 
+La [ruta prevista para GitHub Pages](https://obedguzmanguz.github.io/Practicas_DMI_230142/Practica02/hello_world_ap/arquitectura/arquitectura_contador_flutter.html)
+corresponde a publicar desde la raíz del repositorio; su disponibilidad depende de
+la fusión y publicación que realice el propietario. No se desplegó en esta tarea.
 
-La arquitectura representa la estructura y el funcionamiento principal de la aplicación Flutter.  
-Fue generada con **Archify** a partir de los componentes reales del proyecto.
+Después de fusionar con `main`, cambia únicamente `CONFIG.codeRef` a `"main"` dentro
+del HTML y publica esa documentación actualizada. GitHub Pages no cambia las
+referencias de código automáticamente. Si cambia el código, actualiza también los
+rangos de líneas y fragmentos.
 
-[Ver arquitectura interactiva](https://obedguzmanguz.github.io/Practicas_DMI_230142/hello_world_ap/arquitectura/arquitectura_contador_flutter.html)
+Consulta [las fuentes, el mantenimiento y la validación](arquitectura/README.md).
 
 ## Tecnologías utilizadas
 

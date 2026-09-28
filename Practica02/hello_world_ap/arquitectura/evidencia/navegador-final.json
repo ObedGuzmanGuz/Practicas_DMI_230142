@@ -1,0 +1,709 @@
+{
+  "artifact": {
+    "file": "arquitectura_contador_flutter.html",
+    "sha256": "6448658bd6dd5b7fea04e20dfcd56ac17a58d4a12e7b5d4cdeb3ded612d6dd98",
+    "bytes": 56311
+  },
+  "browser": "Chrome sin ventana, DevTools Protocol",
+  "status": "pass",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 900,
+      "allNodesVisible": true,
+      "nodeCount": 19
+    },
+    {
+      "width": 1600,
+      "height": 1000,
+      "scrollWidth": 1600,
+      "scrollHeight": 1000,
+      "allNodesVisible": true,
+      "nodeCount": 19
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "scrollHeight": 1080,
+      "allNodesVisible": true,
+      "nodeCount": 19
+    },
+    {
+      "width": 2048,
+      "height": 1320,
+      "scrollWidth": 2048,
+      "scrollHeight": 1320,
+      "allNodesVisible": true,
+      "nodeCount": 19
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 844,
+      "allNodesVisible": true,
+      "nodeCount": 19
+    }
+  ],
+  "checks": [
+    {
+      "name": "Encuadre 1440x900",
+      "passed": true,
+      "details": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900,
+        "allNodesVisible": true,
+        "nodeCount": 19
+      }
+    },
+    {
+      "name": "Encuadre 1600x1000",
+      "passed": true,
+      "details": {
+        "width": 1600,
+        "height": 1000,
+        "scrollWidth": 1600,
+        "scrollHeight": 1000,
+        "allNodesVisible": true,
+        "nodeCount": 19
+      }
+    },
+    {
+      "name": "Encuadre 1920x1080",
+      "passed": true,
+      "details": {
+        "width": 1920,
+        "height": 1080,
+        "scrollWidth": 1920,
+        "scrollHeight": 1080,
+        "allNodesVisible": true,
+        "nodeCount": 19
+      }
+    },
+    {
+      "name": "Encuadre 2048x1320",
+      "passed": true,
+      "details": {
+        "width": 2048,
+        "height": 1320,
+        "scrollWidth": 2048,
+        "scrollHeight": 1320,
+        "allNodesVisible": true,
+        "nodeCount": 19
+      }
+    },
+    {
+      "name": "Encuadre 390x844",
+      "passed": true,
+      "details": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "scrollHeight": 844,
+        "allNodesVisible": true,
+        "nodeCount": 19
+      }
+    },
+    {
+      "name": "Textos contenidos en tarjetas",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "Conectores fuera de tarjetas ajenas",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "Etiquetas fuera de tarjetas",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "Panel clic: persona",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Usuario",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: persona",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: persona",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: persona",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: plataformas",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Plataformas del proyecto",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: plataformas",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: plataformas",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: plataformas",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: flutter",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Flutter / Dart",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: flutter",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: flutter",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: flutter",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: entrada",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "main()",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: entrada",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: entrada",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: entrada",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: app",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "MyApp / MaterialApp",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: app",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: app",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: app",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: pantalla",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "CounterFunctionsScreen",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: pantalla",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: pantalla",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: pantalla",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: botones",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Botones y callbacks",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: botones",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: botones",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: botones",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: estado",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "clickCounter",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: estado",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: estado",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: estado",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: vista",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Scaffold y contenido",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: vista",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: vista",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: vista",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: configuracion",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "pubspec.yaml",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: configuracion",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: configuracion",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: configuracion",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: tipografia",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Architext",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: tipografia",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: tipografia",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: tipografia",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: prueba",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Prueba de widgets",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: prueba",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: prueba",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: prueba",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: alternativa",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "CounterScreen",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: alternativa",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: alternativa",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: alternativa",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: android",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Android",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: android",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: android",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: android",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: windows",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Windows",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: windows",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: windows",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: windows",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: linux",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Linux",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: linux",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: linux",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: linux",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: macos",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "macOS",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: macos",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: macos",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: macos",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: ios",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "iOS",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: ios",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: ios",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: ios",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: web",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Web",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: web",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: web",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: web",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Foco contenido al retroceder",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Foco contenido al avanzar",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Desplazamiento interno",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Acercar",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Alejar",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Desplazar con teclado",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Ajustar conserva selección",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Arrastrar lienzo",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Acercar con rueda",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Restablecer vista",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel de publicación y enlace de carpeta",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Rutas, líneas, contenido remoto y construcción de enlaces",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel móvil con espacio",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Sitio estático en subcarpeta",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Sin errores de JavaScript",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "Sin dependencias de red del visor",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "screenshots": [
+    "contador-1440x900.png",
+    "contador-2048x1320.png",
+    "contador-390x844.png",
+    "contador-panel.png",
+    "contador-panel-movil.png"
+  ]
+}
