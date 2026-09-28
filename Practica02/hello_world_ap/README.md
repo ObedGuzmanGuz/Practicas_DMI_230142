@@ -58,7 +58,7 @@ El valor se muestra en **verde** cuando el contador es mayor que cero.
 
 ## Arquitectura
 
-[Ver el HTML de la arquitectura interactiva](arquitectura/arquitectura_contador_flutter.html).
+[Ver el HTML de la arquitectura interactiva](https://obedguzmanguz.github.io/Practicas_DMI_230142/Practica02/hello_world_ap/arquitectura/arquitectura_contador_flutter.html).
 Para consultarlo localmente, abre ese archivo en el navegador con doble clic; no requiere Flutter.
 
 El dibujo se generó y validó con **Archify** a partir del código real. Incluye un visor

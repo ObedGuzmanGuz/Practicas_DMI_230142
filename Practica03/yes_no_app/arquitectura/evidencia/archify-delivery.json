@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\Users\\HP\\Desktop\\DMI\\Practicas_DMI_230142\\Practica03\\yes_no_app\\arquitectura\\yes_no_app.archify.json",
+  "output": "C:\\Users\\HP\\Desktop\\DMI\\Practicas_DMI_230142\\Practica03\\yes_no_app\\arquitectura\\evidencia\\archify_base.html",
+  "specification": {
+    "sha256": "499df28e680642e9cafc0667766e29fa08e2ba48ec0f09a25f2b3b36703ef076",
+    "bytes": 5031
+  },
+  "artifact": {
+    "sha256": "08f64c8a1b522a44f5cc944a7ffb5d545a3965cc20d05eefcd1b40b4e0aab3ab",
+    "bytes": 812697
+  },
+  "validation": {
+    "checksPassed": 9,
+    "checkCount": 9,
+    "compositionProfile": "showcase",
+    "compositionStatus": "pass",
+    "errors": 0,
+    "warnings": 0
+  }
+}
