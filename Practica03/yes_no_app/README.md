@@ -31,7 +31,7 @@ Las capturas muestran el ícono inicial, las burbujas con hora y ejemplos de las
 
 ### Respuesta Sí con GIF
 
-<img src="arquitectura/evidencia/Respuesta_Si.png" alt="Ejemplo de respuesta Sí con su GIF" width="280">
+<img src="arquitectura/evidencia/Respuesta_si.png" alt="Ejemplo de respuesta Sí con su GIF" width="280">
 
 ### Respuesta No con GIF
 
