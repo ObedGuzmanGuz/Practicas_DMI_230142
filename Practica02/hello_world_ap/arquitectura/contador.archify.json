@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Arquitectura del contador Flutter",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1350,
+      865
+    ]
+  },
+  "components": [
+    {
+      "id": "persona",
+      "type": "external",
+      "label": "Usuario",
+      "sublabel": "Abre la aplicación y pulsa botones",
+      "pos": [
+        47,
+        78
+      ],
+      "size": [
+        218,
+        78
+      ]
+    },
+    {
+      "id": "plataformas",
+      "type": "external",
+      "label": "Plataformas del proyecto",
+      "sublabel": "6 destinos · Dart compartido",
+      "pos": [
+        47,
+        250
+      ],
+      "size": [
+        218,
+        203
+      ]
+    },
+    {
+      "id": "flutter",
+      "type": "frontend",
+      "label": "Flutter / Dart",
+      "sublabel": "Código compartido y widgets Material",
+      "pos": [
+        343,
+        312
+      ],
+      "size": [
+        218,
+        78
+      ]
+    },
+    {
+      "id": "entrada",
+      "type": "frontend",
+      "label": "main() → runApp(MyApp())",
+      "sublabel": "Punto de entrada · lib/main.dart",
+      "pos": [
+        343,
+        499
+      ],
+      "size": [
+        218,
+        78
+      ]
+    },
+    {
+      "id": "app",
+      "type": "frontend",
+      "label": "MyApp / MaterialApp",
+      "sublabel": "Tema verde · familia Architext",
+      "pos": [
+        663,
+        499
+      ],
+      "size": [
+        218,
+        78
+      ]
+    },
+    {
+      "id": "pantalla",
+      "type": "frontend",
+      "label": "CounterFunctionsScreen",
+      "sublabel": "Pantalla inicial · StatefulWidget",
+      "pos": [
+        991,
+        499
+      ],
+      "size": [
+        265,
+        78
+      ]
+    },
+    {
+      "id": "botones",
+      "type": "frontend",
+      "label": "Botones y callbacks",
+      "sublabel": "CustomButton · IconButton · +1 / −1 / 0",
+      "pos": [
+        991,
+        663
+      ],
+      "size": [
+        265,
+        78
+      ]
+    },
+    {
+      "id": "estado",
+      "type": "frontend",
+      "label": "clickCounter / setState()",
+      "sublabel": "Estado en memoria · reconstrucción",
+      "pos": [
+        663,
+        663
+      ],
+      "size": [
+        218,
+        78
+      ]
+    },
+    {
+      "id": "vista",
+      "type": "frontend",
+      "label": "Scaffold y contenido",
+      "sublabel": "AppBar · Center · Column · Text",
+      "pos": [
+        991,
+        312
+      ],
+      "size": [
+        265,
+        78
+      ]
+    },
+    {
+      "id": "configuracion",
+      "type": "external",
+      "label": "Configuración y tipografía",
+      "sublabel": "pubspec.yaml · Architext / Architex.ttf",
+      "pos": [
+        343,
+        78
+      ],
+      "size": [
+        218,
+        78
+      ]
+    },
+    {
+      "id": "prueba",
+      "type": "external",
+      "label": "Prueba de widgets",
+      "sublabel": "Icons.add ≠ Icons.plus_one · pendiente",
+      "pos": [
+        663,
+        312
+      ],
+      "size": [
+        218,
+        78
+      ]
+    },
+    {
+      "id": "alternativa",
+      "type": "external",
+      "label": "CounterScreen",
+      "sublabel": "Alternativa · import comentado",
+      "pos": [
+        991,
+        78
+      ],
+      "size": [
+        265,
+        78
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Dispositivos y acceso",
+      "wraps": [
+        "persona",
+        "plataformas"
+      ],
+      "pad": 22
+    },
+    {
+      "kind": "region",
+      "label": "Interfaz y estado local",
+      "wraps": [
+        "pantalla",
+        "botones",
+        "vista"
+      ],
+      "pad": 22
+    }
+  ],
+  "connections": [
+    {
+      "id": "abrir",
+      "from": "persona",
+      "to": "plataformas",
+      "label": "inicia",
+      "labelDy": 55
+    },
+    {
+      "id": "integrar",
+      "from": "plataformas",
+      "to": "flutter",
+      "label": "configura"
+    },
+    {
+      "id": "arrancar",
+      "from": "flutter",
+      "to": "entrada",
+      "label": "inicia",
+      "labelDy": 62
+    },
+    {
+      "id": "montar",
+      "from": "entrada",
+      "to": "app",
+      "label": "inicia"
+    },
+    {
+      "id": "home",
+      "from": "app",
+      "to": "pantalla",
+      "label": "muestra"
+    },
+    {
+      "id": "arbol",
+      "from": "pantalla",
+      "to": "vista",
+      "label": "contiene"
+    },
+    {
+      "id": "acciones",
+      "from": "pantalla",
+      "to": "botones",
+      "label": "contiene",
+      "labelDy": 51
+    },
+    {
+      "id": "mutacion",
+      "from": "botones",
+      "to": "estado",
+      "label": "actualiza",
+      "variant": "emphasis",
+      "labelDy": 20
+    },
+    {
+      "id": "rebuild",
+      "from": "estado",
+      "to": "pantalla",
+      "label": "reconstruye",
+      "variant": "emphasis"
+    },
+    {
+      "id": "dependencias",
+      "from": "configuracion",
+      "to": "flutter",
+      "label": "configura",
+      "labelDy": 86
+    },
+    {
+      "id": "test",
+      "from": "prueba",
+      "to": "app",
+      "label": "prueba",
+      "labelDy": 62
+    }
+  ]
+}

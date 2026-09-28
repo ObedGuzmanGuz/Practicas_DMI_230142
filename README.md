@@ -23,11 +23,11 @@ En este repositorio se documentan las actividades, prácticas y aplicaciones des
 
 ## 📝 Prácticas
 
-| No. | Nombre | Descripción | Potenciador | Estatus |
-|:---:|---|---|:---:|:---:|
-| 1 | 📖 **Metodología** | Transcribir y comprender la metodología y las fechas de evaluación de la asignatura. | ⭐ 5 | ✅ Concluida |
-| 2 | 📱 **Mi primera aplicación móvil con Flutter** | Codificar una aplicación móvil utilizando el framework Flutter, manejando `StatefulWidget` y `StatelessWidget`. | ⭐ 20 | ✅ Concluida |
-
+| No. | Nombre | Descripción | GitHub Pages | Potenciador | Estatus |
+|:---:|---|---|---|:---:|:---:|
+| 1 | 📖 **Metodología** | Comprender la metodología y las fechas de evaluación de la asignatura. | — | ⭐ 5 | ✅ Concluida |
+| 2 | 📱 **Práctica 02: Mi primera aplicación móvil con Flutter** | Aplicación de contador desarrollada con `StatefulWidget` y `StatelessWidget`. | [Ver arquitectura interactiva](https://obedguzmanguz.github.io/Practicas_DMI_230142/Practica02/hello_world_ap/arquitectura/arquitectura_contador_flutter.html) | ⭐ 20 | ✅ Concluida |
+| 3 | 👽 **Práctica 03: Yes No App** | Chat en Flutter que responde Sí, No o Tal vez a preguntas y muestra un GIF. | [Ver arquitectura interactiva](https://obedguzmanguz.github.io/Practicas_DMI_230142/Practica03/yes_no_app/arquitectura/arquitectura_yes_no_app.html) | — | ✅ Concluida |
 ---
 
 ## 🛠️ Tecnologías utilizadas

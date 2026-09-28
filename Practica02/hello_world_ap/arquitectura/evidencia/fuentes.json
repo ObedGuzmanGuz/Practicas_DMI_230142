@@ -1,0 +1,137 @@
+{
+  "appRoot": "Practica02/hello_world_ap",
+  "specificationSha256": "98a3c48f16b7af2f8b3e2c09c10a290b680b6aeeea89891db41e27be5b78efea",
+  "archifyBaseSha256": "ce533fac7abf63fab76b6f04bc587897296e38cbcb392b1ea6b9b55157cda622",
+  "htmlSha256": "6448658bd6dd5b7fea04e20dfcd56ac17a58d4a12e7b5d4cdeb3ded612d6dd98",
+  "bytes": 56311,
+  "localCommit": "0aee0ac068b8f9c7bf7e6930b594695326666bd5",
+  "remoteCommit": "0aee0ac068b8f9c7bf7e6930b594695326666bd5",
+  "files": {
+    "Practica02/hello_world_ap/lib/presentation/screens/counter/counter_functions_screen.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 132,
+      "blob": "7f93e9d72fd844c407e934cf5c586d960565ddbf"
+    },
+    "Practica02/hello_world_ap/lib/main.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 27,
+      "blob": "34893f2317da0058a0d6e430aa0559982e55b10e"
+    },
+    "Practica02/hello_world_ap/pubspec.yaml": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 94,
+      "blob": "aa0c028a908a02c01b3beef576f264136cdc73b9"
+    },
+    "Practica02/hello_world_ap/assets/fonts/Architex.ttf": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": null,
+      "blob": "47791099b9e86b6e9b8d5d216f9a5c27aed39b98"
+    },
+    "Practica02/hello_world_ap/test/widget_test.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 30,
+      "blob": "1622cf90ca33c1521927219e109b4bf4f9a078d2"
+    },
+    "Practica02/hello_world_ap/lib/presentation/screens/counter/counter_screen.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 52,
+      "blob": "23fcac1d1dcc106a8e57139a1499364ff394c442"
+    },
+    "Practica02/hello_world_ap/android/app/src/main/kotlin/com/example/hello_world_ap/MainActivity.kt": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 5,
+      "blob": "f12296d412bd524c72d0d1b9124324187c863980"
+    },
+    "Practica02/hello_world_ap/android/app/src/main/AndroidManifest.xml": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 45,
+      "blob": "b32edbb5044bb2ad5bb215c20bc3fda757841adb"
+    },
+    "Practica02/hello_world_ap/windows/runner/main.cpp": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 43,
+      "blob": "c657c6ae18b7ca23f8a952182414a0a019bfd372"
+    },
+    "Practica02/hello_world_ap/windows/runner/flutter_window.cpp": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 71,
+      "blob": "955ee3038f988929fac2dedb6a307ebd45dfcfd7"
+    },
+    "Practica02/hello_world_ap/linux/runner/main.cc": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 6,
+      "blob": "e7c5c54370372a4cdde7288a32733998d87bd767"
+    },
+    "Practica02/hello_world_ap/linux/runner/my_application.cc": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 148,
+      "blob": "9744365fab576b34bd0310ba143bc271ec3c7340"
+    },
+    "Practica02/hello_world_ap/macos/Runner/AppDelegate.swift": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 13,
+      "blob": "b3c176141221dbe2b40d3e36942b15068ba48677"
+    },
+    "Practica02/hello_world_ap/macos/Runner/MainFlutterWindow.swift": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 15,
+      "blob": "3cc05eb23491684aae1c51ce94668a142bad5125"
+    },
+    "Practica02/hello_world_ap/ios/Runner/AppDelegate.swift": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 16,
+      "blob": "c30b367ec0a99a3f38e09477c49ba6b5adeb352d"
+    },
+    "Practica02/hello_world_ap/ios/Runner/Info.plist": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 70,
+      "blob": "fb6b8620dba048157ddafbcf28d64a901cd7d4e9"
+    },
+    "Practica02/hello_world_ap/web/index.html": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 46,
+      "blob": "88e19ce652cc1317ff4799233c794e6b9aa425ef"
+    },
+    "Practica02/hello_world_ap/web/manifest.json": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 35,
+      "blob": "cf968edda53b8c72fc670ae7766c90adc4a6016f"
+    }
+  }
+}

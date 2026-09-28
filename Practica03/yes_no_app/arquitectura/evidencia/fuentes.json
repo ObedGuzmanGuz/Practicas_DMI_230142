@@ -1,0 +1,286 @@
+{
+  "appPath": "Practica03/yes_no_app",
+  "codeRef": "Practica03",
+  "files": {
+    "Practica03/yes_no_app/lib/main.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 27,
+      "blob": "905a7f98fd986448a597ba6b43720e9865da22d2",
+      "sha256": "886eb142495936f09ecb621106cbed43ba1ef1f911cf12b19a545e875b3024d8"
+    },
+    "Practica03/yes_no_app/pubspec.yaml": {
+      "local": true,
+      "remote": true,
+      "sameContent": false,
+      "lines": 122,
+      "blob": "f2ff0c8c32f9ad31366b7c4f72e3a90fb236bf03",
+      "sha256": "2a5058d956c8eb8538b402b708027dcdc1acd1ec6cf51d91ac7fffb8c011d979"
+    },
+    "Practica03/yes_no_app/lib/presentation/Screens/chat/chat_screen.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 65,
+      "blob": "1d6db81277c98ae81f42a834a0d94e462377f02e",
+      "sha256": "9c612b6d59167cfccc8a88796daada8070ea687016d646e6d91821d7b1047040"
+    },
+    "Practica03/yes_no_app/lib/presentation/widgets/shared/message_field_box.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 61,
+      "blob": "ff28eecbf450ff756c6a7f2b768ad8e88745ace3",
+      "sha256": "1a02e1821c2a38ea6abfa18e1b5a6520189aecd4776131336295f79ca9649d64"
+    },
+    "Practica03/yes_no_app/lib/presentation/providers/chat_provider.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 96,
+      "blob": "962ef3487b15cdd308842b314f9bc8d50572912a",
+      "sha256": "e0b3021200cb640a3559d9c1669f721dbbff7b10a21d4587b5f13d3974467dc6"
+    },
+    "Practica03/yes_no_app/lib/presentation/widgets/chat/my_message_bubble.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 67,
+      "blob": "187ce4e78548dbe742bfc42dadd2a7381d6ad77f",
+      "sha256": "d44dd1326c976854739b0c333400b8ee92d2a4c521ccafc540e06096b4d6e584"
+    },
+    "Practica03/yes_no_app/lib/domain/entities/message.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 27,
+      "blob": "ba4d0039c907d5f87e67711d9bcfb35d2b556f78",
+      "sha256": "1bb5fb1fda1e482b817867a0da8aab211614f8f794b1ae4948abc5d8ba9007a0"
+    },
+    "Practica03/yes_no_app/lib/config/helpers/get_yes_no_answer.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 61,
+      "blob": "db9dc64a1bdd99dc95561def46a66ebb43e2dd01",
+      "sha256": "d57c09206ea6f25e9257a1d7b8b488a91c9eaa5eee1a07fd5ee98d69f759074c"
+    },
+    "Practica03/yes_no_app/lib/infraestructure/models/yes_no_model.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 40,
+      "blob": "485fd57a24c9ffba59d91df856d2c421637086fa",
+      "sha256": "1f0615f7d61556dc23c828df497fb7d862f97374b89a7a481da370c9a0eebe6f"
+    },
+    "Practica03/yes_no_app/lib/presentation/widgets/chat/her_message_bubble.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 104,
+      "blob": "517326ad352caad9002d78aed26de70ea9ce84b1",
+      "sha256": "439992dcd3262964f54263a1a50b0e8d09f0913a2ee787f05f17d58989c47f1f"
+    },
+    "Practica03/yes_no_app/android/app/src/main/kotlin/com/example/yes_no_app/MainActivity.kt": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 5,
+      "blob": "0f4e1965a520c0913ebfb498219f26a8f9f92fcd",
+      "sha256": "8ca4c68693a7d4e69f87bdc521bbc863bf2d61a7923d200a43c3d32eff66114b"
+    },
+    "Practica03/yes_no_app/android/app/src/main/AndroidManifest.xml": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 46,
+      "blob": "6cf75476eda6fc4869081cb28433e26bce35d2e9",
+      "sha256": "2e843edcd61833e3f8722746c230b7fa7a647636969a2912997ab41fa65765a2"
+    },
+    "Practica03/yes_no_app/android/app/build.gradle.kts": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 49,
+      "blob": "8f5f1e9b77687a51342ff2d0d126ae3dd91197a9",
+      "sha256": "192d921ddc733cf7673fd97179c98875090019ab23df1197435bcfa702b99a91"
+    },
+    "Practica03/yes_no_app/ios/Runner/AppDelegate.swift": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 16,
+      "blob": "c30b367ec0a99a3f38e09477c49ba6b5adeb352d",
+      "sha256": "54a5e98d6c3e8a79413ad50607b83aac8ded8828bc913eda1fe86bb33a66cd5d"
+    },
+    "Practica03/yes_no_app/ios/Runner/Info.plist": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 70,
+      "blob": "0a92bd7ffba0ebbe1b74c68c4b2266146918c730",
+      "sha256": "10fb2931ef8760e3753cdbc3ee5e02a25361c5c2dbc72e36af6f7ae0dcd3c959"
+    },
+    "Practica03/yes_no_app/ios/Runner/SceneDelegate.swift": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 6,
+      "blob": "b9ce8ea2b2adb8d8061af09c75d2480999773ac3",
+      "sha256": "edce811c671ca0a6ccb14753e14e16deb0d89a0adf4f1b685e362d87d8f4c366"
+    },
+    "Practica03/yes_no_app/web/index.html": {
+      "local": true,
+      "remote": true,
+      "sameContent": false,
+      "lines": 122,
+      "blob": "f8153090695e603b1f43153780d1a931bca84280",
+      "sha256": "3afad97196e802add43cec249cce84aaf49249a3df37e765048f95fdee3e7431"
+    },
+    "Practica03/yes_no_app/web/manifest.json": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 35,
+      "blob": "a3b1a1bed5e96db40b6bc30149c9dd17b9cffb84",
+      "sha256": "3959d02c1199d1cb4031f8e79800557a5858af00ba06a4d0e1627fc27b549fb2"
+    },
+    "Practica03/yes_no_app/windows/runner/main.cpp": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 43,
+      "blob": "fa7c5b8a7eedce6fc3c9d7efdb30448c76b26727",
+      "sha256": "2fb3ef908694c6467de1d414a8b3333cabad28710a714d042f186afec32f5fa5"
+    },
+    "Practica03/yes_no_app/windows/runner/flutter_window.cpp": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 71,
+      "blob": "955ee3038f988929fac2dedb6a307ebd45dfcfd7",
+      "sha256": "d615eedc06ae37321e59c2c00c7687d1887dcd97904eb7225fafd8dcb5b83da6"
+    },
+    "Practica03/yes_no_app/windows/CMakeLists.txt": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 108,
+      "blob": "33dcaa4e62e2c4516e31ed7d98f60a94e2d9d875",
+      "sha256": "24814f74d15e39e69fbe661520ef5358195098ffd0887a6f95c04e058d1e3e06"
+    },
+    "Practica03/yes_no_app/linux/runner/main.cc": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 6,
+      "blob": "e7c5c54370372a4cdde7288a32733998d87bd767",
+      "sha256": "905b4dfa4eab584c1eb6244899b7d5ef56d0bceaf3bffb5ea335ed7e0ba3c549"
+    },
+    "Practica03/yes_no_app/linux/runner/my_application.cc": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 148,
+      "blob": "770110bbd02c7b83e441f45bd2dae395cf0fcd11",
+      "sha256": "d22df22cff916b1918fb23ca36b4e86bad5c6f15a9ff5d186a0f8caad0b61766"
+    },
+    "Practica03/yes_no_app/linux/CMakeLists.txt": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 128,
+      "blob": "cb297e979ee8dcbe260e18c5e2b19cfa554cf7a3",
+      "sha256": "77cebaa28015bdadcd1dde13b8e6e068ed1da4af674cead64d6d754b3ee901e2"
+    },
+    "Practica03/yes_no_app/macos/Runner/AppDelegate.swift": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 13,
+      "blob": "b3c176141221dbe2b40d3e36942b15068ba48677",
+      "sha256": "5b9cbdcb563ad8578a99b7c283958490e4af537322e9092fe1efbb3c29ab3e1b"
+    },
+    "Practica03/yes_no_app/macos/Runner/MainFlutterWindow.swift": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 15,
+      "blob": "3cc05eb23491684aae1c51ce94668a142bad5125",
+      "sha256": "8178ad756f958f986f794a8bb06e321a6630ceaaf8f235b3b4ae3936e415dc7c"
+    },
+    "Practica03/yes_no_app/macos/Runner/DebugProfile.entitlements": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 12,
+      "blob": "dddb8a30c851e7ef5b16a9108934bd1217b6b43f",
+      "sha256": "b2aa41d03e18907d360b721b7bb3edb302897c8a3de98ec47b6665033fea0b0e"
+    },
+    "Practica03/yes_no_app/macos/Runner/Release.entitlements": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 8,
+      "blob": "852fa1a4728ae4789e3bca55dd07caef3b41f2a5",
+      "sha256": "c3b881c72aa4cca9cf50da6654c4d675dec929056692af46a6fbecd00aef5990"
+    },
+    "Practica03/yes_no_app/pubspec.lock": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 418,
+      "blob": "eb4bf992f0109a6a5b23874fdcb622c0295f2160",
+      "sha256": "36475aecb56a1516000925cbf5b1e367f2c382d84307d0213c4ff3b1b55ee9d1"
+    },
+    "Practica03/yes_no_app/web/icons/alien_ogf.png": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": null,
+      "blob": "519806af2030126a86a712a2ce247caf0a0fdac3",
+      "sha256": "0284c36052f8776bc99a85c2520ab6b763cc65d0a42ab7d106618537f05543d0"
+    },
+    "Practica03/yes_no_app/lib/config/theme/app_theme.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 29,
+      "blob": "1ae24d78e25c8c6f889d614eb9bb70e46b830178",
+      "sha256": "19d8013b6dbcfc084197c2b954f66030bfe2bde896b577f17b82f3f84326f466"
+    },
+    "Practica03/yes_no_app/test/widget_test.dart": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 30,
+      "blob": "d75b85945e147e9efbf95e3a2923457ca1075cd9",
+      "sha256": "253ba1bbd1a6b461d12bbe19101ba748153802add9ae699659e13b630c6ee1c2"
+    },
+    "Practica03/yes_no_app/ios/RunnerTests/RunnerTests.swift": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 12,
+      "blob": "86a7c3b1b6119f7dbdb8cec74f1b5b3e076bf949",
+      "sha256": "c0e04141287eb7f9c9f3d31cf5be8cb626a9ea71351206c9121578e8b8f480c3"
+    },
+    "Practica03/yes_no_app/macos/RunnerTests/RunnerTests.swift": {
+      "local": true,
+      "remote": true,
+      "sameContent": true,
+      "lines": 12,
+      "blob": "61f3bd1fc504c3b78271416d8cfd14faa1dae2b4",
+      "sha256": "8a0ff977c64ceac0750fffa48087988b7b4125d1b1c49019221e7fffb574423e"
+    }
+  },
+  "localCommit": "db79eaa26568ed7526415a6b58bcb49fdca9521e",
+  "remoteCommit": "db79eaa26568ed7526415a6b58bcb49fdca9521e",
+  "specificationSha256": "499df28e680642e9cafc0667766e29fa08e2ba48ec0f09a25f2b3b36703ef076",
+  "archifyBaseSha256": "08f64c8a1b522a44f5cc944a7ffb5d545a3965cc20d05eefcd1b40b4e0aab3ab",
+  "htmlSha256": "ecb684a4948baa0796321f7e3e22f579a3266b1479f8787607c8bf8a18fb2acd",
+  "bytes": 516381,
+  "nodes": 24,
+  "edges": 26
+}

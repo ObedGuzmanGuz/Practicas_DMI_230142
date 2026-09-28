@@ -1,0 +1,905 @@
+{
+  "artifact": {
+    "file": "arquitectura_yes_no_app.html",
+    "sha256": "ecb684a4948baa0796321f7e3e22f579a3266b1479f8787607c8bf8a18fb2acd",
+    "bytes": 516381
+  },
+  "browser": "Chrome sin ventana, DevTools Protocol",
+  "status": "pass",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 900,
+      "allNodesVisible": true,
+      "nodeCount": 24
+    },
+    {
+      "width": 1600,
+      "height": 1000,
+      "scrollWidth": 1600,
+      "scrollHeight": 1000,
+      "allNodesVisible": true,
+      "nodeCount": 24
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "scrollHeight": 1080,
+      "allNodesVisible": true,
+      "nodeCount": 24
+    },
+    {
+      "width": 2048,
+      "height": 1320,
+      "scrollWidth": 2048,
+      "scrollHeight": 1320,
+      "allNodesVisible": true,
+      "nodeCount": 24
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 844,
+      "allNodesVisible": true,
+      "nodeCount": 24
+    }
+  ],
+  "checks": [
+    {
+      "name": "Configuración única coherente con el HTML",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Rutas con mayúsculas, hashes, rangos y fragmentos fieles",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "Los diez archivos Dart están documentados",
+      "passed": true,
+      "details": [
+        "Practica03/yes_no_app/lib/config/helpers/get_yes_no_answer.dart",
+        "Practica03/yes_no_app/lib/config/theme/app_theme.dart",
+        "Practica03/yes_no_app/lib/domain/entities/message.dart",
+        "Practica03/yes_no_app/lib/infraestructure/models/yes_no_model.dart",
+        "Practica03/yes_no_app/lib/main.dart",
+        "Practica03/yes_no_app/lib/presentation/Screens/chat/chat_screen.dart",
+        "Practica03/yes_no_app/lib/presentation/providers/chat_provider.dart",
+        "Practica03/yes_no_app/lib/presentation/widgets/chat/her_message_bubble.dart",
+        "Practica03/yes_no_app/lib/presentation/widgets/chat/my_message_bubble.dart",
+        "Practica03/yes_no_app/lib/presentation/widgets/shared/message_field_box.dart"
+      ]
+    },
+    {
+      "name": "Seis plataformas con panel y archivos reales",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Aplicación, cambios previos y arquitectura anterior preservados",
+      "passed": true,
+      "details": {
+        "filesCompared": 344,
+        "changed": [
+          "Practica03/yes_no_app/README.md"
+        ],
+        "unexpected": []
+      }
+    },
+    {
+      "name": "Encuadre 1440x900",
+      "passed": true,
+      "details": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900,
+        "allNodesVisible": true,
+        "nodeCount": 24
+      }
+    },
+    {
+      "name": "Encuadre 1600x1000",
+      "passed": true,
+      "details": {
+        "width": 1600,
+        "height": 1000,
+        "scrollWidth": 1600,
+        "scrollHeight": 1000,
+        "allNodesVisible": true,
+        "nodeCount": 24
+      }
+    },
+    {
+      "name": "Encuadre 1920x1080",
+      "passed": true,
+      "details": {
+        "width": 1920,
+        "height": 1080,
+        "scrollWidth": 1920,
+        "scrollHeight": 1080,
+        "allNodesVisible": true,
+        "nodeCount": 24
+      }
+    },
+    {
+      "name": "Encuadre 2048x1320",
+      "passed": true,
+      "details": {
+        "width": 2048,
+        "height": 1320,
+        "scrollWidth": 2048,
+        "scrollHeight": 1320,
+        "allNodesVisible": true,
+        "nodeCount": 24
+      }
+    },
+    {
+      "name": "Encuadre 390x844",
+      "passed": true,
+      "details": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "scrollHeight": 844,
+        "allNodesVisible": true,
+        "nodeCount": 24
+      }
+    },
+    {
+      "name": "Textos contenidos en tarjetas",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "Conectores fuera de tarjetas ajenas",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "Etiquetas fuera de tarjetas",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "Panel clic: inicio",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Flutter · MyApp",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: inicio",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: inicio",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: inicio",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: pantalla",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "ChatScreen",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: pantalla",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: pantalla",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: pantalla",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: entrada",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "MessageFieldBox",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: entrada",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: entrada",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: entrada",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: estado",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "ChatProvider",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: estado",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: estado",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: estado",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: palomitas",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Estados y palomitas",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: palomitas",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: palomitas",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: palomitas",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: respuesta",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Probabilidades",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: respuesta",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: respuesta",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: respuesta",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: api",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "yesno.wtf/api",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: api",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: api",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: api",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: conversion",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Conversión de respuesta",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: conversion",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: conversion",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: conversion",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: entidad",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Message",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: entidad",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: entidad",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: entidad",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: burbujas",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Burbujas del chat",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: burbujas",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: burbujas",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: burbujas",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: imagenes",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Imágenes remotas",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: imagenes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: imagenes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: imagenes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: android",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Android",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: android",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: android",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: android",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: ios",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "iOS",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: ios",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: ios",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: ios",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: web",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Web",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: web",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: web",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: web",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: windows",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Windows",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: windows",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: windows",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: windows",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: linux",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Linux",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: linux",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: linux",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: linux",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: macos",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "macOS (Mac)",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: macos",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: macos",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: macos",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: configuracion",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Dependencias y recursos",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: configuracion",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: configuracion",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: configuracion",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: tema",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "AppTheme",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: tema",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: tema",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: tema",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: pruebas",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Pruebas y observaciones",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: pruebas",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: pruebas",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: pruebas",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: git",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Git",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: git",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: git",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: git",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: github",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "GitHub",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: github",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: github",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: github",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: pages",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "GitHub Pages",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: pages",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: pages",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: pages",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel clic: archify",
+      "passed": true,
+      "details": {
+        "open": true,
+        "title": "Archify",
+        "focused": "close",
+        "selected": 1,
+        "links": true
+      }
+    },
+    {
+      "name": "Escape y retorno de foco: archify",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel teclado: archify",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cierre visible: archify",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Foco contenido al retroceder",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Foco contenido al avanzar",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Desplazamiento interno",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Acercar",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Alejar",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Desplazar con teclado",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Ajustar conserva selección",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Arrastrar lienzo",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Acercar con rueda",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Restablecer vista",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel de publicación y enlace de carpeta",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Rutas locales, rangos y enlaces",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Panel móvil con espacio",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Selector de bloques en pantalla estrecha",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Todos los bloques alcanzables mediante foco al ampliar",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Sitio estático en subcarpeta",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Sin errores de JavaScript",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "Sin dependencias de red del visor",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "Ningún panel descarga código ni consulta servicios externos",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "screenshots": [
+    "yes-no-1440x900.png",
+    "yes-no-2048x1320.png",
+    "yes-no-390x844.png",
+    "yes-no-panel.png",
+    "yes-no-panel-movil.png"
+  ],
+  "remoteComparison": {
+    "ref": "Practica03",
+    "tree": "db79eaa26568ed7526415a6b58bcb49fdca9521e",
+    "matchingFiles": 32,
+    "differentFiles": [
+      "Practica03/yes_no_app/pubspec.yaml",
+      "Practica03/yes_no_app/web/index.html"
+    ]
+  }
+}
