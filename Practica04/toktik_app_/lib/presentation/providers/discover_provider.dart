@@ -11,13 +11,23 @@ class DiscoverProvider extends ChangeNotifier {
   List<VideoPost> get videos => List.unmodifiable(_videos);
   // Catálogo finito: repetir esta llamada no duplica los videos.
   void loadNextPage() {
-    if (!initialLoading) return;
-    _videos = videoPosts
-        .map((data) => DriveVideoModel.fromJson(data).toVideoPostEntity())
-        .toList();
-    initialLoading = false;
-    notifyListeners();
-  }
+  if (!initialLoading) return;
+
+  _videos = videoPosts
+      // Convertir los mapas del catálogo a modelos.
+      .map((data) => DriveVideoModel.fromJson(data))
+
+      // Incluir únicamente videos cuyos likes no superen sus vistas.
+      .where((video) => video.likes <= video.views)
+
+      // Convertir los videos aceptados a entidades para la pantalla.
+      .map((video) => video.toVideoPostEntity())
+
+      .toList();
+
+  initialLoading = false;
+  notifyListeners();
+}
 
   void toggleLike(int number) {
     final index = _videos.indexWhere((video) => video.number == number);
