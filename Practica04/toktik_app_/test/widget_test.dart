@@ -122,7 +122,7 @@ void main() {
     ),
   );
 
-  testWidgets('La app usa Drive, muestra 14 videos y aplica el azul', (
+  testWidgets('La app usa Cloudinary, muestra 14 videos', (
     tester,
   ) async {
     await tester.pumpWidget(const MyApp());
@@ -136,9 +136,9 @@ void main() {
     expect(platform.sources, hasLength(1));
     expect(platform.sources.single.sourceType, DataSourceType.network);
     expect(
-      platform.sources.single.uri,
-      contains('drive.usercontent.google.com'),
-    );
+         platform.sources.single.uri,
+         'https://res.cloudinary.com/ryzcssnd/video/upload/video_1.mp4',
+);
     expect(platform.playing, {0});
     expect(platform.volumes[0], 0);
     await clean(tester);
@@ -185,7 +185,6 @@ void main() {
     await tester.pumpWidget(player(onFirstPlay: () => views++));
     await flush(tester);
     expect(find.text('Reintentar'), findsOneWidget);
-    expect(find.text('Abrir en Drive'), findsOneWidget);
     expect(views, 0);
     platform.fail = false;
     await tester.tap(find.text('Reintentar'));

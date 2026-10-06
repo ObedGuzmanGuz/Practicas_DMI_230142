@@ -1,4 +1,4 @@
-import 'package:toktik_app/config/helpers/drive_urls.dart';
+import 'package:toktik_app/config/helpers/cloudinary_urls.dart';
 import 'package:toktik_app/domain/entities/video_post.dart';
 
 class DriveVideoModel {
@@ -31,7 +31,7 @@ class DriveVideoModel {
       number: number,
       caption: name,
       driveFileId: fileId,
-      videoUrl: DriveUrls.download(fileId).toString(),
+      videoUrl: CloudinaryUrls.video(fileId).toString(),
       likes: likes,
       views: views,
     );

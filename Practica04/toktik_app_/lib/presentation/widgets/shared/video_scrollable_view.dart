@@ -76,9 +76,9 @@ class _VideoScrollableViewState extends State<VideoScrollableView> {
                     children: [
                       const Expanded(
                         child: Text(
-                          'TOKTIK AZUL',
+                          'TOKTIK ',
                           style: TextStyle(
-                            color: AppTheme.accent,
+                            color: Color.fromARGB(255, 17, 18, 19),
                             fontWeight: FontWeight.w800,
                             fontSize: 21,
                             letterSpacing: 1.5,
@@ -105,7 +105,7 @@ class _VideoScrollableViewState extends State<VideoScrollableView> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const Text(
-                      'PRÁCTICA 04  /  GOOGLE DRIVE',
+                      'PRÁCTICA 04  ',
                       style: TextStyle(
                         color: AppTheme.accent,
                         fontSize: 11,

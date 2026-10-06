@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:toktik_app/config/helpers/drive_urls.dart';
+//import 'package:toktik_app/config/helpers/drive_urls.dart';
 import 'package:toktik_app/config/theme/app_theme.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 
 class FullScreenPlayer extends StatefulWidget {
@@ -137,8 +137,9 @@ class _FullScreenPlayerState extends State<FullScreenPlayer>
       setState(() {
         _loading = false;
         _error =
-            'No se pudo cargar el video. Revisa tu conexión, el acceso '
-            'público en Drive y la compatibilidad del formato.';
+            _error =
+            'No se pudo cargar el video. Revisa tu conexión, '
+            'la URL de Cloudinary y la compatibilidad del formato.';
       });
     }
   }
@@ -172,27 +173,27 @@ class _FullScreenPlayerState extends State<FullScreenPlayer>
     }
   }
 
-  Future<void> _openDrive() async {
-    _wantsToPlay = false;
-    // Iniciar launchUrl directamente conserva el gesto del usuario en web.
-    final opening = launchUrl(
-      DriveUrls.preview(widget.driveFileId),
-      mode: LaunchMode.externalApplication,
-    );
-    unawaited(_synchronize());
-    try {
-      if (await opening) return;
-    } catch (_) {
-      /* Se muestra el mismo aviso si no hay navegador disponible. */
-    }
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('No se pudo abrir Drive. Inténtalo otra vez.'),
-        ),
-      );
-    }
-  }
+  // Future<void> _openDrive() async {
+  //   _wantsToPlay = false;
+  //   // Iniciar launchUrl directamente conserva el gesto del usuario en web.
+  //   final opening = launchUrl(
+  //     DriveUrls.preview(widget.driveFileId),
+  //     mode: LaunchMode.externalApplication,
+  //   );
+  //   unawaited(_synchronize());
+  //   try {
+  //     if (await opening) return;
+  //   } catch (_) {
+  //     /* Se muestra el mismo aviso si no hay navegador disponible. */
+  //   }
+  //   if (mounted) {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       const SnackBar(
+  //         content: Text('No se pudo abrir Drive. Inténtalo otra vez.'),
+  //       ),
+  //     );
+  //   }
+  // }
 
   @override
   void dispose() {
@@ -201,38 +202,39 @@ class _FullScreenPlayerState extends State<FullScreenPlayer>
     super.dispose();
   }
 
-  Widget _failure(String message) => Center(
-    child: Padding(
-      padding: const EdgeInsets.fromLTRB(28, 70, 82, 160),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.cloud_off_outlined, size: 46),
-            const SizedBox(height: 14),
-            Text(message, textAlign: TextAlign.center),
-            const SizedBox(height: 16),
-            if (_supported)
-              FilledButton.icon(
-                onPressed: () {
-                  setState(() {
-                    _wantsToPlay = true;
-                  });
-                  _initialize();
-                },
-                icon: const Icon(Icons.refresh),
-                label: const Text('Reintentar'),
-              ),
-            TextButton.icon(
-              onPressed: _openDrive,
-              icon: const Icon(Icons.open_in_new),
-              label: const Text('Abrir en Drive'),
+ Widget _failure(String message) => Center(
+  child: Padding(
+    padding: const EdgeInsets.fromLTRB(28, 70, 82, 160),
+    child: SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(
+            Icons.cloud_off_outlined,
+            size: 46,
+          ),
+          const SizedBox(height: 14),
+          Text(
+            message,
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 16),
+          if (_supported)
+            FilledButton.icon(
+              onPressed: () {
+                setState(() {
+                  _wantsToPlay = true;
+                });
+                _initialize();
+              },
+              icon: const Icon(Icons.refresh),
+              label: const Text('Reintentar'),
             ),
-          ],
-        ),
+        ],
       ),
     ),
-  );
+  ),
+);
 
   @override
   Widget build(BuildContext context) {
@@ -258,8 +260,8 @@ class _FullScreenPlayerState extends State<FullScreenPlayer>
         if (value.hasError) {
           return _failure(
             'El video no se pudo reproducir. Puedes reintentar '
-            'o abrirlo en Drive. Si el formato no es compatible, '
-            'consulta la guía para convertirlo a MP4 H.264.',
+            'y comprobar que el archivo esté disponible en Cloudinary '
+            'en formato MP4.',
           );
         }
         return GestureDetector(

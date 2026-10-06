@@ -14,8 +14,8 @@ void main() {
     expect(provider.initialLoading, isFalse);
     for (final video in provider.videos) {
       expect(
-        Uri.parse(video.videoUrl).queryParameters['id'],
-        video.driveFileId,
+          video.videoUrl,
+          'https://res.cloudinary.com/ryzcssnd/video/upload/${video.driveFileId}.mp4',
       );
     }
   });
