@@ -1,0 +1,446 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "ARQUITECTURA 2 — PROVIDER, REPOSITORIO Y FUENTES DE VIDEO",
+    "quality_profile": "standard",
+    "viewBox": [
+      1360,
+      740
+    ]
+  },
+  "components": [
+    {
+      "id": "platforms",
+      "type": "external",
+      "label": "Plataformas del proyecto",
+      "sublabel": "Flutter+Dart · Android/iOS/Web/Windows/Linux/macOS",
+      "tag": "Flutter + Dart · base multiplataforma",
+      "pos": [
+        60,
+        50
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "ui",
+      "type": "frontend",
+      "label": "Pantallas y widgets Flutter",
+      "sublabel": "DiscoverScreen · VideoScrollableView",
+      "tag": "VideoButtons",
+      "pos": [
+        375,
+        50
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "provider",
+      "type": "backend",
+      "label": "DiscoverProvider",
+      "sublabel": "Feeds · paginación · estado · LocalVideoStorage",
+      "pos": [
+        690,
+        50
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "contract",
+      "type": "backend",
+      "label": "VideoRepository",
+      "sublabel": "Dominio · operaciones de obtención de feeds",
+      "pos": [
+        1005,
+        50
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "cloudinary",
+      "type": "cloud",
+      "label": "CloudinaryVideoDataSource",
+      "sublabel": "Catálogo del proyecto · URL MP4 · Discover",
+      "pos": [
+        60,
+        160
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "pixabay",
+      "type": "cloud",
+      "label": "PixabayVideoDataSource",
+      "sublabel": "Pixabay API · HTTP · MP4 · paginación",
+      "pos": [
+        375,
+        160
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "datasource",
+      "type": "backend",
+      "label": "VideoDataSource",
+      "sublabel": "Contrato fetchVideos(page, pageSize)",
+      "pos": [
+        690,
+        160
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "composite",
+      "type": "backend",
+      "label": "CompositeVideoRepository",
+      "sublabel": "Implementación predeterminada · coordina fuentes",
+      "pos": [
+        1005,
+        160
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "coverr",
+      "type": "cloud",
+      "label": "CoverrVideoDataSource",
+      "sublabel": "Coverr API · Bearer key · MP4 · paginación",
+      "pos": [
+        60,
+        270
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "youtube",
+      "type": "cloud",
+      "label": "YouTubeVideoDataSource",
+      "sublabel": "API v3 · search.list · videos.list · duración",
+      "pos": [
+        375,
+        270
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "mapper",
+      "type": "backend",
+      "label": "VideoPostMapper",
+      "sublabel": "Normaliza respuestas de fuentes",
+      "pos": [
+        690,
+        270
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "driveModel",
+      "type": "backend",
+      "label": "DriveVideoModel",
+      "sublabel": "fromJson · toVideoPostEntity",
+      "pos": [
+        1005,
+        270
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "forYou",
+      "type": "backend",
+      "label": "ForYouFeedRepository",
+      "sublabel": "Solo source == YouTube · conserva el orden",
+      "pos": [
+        60,
+        380
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "favorites",
+      "type": "backend",
+      "label": "FavoritesFeedRepository",
+      "sublabel": "Filtra isLiked localmente",
+      "pos": [
+        375,
+        380
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "storage",
+      "type": "database",
+      "label": "LocalVideoStorage",
+      "sublabel": "SharedPreferences · likes · vistas personales",
+      "tag": "Almacenamiento en dispositivo",
+      "pos": [
+        690,
+        380
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "entity",
+      "type": "backend",
+      "label": "VideoPost",
+      "sublabel": "source · videoUrl · isLiked",
+      "tag": "usesEmbeddedPlayer",
+      "pos": [
+        1005,
+        380
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "mp4",
+      "type": "frontend",
+      "label": "FullScreenPlayer",
+      "sublabel": "video_player · MP4 directo · 3 fuentes",
+      "pos": [
+        60,
+        490
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "embedded",
+      "type": "frontend",
+      "label": "EmbeddedPlatformPlayer",
+      "sublabel": "Reproductor oficial embebido · YouTube",
+      "pos": [
+        375,
+        490
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "inactive",
+      "type": "external",
+      "label": "Adaptadores inactivos por defecto",
+      "sublabel": "VimeoVideoDataSource · DailymotionVideoDataSource",
+      "tag": "No registrados en CompositeVideoRepository",
+      "pos": [
+        690,
+        490
+      ],
+      "size": [
+        275,
+        70
+      ]
+    },
+    {
+      "id": "git",
+      "type": "external",
+      "label": "Git",
+      "sublabel": "Control de versiones · historial",
+      "pos": [
+        55,
+        610
+      ],
+      "size": [
+        210,
+        70
+      ]
+    },
+    {
+      "id": "github",
+      "type": "cloud",
+      "label": "GitHub",
+      "sublabel": "Repositorio remoto · publica cambios",
+      "pos": [
+        305,
+        610
+      ],
+      "size": [
+        210,
+        70
+      ]
+    },
+    {
+      "id": "pages",
+      "type": "cloud",
+      "label": "GitHub Pages",
+      "sublabel": "Solo si está configurado",
+      "pos": [
+        555,
+        610
+      ],
+      "size": [
+        210,
+        70
+      ]
+    },
+    {
+      "id": "archify",
+      "type": "backend",
+      "label": "Archify",
+      "sublabel": "Genera y documenta diagramas",
+      "pos": [
+        805,
+        610
+      ],
+      "size": [
+        210,
+        70
+      ]
+    },
+    {
+      "id": "docs",
+      "type": "backend",
+      "label": "Documentación",
+      "sublabel": "HTML integrado · JSON editable",
+      "pos": [
+        1055,
+        610
+      ],
+      "size": [
+        230,
+        70
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Presentación",
+      "wraps": [
+        "platforms",
+        "ui",
+        "provider",
+        "mp4",
+        "embedded"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "Fuentes registradas por CompositeVideoRepository",
+      "wraps": [
+        "cloudinary",
+        "pixabay",
+        "coverr",
+        "youtube"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "Dominio e infraestructura",
+      "wraps": [
+        "contract",
+        "datasource",
+        "composite",
+        "mapper",
+        "driveModel",
+        "forYou",
+        "favorites",
+        "storage",
+        "entity"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "Desarrollo y documentación",
+      "wraps": [
+        "git",
+        "github",
+        "pages",
+        "archify",
+        "docs"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "platforms",
+      "to": "ui"
+    },
+    {
+      "from": "ui",
+      "to": "provider"
+    },
+    {
+      "from": "provider",
+      "to": "contract"
+    },
+    {
+      "from": "contract",
+      "to": "composite"
+    },
+    {
+      "from": "composite",
+      "to": "datasource"
+    },
+    {
+      "from": "mapper",
+      "to": "driveModel"
+    },
+    {
+      "from": "driveModel",
+      "to": "entity"
+    },
+    {
+      "from": "git",
+      "to": "github"
+    },
+    {
+      "from": "github",
+      "to": "pages"
+    },
+    {
+      "from": "archify",
+      "to": "docs"
+    }
+  ]
+}
