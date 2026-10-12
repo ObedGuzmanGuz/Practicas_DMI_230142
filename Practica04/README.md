@@ -96,14 +96,13 @@ A continuación, se muestran las evidencias de la aplicación **TokTik Azul**, i
 
 ### 🏗️ Documentación de arquitectura
 
-- **Aplicación Flutter:** [`toktik_app_/`](toktik_app_/)
-- **Documentación de arquitectura:** [`docs/ARQUITECTURA.md`](toktik_app_/docs/ARQUITECTURA.md)
-- **Diagrama de Provider local:** [`provider_local.png`](toktik_app_/docs/diagramas/provider_local.png)
-- **Diagrama de Provider, repositorio y datasources:** [`provider_repository_datasources.png`](toktik_app_/docs/diagramas/provider_repository_datasources.png)
+**[Ver la arquitectura de la práctica 04 en GitHub Pages](https://obedguzmanguz.github.io/Practicas_DMI_230142/Practica04/docs/arquitectura_interactiva.html)**
+
+La primera vista documenta los providers locales, temas y persistencia con `SharedPreferences`. La segunda recorre `DiscoverProvider`, `VideoRepository`, `CompositeVideoRepository`, las fuentes activas y los reproductores. Las diez capturas de evidencias existentes se muestran en la sección [Capturas y demostración](#-capturas-y-demostración).
 
 ### 🚀 Demostración en línea
 
-[**Ver TokTik Azul en GitHub Pages**](https://obedguzmanguz.github.io/Practicas_Integradora_230142/Practica04/)
+La configuración de GitHub Pages no está presente en este checkout, así que no se incluye un enlace de publicación como si estuviera activo. El archivo de arquitectura puede abrirse localmente y publicarse junto con `docs/` cuando Pages se configure.
 
 ## 🧰 Tecnologías y herramientas
 
@@ -295,27 +294,17 @@ flutter run -d chrome
 ## 📁 Estructura principal
 
 ```text
-toktik_app_/
-├── assets/
-│   ├── audio/
-│   └── brand/
+Practica04/
 ├── docs/
+│   ├── arquitectura_interactiva.html
 │   ├── ARQUITECTURA.md
-│   └── diagramas/
-│       ├── provider_local.dot
-│       ├── provider_local.png
-│       ├── provider_local.svg
-│       ├── provider_repository_datasources.dot
-│       ├── provider_repository_datasources.png
-│       └── provider_repository_datasources.svg
-├── lib/
-│   ├── config/
-│   ├── domain/
-│   ├── infrastructure/
-│   ├── presentation/
-│   └── main.dart
-├── test/
-├── pubspec.yaml
+│   └── diagramas/*.architecture.json
+├── Evidencias_toktik/
+├── toktik_app_/
+│   ├── assets/
+│   ├── lib/
+│   ├── test/
+│   └── pubspec.yaml
 └── README.md
 ```
 
@@ -323,9 +312,7 @@ La estructura es representativa de las carpetas principales; conserva en el repo
 
 ## 🌍 GitHub Pages
 
-**Ver la documentación de la Práctica 04:**
-
-[🚀 Abrir TokTik Azul en GitHub Pages](https://obedguzmanguz.github.io/Practicas_Integradora_230142/Practica04/)
+No se encontró configuración de GitHub Pages en este checkout. La [arquitectura interactiva](docs/arquitectura_interactiva.html) funciona como archivo local y puede publicarse bajo `docs/` cuando Pages esté configurado.
 
 > Comprueba que GitHub Pages esté habilitado y que la carpeta publicada contenga un `index.html`. Si la práctica se publica desde otra ruta o repositorio, actualiza este enlace.
 

@@ -1,0 +1,398 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "ARQUITECTURA 1 — PROVIDERS LOCALES Y PERSISTENCIA",
+    "quality_profile": "standard",
+    "viewBox": [
+      1280,
+      650
+    ]
+  },
+  "components": [
+    {
+      "id": "platforms",
+      "type": "external",
+      "label": "Plataformas del proyecto",
+      "sublabel": "Flutter + Dart · Android/iOS/Web/Windows/Linux/macOS",
+      "tag": "Flutter + Dart · base multiplataforma",
+      "pos": [
+        30,
+        30
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "ui",
+      "type": "frontend",
+      "label": "Presentación Flutter",
+      "sublabel": "StatelessWidget · StatefulWidget · DiscoverScreen",
+      "pos": [
+        335,
+        30
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "discover",
+      "type": "backend",
+      "label": "DiscoverProvider",
+      "sublabel": "Feeds · likes · vistas personales · mute · paginación",
+      "pos": [
+        640,
+        30
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "season",
+      "type": "backend",
+      "label": "SeasonalThemeProvider",
+      "sublabel": "Normal · Halloween · Navidad · Valentine's Day",
+      "tag": "Normal · Halloween · Navidad · Valentine's Day",
+      "pos": [
+        945,
+        30
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "date",
+      "type": "external",
+      "label": "Fecha del dispositivo",
+      "sublabel": "Cálculo de la temporada automática",
+      "pos": [
+        30,
+        140
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "theme",
+      "type": "backend",
+      "label": "Configuración de temporada",
+      "sublabel": "Automático/manual · fecha · paleta estacional",
+      "pos": [
+        335,
+        140
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "videoStorage",
+      "type": "backend",
+      "label": "LocalVideoStorage",
+      "sublabel": "loadLikedVideos · loadViews · saveState",
+      "pos": [
+        640,
+        140
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "settingsStorage",
+      "type": "backend",
+      "label": "LocalSettingsStorage",
+      "sublabel": "loadSeasonMode · saveSeasonMode",
+      "pos": [
+        945,
+        140
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "prefs",
+      "type": "database",
+      "label": "SharedPreferences",
+      "sublabel": "Likes · vistas · tema guardados en el dispositivo",
+      "tag": "Persistencia local",
+      "pos": [
+        640,
+        250
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "audio",
+      "type": "cloud",
+      "label": "assets/audio/",
+      "sublabel": "normal · halloween · christmas · valentines.wav",
+      "pos": [
+        30,
+        250
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "brand",
+      "type": "cloud",
+      "label": "assets/brand/",
+      "sublabel": "toktik_icon.png",
+      "pos": [
+        335,
+        250
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "feed",
+      "type": "frontend",
+      "label": "Feeds e interacción",
+      "sublabel": "Discover · For You · Favorites",
+      "pos": [
+        945,
+        250
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "scroll",
+      "type": "frontend",
+      "label": "VideoScrollableView",
+      "sublabel": "Navegación horizontal · scroll vertical",
+      "pos": [
+        30,
+        360
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "fullPlayer",
+      "type": "frontend",
+      "label": "FullScreenPlayer",
+      "sublabel": "video_player · archivos MP4 directos",
+      "pos": [
+        335,
+        360
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "embeddedPlayer",
+      "type": "frontend",
+      "label": "EmbeddedPlatformPlayer",
+      "sublabel": "Reproducción oficial embebida · YouTube",
+      "pos": [
+        640,
+        360
+      ],
+      "size": [
+        275,
+        76
+      ]
+    },
+    {
+      "id": "git",
+      "type": "external",
+      "label": "Git",
+      "sublabel": "Control de versiones · historial",
+      "pos": [
+        30,
+        530
+      ],
+      "size": [
+        190,
+        72
+      ]
+    },
+    {
+      "id": "github",
+      "type": "cloud",
+      "label": "GitHub",
+      "sublabel": "Repositorio remoto · publica cambios",
+      "pos": [
+        260,
+        530
+      ],
+      "size": [
+        190,
+        72
+      ]
+    },
+    {
+      "id": "pages",
+      "type": "cloud",
+      "label": "GitHub Pages",
+      "sublabel": "Solo si está configurado",
+      "pos": [
+        490,
+        530
+      ],
+      "size": [
+        190,
+        72
+      ]
+    },
+    {
+      "id": "archify",
+      "type": "backend",
+      "label": "Archify",
+      "sublabel": "Genera y documenta los diagramas",
+      "pos": [
+        720,
+        530
+      ],
+      "size": [
+        190,
+        72
+      ]
+    },
+    {
+      "id": "docs",
+      "type": "backend",
+      "label": "Documentación",
+      "sublabel": "HTML integrado · fuentes editables",
+      "pos": [
+        950,
+        530
+      ],
+      "size": [
+        230,
+        72
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Desarrollo y documentación",
+      "wraps": [
+        "git",
+        "github",
+        "pages",
+        "archify",
+        "docs"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "Aplicación Flutter",
+      "wraps": [
+        "ui",
+        "discover",
+        "season",
+        "feed",
+        "scroll",
+        "fullPlayer",
+        "embeddedPlayer"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "platforms",
+      "to": "ui"
+    },
+    {
+      "from": "ui",
+      "to": "discover"
+    },
+    {
+      "from": "discover",
+      "to": "videoStorage",
+      "variant": "dashed"
+    },
+    {
+      "from": "season",
+      "to": "settingsStorage",
+      "variant": "dashed"
+    },
+    {
+      "from": "scroll",
+      "to": "fullPlayer"
+    },
+    {
+      "from": "date",
+      "to": "theme"
+    },
+    {
+      "from": "git",
+      "to": "github"
+    },
+    {
+      "from": "github",
+      "to": "pages"
+    },
+    {
+      "from": "archify",
+      "to": "docs"
+    },
+    {
+      "from": "discover",
+      "to": "ui",
+      "variant": "dashed"
+    },
+    {
+      "from": "videoStorage",
+      "to": "prefs",
+      "variant": "dashed"
+    },
+    {
+      "from": "settingsStorage",
+      "to": "prefs",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "top",
+      "via": [
+        [
+          1240,
+          178
+        ],
+        [
+          1240,
+          230
+        ],
+        [
+          777.5,
+          230
+        ],
+        [
+          777.5,
+          250
+        ]
+      ]
+    }
+  ]
+}
