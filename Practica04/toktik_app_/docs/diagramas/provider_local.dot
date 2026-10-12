@@ -1,0 +1,26 @@
+digraph ProviderLocal {
+  graph [rankdir=TB, bgcolor="#0A1220", pad="0.28", nodesep="0.38", ranksep="0.52", fontname="Arial", labelloc="t", label="ARQUITECTURA 1 · PROVIDERS LOCALES Y PERSISTENCIA", fontsize=20, fontcolor="white"];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=11, margin="0.16,0.12", color="#34506D", fillcolor="#13243B", fontcolor="white"];
+  edge [color="#72B7E8", penwidth=1.5, arrowsize=0.75, fontname="Arial", fontsize=9, fontcolor="#D9E7F5"];
+
+  ui [label="Presentación Flutter\nStateless / Stateful Widgets\nDiscovery · For You · Favorites", fillcolor="#173956", color="#36A9E8"];
+  discover [label="DiscoverProvider\nlikes · vistas · mute\nestado de las pestañas", fillcolor="#174B66", color="#42D4F5"];
+  theme [label="SeasonalThemeProvider\nautomático / selección de prueba\npaleta · distintivo del logo · melodía corta en loop", fillcolor="#3C275A", color="#B58AFF"];
+  storage [label="LocalVideoStorage\nSharedPreferences\nlikes y vistas", fillcolor="#173F35", color="#49D9A3"];
+  settings [label="LocalSettingsStorage\nSharedPreferences\nmodo de temporada", fillcolor="#173F35", color="#49D9A3"];
+  calendar [label="Fecha del dispositivo\nselección automática de temporada", fillcolor="#3D2D20", color="#FFB454"];
+  assets [label="Assets de audio\nnormal.wav · halloween.wav\nchristmas.wav · valentines.wav", fillcolor="#3C275A", color="#B58AFF"];
+  player [label="FullScreenPlayer\nVideoPlayerController\nplay / pause / volumen", fillcolor="#173956", color="#36A9E8"];
+  remote [label="URL MP4 activa\ncontrolador libera páginas fuera de pantalla", fillcolor="#242B36", color="#8FA6BA"];
+
+  ui -> discover [label="context.watch / read"];
+  discover -> storage [label="guardar / restaurar"];
+  ui -> theme [label="Consumer / ThemeData"];
+  theme -> settings [label="guardar selección"];
+  calendar -> theme [label="si modo = automático"];
+  theme -> assets [label="autoplay al iniciar / loop / cambiar tema"];
+  ui -> player [label="página visible"];
+  player -> remote [label="video_player"];
+  {rank=same; discover; theme; player}
+  {rank=same; storage; settings; assets; remote}
+}

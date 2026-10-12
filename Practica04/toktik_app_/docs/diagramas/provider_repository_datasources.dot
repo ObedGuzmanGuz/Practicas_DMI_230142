@@ -1,0 +1,36 @@
+digraph ProviderRepository {
+  graph [rankdir=TB, bgcolor="#0A1220", pad="0.28", nodesep="0.38", ranksep="0.52", fontname="Arial", labelloc="t", label="ARQUITECTURA 2 · PROVIDER + REPOSITORIO + FUENTES DE VIDEO", fontsize=20, fontcolor="white"];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=11, margin="0.16,0.12", color="#34506D", fillcolor="#13243B", fontcolor="white"];
+  edge [color="#72B7E8", penwidth=1.5, arrowsize=0.75, fontname="Arial", fontsize=9, fontcolor="#D9E7F5"];
+
+  ui [label="Widgets / pantallas\nDiscover · For You · Favorites\nPageView horizontal y vertical", fillcolor="#173956", color="#36A9E8"];
+  provider [label="DiscoverProvider\nlikes, vistas, mute y feeds", fillcolor="#174B66", color="#42D4F5"];
+  contract [label="VideoRepository (contrato)\ngetDiscoverVideos()\ngetYouTubeVideos()\ngetFavoriteVideos()", fillcolor="#3C275A", color="#B58AFF"];
+  composite [label="CompositeVideoRepository\nsepara Discover y For You\nnormaliza y evita duplicados", fillcolor="#3C275A", color="#B58AFF"];
+  mapper [label="VideoPostMapper + DriveVideoModel\nnormaliza URL, fuente, likes/vistas\ny tipo de reproductor", fillcolor="#3D2D20", color="#FFB454"];
+  cloud [label="CloudinaryVideoDataSource\nCatálogo de MP4 directos", fillcolor="#173F35", color="#49D9A3"];
+  pixabay [label="PixabayVideoDataSource\nAPI de videos · MP4 directos", fillcolor="#173F35", color="#49D9A3"];
+  coverr [label="CoverrVideoDataSource\nAPI de videos · MP4 directos", fillcolor="#173F35", color="#49D9A3"];
+  youtube [label="YouTubeVideoDataSource\nYouTube Data API v3\nsearch.list + videos.list", fillcolor="#173F35", color="#49D9A3"];
+  entity [label="VideoPost (dominio)\ntítulo · descripción · URL\nlikes/vistas iniciales · estado Me gusta", fillcolor="#242B36", color="#8FA6BA"];
+  feed [label="Repositorios de feed\nForYouFeedRepository\nFavoritesFeedRepository", fillcolor="#242B36", color="#8FA6BA"];
+  playback [label="Presentación de video\nFullScreenPlayer + VideoPlayerController\nEmbeddedPlatformPlayer + YouTube IFrame API", fillcolor="#173956", color="#36A9E8"];
+
+  ui -> provider [label="eventos / estado"];
+  provider -> contract [label="solicita catálogo y feeds"];
+  contract -> composite [label="implementación"];
+  composite -> cloud [dir=both, label="Discover · página 1"];
+  composite -> pixabay [dir=both, label="Discover · paginación"];
+  composite -> coverr [dir=both, label="Discover · paginación"];
+  composite -> youtube [dir=both, label="For You · API"];
+  cloud -> mapper [label="mapas"];
+  pixabay -> mapper [label="mapas"];
+  coverr -> mapper [label="mapas"];
+  youtube -> mapper [label="metadatos / estadísticas"];
+  mapper -> entity [label="entidad de dominio"];
+  entity -> composite [style=dashed, label="lista normalizada"];
+  provider -> feed [label="filtrar / ordenar"];
+  feed -> ui [label="YouTube / Me gusta", constraint=false];
+  provider -> playback [label="play · mute · vista por inicio"];
+  {rank=same; cloud; pixabay; coverr; youtube}
+}

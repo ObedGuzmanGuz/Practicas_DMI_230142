@@ -1,5 +1,5 @@
 class CloudinaryUrls {
-  static const cloudName = 'ryzcssnd';
+  static const String cloudName = 'ryzcssnd';
 
   static Uri video(String publicId) {
     return Uri.parse(

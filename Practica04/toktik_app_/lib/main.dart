@@ -1,10 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toktik_app/config/theme/app_theme.dart';
-import 'package:toktik_app/infrastructure/datasources/drive_video_datasource_impl.dart';
-import 'package:toktik_app/infrastructure/repositories/video_posts_repository_impl.dart';
 import 'package:toktik_app/presentation/providers/discover_provider.dart';
-import 'package:toktik_app/presentation/screens/discover/discover_screen.dart';
+import 'package:toktik_app/presentation/providers/seasonal_theme_provider.dart';
+import 'package:toktik_app/presentation/screens/splash/splash_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -13,24 +14,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final videoPostRepository = VideoPostsRepositoryImpl(
-      videosDatasource: DriveVideoDatasource(),
-    );
-
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          lazy: false,
-          create: (_) => DiscoverProvider(
-            videosRepository: videoPostRepository,
-          )..loadNextPage(),
+          create: (_) {
+            final provider = SeasonalThemeProvider();
+            unawaited(provider.initialize());
+            return provider;
+          },
+        ),
+        ChangeNotifierProvider(
+          create: (_) => DiscoverProvider()..loadNextPage(),
         ),
       ],
-      child: MaterialApp(
-        title: 'TokTik Azul · Práctica 04',
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme().getTheme(),
-        home: const DiscoverScreen(),
+      child: Consumer<SeasonalThemeProvider>(
+        builder: (context, themeProvider, _) => MaterialApp(
+          title: 'TokTik Azul',
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme().getSeasonalTheme(themeProvider.season),
+          home: const SplashScreen(),
+        ),
       ),
     );
   }

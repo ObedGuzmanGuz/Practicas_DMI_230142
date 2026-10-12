@@ -1,15 +1,24 @@
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toktik_app/config/theme/app_theme.dart';
 import 'package:toktik_app/domain/entities/video_post.dart';
 import 'package:toktik_app/presentation/providers/discover_provider.dart';
+import 'package:toktik_app/presentation/widgets/shared/expandable_caption.dart';
 import 'package:toktik_app/presentation/widgets/shared/video_buttons.dart';
+import 'package:toktik_app/presentation/widgets/video/embedded_platform_player.dart';
 import 'package:toktik_app/presentation/widgets/video/fullscreen_player.dart';
 import 'package:toktik_app/presentation/widgets/video/video_background.dart';
 
 class VideoScrollableView extends StatefulWidget {
   final List<VideoPost> videos;
-  const VideoScrollableView({super.key, required this.videos});
+  final bool feedActive;
+
+  const VideoScrollableView({
+    super.key,
+    required this.videos,
+    this.feedActive = true,
+  });
+
   @override
   State<VideoScrollableView> createState() => _VideoScrollableViewState();
 }
@@ -26,10 +35,10 @@ class _VideoScrollableViewState extends State<VideoScrollableView> {
   }
 
   void _move(int offset) {
-    final target = (_activePage.value + offset).clamp(
-      0,
-      widget.videos.length - 1,
-    );
+    if (widget.videos.isEmpty) return;
+    final target = (_activePage.value + offset)
+        .clamp(0, widget.videos.length - 1)
+        .toInt();
     _pageController.animateToPage(
       target,
       duration: const Duration(milliseconds: 300),
@@ -39,57 +48,81 @@ class _VideoScrollableViewState extends State<VideoScrollableView> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.videos.isEmpty) {
-      return const Center(child: Text('No hay videos disponibles.'));
-    }
+    if (widget.videos.isEmpty) return const SizedBox.shrink();
+
     final provider = context.watch<DiscoverProvider>();
+    final colors = Theme.of(context).colorScheme;
+    final background = Theme.of(context).scaffoldBackgroundColor;
+
     return PageView.builder(
       controller: _pageController,
       scrollDirection: Axis.vertical,
       itemCount: widget.videos.length,
-      onPageChanged: (index) => _activePage.value = index,
+      onPageChanged: (index) {
+        _activePage.value = index;
+        if (widget.feedActive && index >= widget.videos.length - 3) {
+          provider.loadMoreVideos();
+        }
+      },
       itemBuilder: (context, index) {
         final video = widget.videos[index];
+
         return Stack(
           fit: StackFit.expand,
           children: [
             ValueListenableBuilder<int>(
               valueListenable: _activePage,
-              builder: (context, activeIndex, _) => FullScreenPlayer(
-                key: ValueKey(video.driveFileId),
-                videoUrl: video.videoUrl,
-                driveFileId: video.driveFileId,
-                active: index == activeIndex,
-                muted: provider.muted,
-                onFirstPlay: () => provider.registerView(video.number),
-              ),
+              builder: (context, activeIndex, _) {
+                final active = widget.feedActive && index == activeIndex;
+                if (video.usesEmbeddedPlayer) {
+                  final uri = Uri.parse(video.videoUrl);
+                  final muteKey = video.source == 'Vimeo' ? 'muted' : 'mute';
+                  final muteValue = video.source == 'Dailymotion'
+                      ? (provider.muted ? 'true' : 'false')
+                      : (provider.muted ? '1' : '0');
+                  final embedUrl = uri.replace(queryParameters: {
+                    ...uri.queryParameters,
+                    muteKey: muteValue,
+                  }).toString();
+                  return EmbeddedPlatformPlayer(
+                    key: ValueKey(video.driveFileId),
+                    embedUrl: embedUrl,
+                    active: active,
+                    isYouTube: video.source == 'YouTube',
+                    muted: provider.muted,
+                    onView: () => provider.registerView(video.number),
+                  );
+                }
+                return FullScreenPlayer(
+                  key: ValueKey(video.driveFileId),
+                  videoUrl: video.videoUrl,
+                  driveFileId: video.driveFileId,
+                  active: active,
+                  muted: provider.muted,
+                  onPlaybackStarted: () => provider.registerView(video.number),
+                );
+              },
             ),
             const VideoBackground(),
             Positioned(
-              top: 0,
-              left: 20,
-              right: 20,
+              top: 90,
+              right: 16,
               child: SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 12),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        child: Text(
-                          'TOKTIK ',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 17, 18, 19),
-                            fontWeight: FontWeight.w800,
-                            fontSize: 21,
-                            letterSpacing: 1.5,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        '${index + 1} / ${widget.videos.length}',
-                        style: const TextStyle(color: AppTheme.secondaryText),
-                      ),
-                    ],
+                top: false,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: background.withValues(alpha: .42),
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.white.withValues(alpha: .10)),
+                  ),
+                  child: Text(
+                    '${index + 1}/${widget.videos.length}',
+                    style: TextStyle(
+                      color: colors.onSurface,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ),
@@ -104,10 +137,10 @@ class _VideoScrollableViewState extends State<VideoScrollableView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      'PRÁCTICA 04  ',
+                    Text(
+                      'PRÁCTICA 04  /  ${video.source.toUpperCase()}',
                       style: TextStyle(
-                        color: AppTheme.accent,
+                        color: colors.primary,
                         fontSize: 11,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1,
@@ -116,19 +149,21 @@ class _VideoScrollableViewState extends State<VideoScrollableView> {
                     const SizedBox(height: 8),
                     Text(
                       video.caption,
-                      maxLines: 2,
+                      maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: AppTheme.text,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
+                      style: TextStyle(
+                        color: colors.onSurface,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w800,
                       ),
                     ),
+                    const SizedBox(height: 5),
+                    ExpandableCaption(text: video.description),
                     const SizedBox(height: 8),
-                    const Text(
-                      'Desliza para explorar · Toca para pausar',
+                    Text(
+                      'Desliza para explorar · Toca para pausar/reanudar',
                       style: TextStyle(
-                        color: AppTheme.secondaryText,
+                        color: colors.onSurface.withValues(alpha: .68),
                         fontSize: 12,
                       ),
                     ),
@@ -142,9 +177,7 @@ class _VideoScrollableViewState extends State<VideoScrollableView> {
                         ),
                         IconButton(
                           tooltip: 'Video siguiente',
-                          onPressed: index == widget.videos.length - 1
-                              ? null
-                              : () => _move(1),
+                          onPressed: index == widget.videos.length - 1 ? null : () => _move(1),
                           icon: const Icon(Icons.keyboard_arrow_down),
                         ),
                       ],
@@ -153,10 +186,32 @@ class _VideoScrollableViewState extends State<VideoScrollableView> {
                 ),
               ),
             ),
+            if (video.source == 'Coverr')
+              Positioned(
+                top: 126,
+                left: 16,
+                child: SafeArea(
+                  child: InkWell(
+                    onTap: () => launchUrl(Uri.parse('https://coverr.co/')),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: .55),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Text('Video por Coverr · Ver fuente',
+                        style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.w600)),
+                    ),
+                  ),
+                ),
+              ),
             Positioned(
               bottom: 45,
               right: 16,
-              child: SafeArea(top: false, child: VideoButtons(video: video)),
+              child: SafeArea(
+                top: false,
+                child: VideoButtons(video: video),
+              ),
             ),
           ],
         );
