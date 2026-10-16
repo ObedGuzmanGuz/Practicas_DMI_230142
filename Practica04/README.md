@@ -137,7 +137,9 @@ A continuación, se muestran las evidencias de la aplicación **TokTik Azul**, i
 
 
 
-### 🏗️ Documentación de arquitectura
+### 🏗️ Documentación de arquitectura y Apetize
+
+**[Ver App en Apetize](https://appetize.io/app/b_vrxm4nawjy7khr2oa5m7vdnypa)**
 
 **[Ver la arquitectura de la práctica 04 en GitHub Pages](https://obedguzmanguz.github.io/Practicas_DMI_230142/Practica04/docs/arquitectura_interactiva.html)**
 
