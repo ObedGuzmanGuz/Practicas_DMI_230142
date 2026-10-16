@@ -32,7 +32,8 @@ extension AppSeasonLabel on AppSeason {
 
 
 AppSeason seasonForDate(DateTime date) {
-  if (date.month == DateTime.october ||
+  // Halloween está activo del 28 de octubre al 2 de noviembre.
+  if ((date.month == DateTime.october && date.day >= 28) ||
       (date.month == DateTime.november && date.day <= 2)) {
     return AppSeason.halloween;
   }

@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toktik_app/config/theme/seasonal_theme.dart';
 import 'package:toktik_app/presentation/providers/discover_provider.dart';
+import 'package:toktik_app/presentation/providers/seasonal_theme_provider.dart';
 import 'package:toktik_app/presentation/screens/discover/discover_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -42,11 +44,15 @@ class _SplashScreenState extends State<SplashScreen>
 
   Future<void> _openApp() async {
     final provider = context.read<DiscoverProvider>();
+    final seasonalProvider = context.read<SeasonalThemeProvider>();
 
-    final minimumSplash = Future<void>.delayed(
-      const Duration(milliseconds: 1400),
-    );
+    // Espera a leer la preferencia estacional y arrancar la melodía inicial.
+    while (!seasonalProvider.initialized && mounted) {
+      await Future<void>.delayed(const Duration(milliseconds: 60));
+    }
 
+    // La melodía dura 5 segundos; el splash no desaparece antes de que termine.
+    final minimumSplash = Future<void>.delayed(const Duration(seconds: 5));
     while (provider.initialLoading && mounted) {
       await Future<void>.delayed(const Duration(milliseconds: 60));
     }
@@ -79,6 +85,8 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final background = Theme.of(context).scaffoldBackgroundColor;
+    final seasonal = context.watch<SeasonalThemeProvider>();
+    final season = seasonal.season;
 
     return Scaffold(
       body: DecoratedBox(
@@ -125,12 +133,38 @@ class _SplashScreenState extends State<SplashScreen>
                           ),
                         ],
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(25),
-                        child: Image.asset(
-                          'assets/brand/toktik_icon.png',
-                          fit: BoxFit.cover,
-                        ),
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        fit: StackFit.expand,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child: Image.asset(
+                              'assets/brand/toktik_icon.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Positioned(
+                            right: -5,
+                            bottom: -5,
+                            child: Container(
+                              width: 42,
+                              height: 42,
+                              decoration: BoxDecoration(
+                                color: colors.surface,
+                                shape: BoxShape.circle,
+                                border: Border.all(color: colors.primary, width: 2),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: colors.primary.withValues(alpha: .35),
+                                    blurRadius: 12,
+                                  ),
+                                ],
+                              ),
+                              child: Icon(season.icon, color: colors.primary, size: 24),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -149,6 +183,16 @@ class _SplashScreenState extends State<SplashScreen>
                     ),
                   ),
                   const SizedBox(height: 8),
+                  Text(
+                    season.label.toUpperCase(),
+                    style: TextStyle(
+                      color: colors.primary,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 2.0,
+                    ),
+                  ),
+                  const SizedBox(height: 7),
                   Text(
                     'DESCUBRE · DISFRUTA · COMPARTE',
                     style: TextStyle(

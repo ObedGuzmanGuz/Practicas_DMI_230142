@@ -34,6 +34,10 @@ class _EmbeddedPlatformPlayerState extends State<EmbeddedPlatformPlayer>
   bool _loading = true;
   bool _viewReported = false;
   bool _foreground = true;
+  bool _youtubeIsPlaying = false;
+  bool _showYoutubeControl = true;
+  bool _resumeAfterLifecycle = false;
+  Timer? _youtubeControlTimer;
   String? _errorMessage;
 
   @override
@@ -47,7 +51,7 @@ class _EmbeddedPlatformPlayerState extends State<EmbeddedPlatformPlayer>
   @override
   void didUpdateWidget(covariant EmbeddedPlatformPlayer oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (!widget.active || !_foreground) {
+    if (!widget.active) {
       _controller = null;
       return;
     }
@@ -78,13 +82,63 @@ class _EmbeddedPlatformPlayerState extends State<EmbeddedPlatformPlayer>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    _foreground = state == AppLifecycleState.resumed;
+    final resumed = state == AppLifecycleState.resumed;
+    if (!resumed && widget.isYouTube && _youtubeIsPlaying) {
+      _resumeAfterLifecycle = true;
+      _runYouTubeCommand('pauseYouTubePlayback();');
+    }
+    _foreground = resumed;
+    if (resumed && _resumeAfterLifecycle && widget.isYouTube && widget.active) {
+      _resumeAfterLifecycle = false;
+      // Mantiene la posición actual del video: no se recrea el WebView al volver a la app.
+      Future<void>.delayed(const Duration(milliseconds: 350), () {
+        if (mounted && widget.active && _foreground) {
+          _runYouTubeCommand('playYouTubePlayback();');
+        }
+      });
+    }
     if (mounted) setState(() {});
+  }
+
+  void _onYouTubeState(int state) {
+    if (!mounted) return;
+    _youtubeControlTimer?.cancel();
+    if (state == 1) {
+      setState(() {
+        _youtubeIsPlaying = true;
+        _showYoutubeControl = true;
+      });
+      _youtubeControlTimer = Timer(const Duration(milliseconds: 850), () {
+        if (mounted && _youtubeIsPlaying) {
+          setState(() => _showYoutubeControl = false);
+        }
+      });
+    } else if (state == 2 || state == 0 || state == 5) {
+      setState(() {
+        _youtubeIsPlaying = false;
+        _showYoutubeControl = true;
+      });
+    }
+  }
+
+  void _runYouTubeCommand(String command) {
+    final controller = _controller;
+    if (controller == null) return;
+    unawaited(controller.evaluateJavascript(source: command).then<void>((_) {}).catchError((Object error) {
+      debugPrint('No se pudo controlar el video de YouTube: $error');
+    }));
+  }
+
+  void _toggleYouTubePlayback() {
+    if (_loading || _errorMessage != null) return;
+    _youtubeControlTimer?.cancel();
+    setState(() => _showYoutubeControl = true);
+    _runYouTubeCommand('toggleYouTubePlayback();');
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!widget.active || !_foreground) {
+    if (!widget.active) {
       _controller = null;
       return const ColoredBox(color: Colors.black);
     }
@@ -111,7 +165,9 @@ class _EmbeddedPlatformPlayerState extends State<EmbeddedPlatformPlayer>
             initialData: widget.isYouTube
                 ? InAppWebViewInitialData(
                     data: _youtubePlayerHtml(),
-                    baseUrl: WebUri('https://www.youtube.com/'),
+                    // YouTube requiere Referer / identidad de cliente en WebView.
+                    // Este baseUrl identifica el paquete Android de la app.
+                    baseUrl: WebUri('https://com.example.toktik_app_/'),
                   )
                 : null,
             initialUrlRequest: widget.isYouTube
@@ -139,14 +195,30 @@ class _EmbeddedPlatformPlayerState extends State<EmbeddedPlatformPlayer>
                   },
                 );
                 controller.addJavaScriptHandler(
+                  handlerName: 'youtubePlayerState',
+                  callback: (args) {
+                    if (args.isNotEmpty) {
+                      final state = int.tryParse(args.first.toString());
+                      if (state != null) _onYouTubeState(state);
+                    }
+                    return null;
+                  },
+                );
+                controller.addJavaScriptHandler(
                   handlerName: 'youtubePlayerError',
                   callback: (args) {
                     final code = args.isNotEmpty ? args.first.toString() : 'desconocido';
                     debugPrint('YouTube IFrame Player API error: $code. El video puede bloquear inserciones o no estar disponible.');
                     if (mounted) {
+                      final message = switch (code) {
+                        '100' => 'Este video ya no está disponible en YouTube. Desliza al siguiente Short.',
+                        '101' || '150' => 'El propietario restringió la reproducción de este video fuera de YouTube. Desliza al siguiente Short.',
+                        '153' => 'YouTube no recibió la identificación de la app. Reintenta la reproducción o desliza al siguiente Short.',
+                        _ => 'No se pudo reproducir este video de YouTube (error $code). Desliza al siguiente Short.',
+                      };
                       setState(() {
                         _loading = false;
-                        _errorMessage = 'YouTube no permite reproducir este video aquí (error $code). Desliza al siguiente Short.';
+                        _errorMessage = message;
                       });
                     }
                     return null;
@@ -193,6 +265,39 @@ class _EmbeddedPlatformPlayerState extends State<EmbeddedPlatformPlayer>
               debugPrint('WebView ${widget.embedUrl}: ${consoleMessage.message}');
             },
           ),
+          if (widget.isYouTube)
+            Positioned.fill(
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: _toggleYouTubePlayback,
+                child: IgnorePointer(
+                  child: Center(
+                    child: AnimatedOpacity(
+                      duration: const Duration(milliseconds: 180),
+                      opacity: _showYoutubeControl ? 1 : 0,
+                      child: Container(
+                        width: 72,
+                        height: 72,
+                        decoration: BoxDecoration(
+                          color: Colors.black.withValues(alpha: .52),
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.white.withValues(alpha: .7), width: 1.4),
+                        ),
+                        child: Icon(
+                          _youtubeIsPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
+                          color: Colors.white,
+                          size: 44,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          if (!_foreground)
+            const Positioned.fill(
+              child: IgnorePointer(child: ColoredBox(color: Colors.black)),
+            ),
           if (_loading)
             const IgnorePointer(
               child: Center(
@@ -243,6 +348,7 @@ class _EmbeddedPlatformPlayerState extends State<EmbeddedPlatformPlayer>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <style>html,body,#player{margin:0;padding:0;width:100%;height:100%;background:#000;overflow:hidden}body{font-family:Arial,sans-serif}</style>
 </head>
 <body>
@@ -256,10 +362,28 @@ function setYouTubeMuted(muted) {
   if (!toktikPlayer || !toktikPlayer.isReady) return;
   try { if (initialMuted) toktikPlayer.mute(); else toktikPlayer.unMute(); } catch (e) {}
 }
+function playYouTubePlayback() {
+  if (toktikPlayer && toktikPlayer.isReady) { try { toktikPlayer.playVideo(); } catch (e) {} }
+}
+function pauseYouTubePlayback() {
+  if (toktikPlayer && toktikPlayer.isReady) { try { toktikPlayer.pauseVideo(); } catch (e) {} }
+}
+function toggleYouTubePlayback() {
+  if (!toktikPlayer || !toktikPlayer.isReady) return;
+  try {
+    var state = toktikPlayer.getPlayerState();
+    if (state === YT.PlayerState.PLAYING || state === YT.PlayerState.BUFFERING) toktikPlayer.pauseVideo();
+    else toktikPlayer.playVideo();
+  } catch (e) {}
+}
 function onYouTubeIframeAPIReady() {
   toktikPlayer = new YT.Player('player', {
     width: '100%', height: '100%', videoId: '$safeId',
-    playerVars: {autoplay: 1, controls: 0, playsinline: 1, rel: 0, fs: 0, disablekb: 1, iv_load_policy: 3},
+    playerVars: {
+      autoplay: 1, controls: 0, playsinline: 1, rel: 0, fs: 0, disablekb: 1,
+      iv_load_policy: 3, enablejsapi: 1, origin: 'https://com.example.toktik_app_',
+      widget_referrer: 'https://com.example.toktik_app_/'
+    },
     events: {
       onReady: function(event) {
         toktikPlayer.isReady = true;
@@ -267,6 +391,9 @@ function onYouTubeIframeAPIReady() {
         event.target.playVideo();
       },
       onStateChange: function(event) {
+        if (window.flutter_inappwebview && window.flutter_inappwebview.callHandler) {
+          window.flutter_inappwebview.callHandler('youtubePlayerState', event.data);
+        }
         if (event.data === YT.PlayerState.PLAYING && !wasPlaying) {
           wasPlaying = true;
           if (window.flutter_inappwebview) {
@@ -326,6 +453,7 @@ firstScript.parentNode.insertBefore(apiTag, firstScript);
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _youtubeControlTimer?.cancel();
     _controller = null;
     super.dispose();
   }

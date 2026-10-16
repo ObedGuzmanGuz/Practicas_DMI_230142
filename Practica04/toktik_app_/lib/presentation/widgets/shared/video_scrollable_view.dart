@@ -26,6 +26,7 @@ class VideoScrollableView extends StatefulWidget {
 class _VideoScrollableViewState extends State<VideoScrollableView> {
   final _pageController = PageController();
   final _activePage = ValueNotifier<int>(0);
+  bool _captionExpanded = false;
 
   @override
   void dispose() {
@@ -57,9 +58,12 @@ class _VideoScrollableViewState extends State<VideoScrollableView> {
     return PageView.builder(
       controller: _pageController,
       scrollDirection: Axis.vertical,
+      // Mantener el feed deslizable incluso cuando la descripción está expandida.
+      physics: const PageScrollPhysics(),
       itemCount: widget.videos.length,
       onPageChanged: (index) {
         _activePage.value = index;
+        if (_captionExpanded) setState(() => _captionExpanded = false);
         if (widget.feedActive && index >= widget.videos.length - 3) {
           provider.loadMoreVideos();
         }
@@ -158,7 +162,13 @@ class _VideoScrollableViewState extends State<VideoScrollableView> {
                       ),
                     ),
                     const SizedBox(height: 5),
-                    ExpandableCaption(text: video.description),
+                    ExpandableCaption(
+                      key: ValueKey('caption-${video.driveFileId}'),
+                      text: video.description,
+                      onExpandedChanged: (expanded) {
+                        if (mounted) setState(() => _captionExpanded = expanded);
+                      },
+                    ),
                     const SizedBox(height: 8),
                     Text(
                       'Desliza para explorar · Toca para pausar/reanudar',

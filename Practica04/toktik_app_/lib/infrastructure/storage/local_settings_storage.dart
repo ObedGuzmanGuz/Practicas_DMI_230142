@@ -8,9 +8,9 @@ class LocalSettingsStorage {
   Future<String> loadSeasonMode() async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      return prefs.getString(_seasonModeKey) ?? 'automatic';
+      return prefs.getString(_seasonModeKey) ?? 'normal';
     } catch (_) {
-      return 'automatic';
+      return 'normal';
     }
   }
 

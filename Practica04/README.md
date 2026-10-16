@@ -31,74 +31,117 @@ A continuación, se muestran las evidencias de la aplicación **TokTik Azul**, i
 
 ### 📱 Evidencias de la aplicación
 
+
 <table>
   <tr>
     <td align="center" width="50%">
       <img src="Evidencias_toktik/Evidencia_1.jpeg" alt="Evidencia 1 de TokTik Azul" width="100%"/>
       <br/>
-      <strong>Evidencia 1</strong>
+      <strong>Evidencia 1 Logo toktik</strong>
     </td>
     <td align="center" width="50%">
       <img src="Evidencias_toktik/Evidencia_2.jpeg" alt="Evidencia 2 de TokTik Azul" width="100%"/>
       <br/>
-      <strong>Evidencia 2</strong>
+      <strong>Evidencia 2 Interfaz toktik</strong>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="Evidencias_toktik/Evidencia_3.jpeg" alt="Evidencia 3 de TokTik Azul" width="100%"/>
+      <img src="Evidencias_toktik/Evidencia_5.jpeg" alt="Evidencia 3 de TokTik Azul" width="100%"/>
       <br/>
-      <strong>Evidencia 3</strong>
+      <strong>Evidencia 3 Like</strong>
     </td>
     <td align="center">
-      <img src="Evidencias_toktik/Evidencia_4.jpeg" alt="Evidencia 4 de TokTik Azul" width="100%"/>
+      <img src="Evidencias_toktik/Evidencia_6.jpeg" alt="Evidencia 4 de TokTik Azul" width="100%"/>
       <br/>
-      <strong>Evidencia 4</strong>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="Evidencias_toktik/Evidencia_5.jpeg" alt="Evidencia 5 de TokTik Azul" width="100%"/>
-      <br/>
-      <strong>Evidencia 5</strong>
-    </td>
-    <td align="center">
-      <img src="Evidencias_toktik/Evidencia_6.jpeg" alt="Evidencia 6 de TokTik Azul" width="100%"/>
-      <br/>
-      <strong>Evidencia 6</strong>
+      <strong>Evidencia 4 Mute</strong>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="Evidencias_toktik/Evidencia_7.jpeg" alt="Evidencia 7 de TokTik Azul" width="100%"/>
+      <img src="Evidencias_toktik/Evidencia_7.jpeg" alt="Evidencia 5 de TokTik Azul" width="100%"/>
       <br/>
-      <strong>Evidencia 7</strong>
+      <strong>Evidencia 5 Vista de favoritos</strong>
     </td>
     <td align="center">
-      <img src="Evidencias_toktik/Evidencia_8.jpeg" alt="Evidencia 8 de TokTik Azul" width="100%"/>
+      <img src="Evidencias_toktik/Evidencia_8.jpeg" alt="Evidencia 6 de TokTik Azul" width="100%"/>
       <br/>
-      <strong>Evidencia 8</strong>
+      <strong>Evidencia 6 Boton de Pausa al video</strong>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="Evidencias_toktik/Evidencia_9.jpeg" alt="Evidencia 9 de TokTik Azul" width="100%"/>
+      <img src="Evidencias_toktik/Evidencia_9.png" alt="Evidencia 7 de TokTik Azul" width="100%"/>
       <br/>
-      <strong>Evidencia 9</strong>
+      <strong>Evidencia 7 Icono principal de la apliacion</strong>
     </td>
     <td align="center">
-      <img src="Evidencias_toktik/Evidencia_10.jpeg" alt="Evidencia 10 de TokTik Azul" width="100%"/>
+      <img src="Evidencias_toktik/Evidencia_10.png" alt="Evidencia 8 de TokTik Azul" width="100%"/>
       <br/>
-      <strong>Evidencia 10</strong>
+      <strong>Evidencia 8 Icono al cambiar de tema</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="Evidencias_toktik/Evidencia_11.png" alt="Evidencia 9 de TokTik Azul" width="100%"/>
+      <br/>
+      <strong>Evidencia 9 Seleccion de tema Manual</strong>
+    </td>
+    <td align="center">
+      <img src="Evidencias_toktik/Evidencia_12.png" alt="Evidencia 10 de TokTik Azul" width="100%"/>
+      <br/>
+      <strong>Evidencia 10 Cambio de tematizacion en la seleccion de tema</strong>
+    </td>
+  </tr>
+   <tr>
+    <td align="center">
+      <img src="Evidencias_toktik/Evidencia_13.png" alt="Evidencia 9 de TokTik Azul" width="100%"/>
+      <br/>
+      <strong>Evidencia 9 Seleccion de tema San Valentin de Ejemplo</strong>
+    </td>
+    <td align="center">
+      <img src="Evidencias_toktik/Evidencia_14.png" alt="Evidencia 10 de TokTik Azul" width="100%"/>
+      <br/>
+      <strong>Evidencia 10 Cambio de tematizacion en la interfaz (San Valentin)</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="Evidencias_toktik/Evidencia_15.png" alt="Evidencia 9 de TokTik Azul" width="100%"/>
+      <br/>
+      <strong>Evidencia 9 Tema Automatico Tiktok Azul</strong>
+    </td>
+    <td align="center">
+      <img src="Evidencias_toktik/Evidencia_16.png" alt="Evidencia 10 de TokTik Azul" width="100%"/>
+      <br/>
+      <strong>Evidencia 10 Cambio de tematizacion en la interfaz (Navidad)</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="Evidencias_toktik/Evidencia_17.png" alt="Evidencia 9 de TokTik Azul" width="100%"/>
+      <br/>
+      <strong>Evidencia 9 Despliegue de Ver mas con Scroll</strong>
+    </td>
+    <td align="center">
+      <img src="Evidencias_toktik/Evidencia_18.png" alt="Evidencia 10 de TokTik Azul" width="100%"/>
+      <br/>
+      <strong>Evidencia 10 Seccion sin videos sin Like (Navidad)</strong>
     </td>
   </tr>
 </table>
+
+### Video de Funcionalidad en Drive
+
+**[Ver la funcionalidad de la app](https://drive.google.com/file/d/1Fll9HGmq1dMl-p9cP0jmpxSyUQHZ-2CJ/view?usp=drive_link)
+
+
 
 ### 🏗️ Documentación de arquitectura
 
 **[Ver la arquitectura de la práctica 04 en GitHub Pages](https://obedguzmanguz.github.io/Practicas_DMI_230142/Practica04/docs/arquitectura_interactiva.html)**
 
-La primera vista documenta los providers locales, temas y persistencia con `SharedPreferences`. La segunda recorre `DiscoverProvider`, `VideoRepository`, `CompositeVideoRepository`, las fuentes activas y los reproductores. Las diez capturas de evidencias existentes se muestran en la sección [Capturas y demostración](#-capturas-y-demostración).
+La primera vista documenta los providers locales, temas y persistencia con `SharedPreferences`. La segunda recorre `DiscoverProvider`, `VideoRepository`, `CompositeVideoRepository`, las fuentes activas y los reproductores. Las capturas de evidencias existentes se muestran en la sección [Capturas y demostración](#-capturas-y-demostración).
 
 ### 🚀 Demostración en línea
 
@@ -291,30 +334,10 @@ Para ejecutar en Chrome, si el entorno y las dependencias lo permiten:
 flutter run -d chrome
 ```
 
-## 📁 Estructura principal
-
-```text
-Practica04/
-├── docs/
-│   ├── arquitectura_interactiva.html
-│   ├── ARQUITECTURA.md
-│   └── diagramas/*.architecture.json
-├── Evidencias_toktik/
-├── toktik_app_/
-│   ├── assets/
-│   ├── lib/
-│   ├── test/
-│   └── pubspec.yaml
-└── README.md
-```
-
-La estructura es representativa de las carpetas principales; conserva en el repositorio los archivos y directorios que realmente existan en tu versión.
 
 ## 🌍 GitHub Pages
 
-No se encontró configuración de GitHub Pages en este checkout. La [arquitectura interactiva](docs/arquitectura_interactiva.html) funciona como archivo local y puede publicarse bajo `docs/` cuando Pages esté configurado.
-
-> Comprueba que GitHub Pages esté habilitado y que la carpeta publicada contenga un `index.html`. Si la práctica se publica desde otra ruta o repositorio, actualiza este enlace.
+**[Ver la arquitectura de la práctica 04 en GitHub Pages](https://obedguzmanguz.github.io/Practicas_DMI_230142/Practica04/docs/arquitectura_interactiva.html)**
 
 ## 🔧 Desarrollo y documentación
 

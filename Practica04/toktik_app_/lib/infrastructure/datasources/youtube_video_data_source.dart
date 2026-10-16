@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:toktik_app/config/api_keys.dart';
 import 'package:toktik_app/config/helpers/stable_video_id.dart';
@@ -33,6 +34,8 @@ class YouTubeVideoDataSource implements VideoDataSource {
       'q': '#shorts',
       'type': 'video',
       'videoEmbeddable': 'true',
+      // Además de ser insertables, deben permitir reproducción sindicada fuera
+      // de youtube.com para reducir videos que el reproductor rechaza.
       'videoSyndicated': 'true',
       'videoDuration': 'short',
       'safeSearch': 'moderate',
@@ -95,19 +98,22 @@ class YouTubeVideoDataSource implements VideoDataSource {
 
     if (candidates.isEmpty) return const <Map<String, dynamic>>[];
 
-    // Obtiene duración y estadísticas con una única llamada para hasta 50 IDs.
+    // Los resultados de search.list ya están filtrados a videos cortos e insertables.
+    // videos.list agrega duración/estadísticas como mejora, pero si esa segunda llamada
+    // falla no se debe dejar el feed vacío.
     try {
       final ids = candidates.map((item) => item['_youtubeId'] as String).join(',');
       final detailsUri = Uri.https('www.googleapis.com', '/youtube/v3/videos', {
         'key': ApiKeys.youtube,
-        'part': 'contentDetails,statistics',
+        'part': 'contentDetails,statistics,status',
         'id': ids,
       });
       final detailsResponse = await _client
           .get(detailsUri)
-          .timeout(const Duration(seconds: 8));
+          .timeout(const Duration(seconds: 10));
       if (detailsResponse.statusCode != 200) {
-        throw Exception(_youtubeError(detailsResponse.statusCode, detailsResponse.body));
+        debugPrint(_youtubeError(detailsResponse.statusCode, detailsResponse.body));
+        return _prepareFallbackCandidates(candidates, pageSize);
       }
 
       final details = jsonDecode(detailsResponse.body) as Map<String, dynamic>;
@@ -123,11 +129,15 @@ class YouTubeVideoDataSource implements VideoDataSource {
         final id = video['_youtubeId'] as String;
         final item = detailsById[id];
         if (item == null) continue;
+        // Confirma en el recurso de video que la inserción esté habilitada;
+        // la búsqueda por sí sola puede devolver contenido que luego no se reproduce.
+        final status = item['status'];
+        if (status is! Map<String, dynamic> || status['embeddable'] != true) continue;
+
         final contentDetails = item['contentDetails'];
         if (contentDetails is! Map<String, dynamic>) continue;
         final duration = _parseIsoDurationSeconds(contentDetails['duration'] as String?);
-        // Solo conservar videos de hasta tres minutos, que pueden pertenecer a Shorts.
-        // La API no informa directamente si el video tiene relación de aspecto vertical.
+        // Prioriza Shorts de hasta tres minutos; la API no expone su orientación.
         if (duration == null || duration <= 0 || duration > 180) continue;
 
         final stats = item['statistics'];
@@ -141,10 +151,23 @@ class YouTubeVideoDataSource implements VideoDataSource {
       }
       return shorts;
     } catch (error) {
-      // Registra el motivo real; mejor feed vacío que mostrar videos que no pasaron
-      // el filtro de duración y confundirlos con Shorts.
-      throw Exception('No fue posible validar los YouTube Shorts: $error');
+      debugPrint('No se pudieron obtener duración/estadísticas de YouTube: $error');
+      return _prepareFallbackCandidates(candidates, pageSize);
     }
+  }
+
+  List<Map<String, dynamic>> _prepareFallbackCandidates(
+    List<Map<String, dynamic>> candidates,
+    int pageSize,
+  ) {
+    final fallback = <Map<String, dynamic>>[];
+    for (final original in candidates) {
+      final video = Map<String, dynamic>.from(original);
+      video.remove('_youtubeId');
+      fallback.add(video);
+      if (fallback.length >= pageSize.clamp(1, 50)) break;
+    }
+    return fallback;
   }
 
   int? _parseIsoDurationSeconds(String? value) {

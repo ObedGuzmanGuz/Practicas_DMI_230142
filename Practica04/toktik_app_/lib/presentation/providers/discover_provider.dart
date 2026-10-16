@@ -16,6 +16,7 @@ class DiscoverProvider extends ChangeNotifier {
   final VideoRepository _repository;
   bool initialLoading = true;
   bool loadingMore = false;
+  bool _youtubeInitialLoading = true;
   int _nextPage = 2;
   bool hasMore = true;
   bool muted = true;
@@ -34,29 +35,54 @@ class DiscoverProvider extends ChangeNotifier {
 
   Future<void> loadNextPage() async {
     if (!initialLoading) return;
+
+    // Arranca YouTube en paralelo, pero no deja el splash bloqueado esperando a
+    // un servicio externo: Discover se presenta en cuanto termina su propia carga.
+    final youtubeRequest = _repository.getYouTubeVideos(page: 1);
     try {
-      final pages = await Future.wait<List<VideoPost>>([
-        _repository.getDiscoverVideos(page: 1),
-        _repository.getYouTubeVideos(page: 1),
-      ]);
-      _videos = <VideoPost>[...pages[0], ...pages[1]]
+      final discoverVideos = await _repository.getDiscoverVideos(page: 1);
+      _videos = discoverVideos
           .map((video) => video.copyWith(isLiked: false))
           .toList();
       _nextPage = 2;
       hasMore = true;
     } catch (error) {
-      debugPrint('No se pudieron cargar las fuentes de video: $error');
+      debugPrint('No se pudieron cargar los videos de Discover: $error');
       _videos = <VideoPost>[];
     } finally {
       initialLoading = false;
       notifyListeners();
     }
+
     unawaited(_restoreLocalState());
+    unawaited(_appendInitialYouTubeVideos(youtubeRequest));
+  }
+
+  Future<void> _appendInitialYouTubeVideos(
+    Future<List<VideoPost>> request,
+  ) async {
+    try {
+      final youtubeVideos = await request;
+      final existingIds = _videos.map((video) => video.driveFileId).toSet();
+      final unique = youtubeVideos
+          .where((video) => existingIds.add(video.driveFileId))
+          .map((video) => video.copyWith(isLiked: false))
+          .toList();
+      if (unique.isNotEmpty) {
+        _videos = <VideoPost>[..._videos, ...unique];
+      }
+    } catch (error) {
+      debugPrint('No se pudieron añadir los videos iniciales de YouTube: $error');
+    } finally {
+      _youtubeInitialLoading = false;
+      notifyListeners();
+      unawaited(_restoreLocalState());
+    }
   }
 
   /// Añade páginas de Pixabay, Coverr y YouTube sin mezclar sus feeds en UI.
   Future<void> loadMoreVideos() async {
-    if (loadingMore || !hasMore || initialLoading) return;
+    if (loadingMore || !hasMore || initialLoading || _youtubeInitialLoading) return;
     loadingMore = true;
     notifyListeners();
     try {

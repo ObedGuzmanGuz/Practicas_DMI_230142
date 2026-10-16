@@ -1,4 +1,6 @@
 import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:toktik_app/config/api_keys.dart';
 import 'package:toktik_app/config/helpers/stable_video_id.dart';
@@ -21,9 +23,10 @@ class PixabayVideoDataSource implements VideoDataSource {
       'safesearch': 'true',
       'order': 'popular',
     });
-    final response = await _client.get(uri).timeout(const Duration(seconds: 6));
+    final response = await _client.get(uri).timeout(const Duration(seconds: 10));
     if (response.statusCode != 200) {
-      throw Exception('Pixabay respondió HTTP ${response.statusCode}');
+      debugPrint('Pixabay respondió HTTP ${response.statusCode}: ${response.body}');
+      throw Exception('Pixabay respondió HTTP ${response.statusCode}. Revisa la clave y el límite de solicitudes.');
     }
     final body = jsonDecode(response.body) as Map<String, dynamic>;
     final hits = (body['hits'] as List<dynamic>? ?? const []);

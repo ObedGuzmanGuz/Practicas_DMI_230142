@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 /// Muestra una descripción breve y permite abrir un área con scroll vertical.
 class ExpandableCaption extends StatefulWidget {
   final String text;
+  final ValueChanged<bool>? onExpandedChanged;
 
-  const ExpandableCaption({super.key, required this.text});
+  const ExpandableCaption({super.key, required this.text, this.onExpandedChanged});
 
   @override
   State<ExpandableCaption> createState() => _ExpandableCaptionState();
@@ -51,7 +52,10 @@ class _ExpandableCaptionState extends State<ExpandableCaption> {
         if (_isLong)
           GestureDetector(
             behavior: HitTestBehavior.opaque,
-            onTap: () => setState(() => _expanded = !_expanded),
+            onTap: () {
+              setState(() => _expanded = !_expanded);
+              widget.onExpandedChanged?.call(_expanded);
+            },
             child: Padding(
               padding: const EdgeInsets.only(top: 3, bottom: 1),
               child: Text(

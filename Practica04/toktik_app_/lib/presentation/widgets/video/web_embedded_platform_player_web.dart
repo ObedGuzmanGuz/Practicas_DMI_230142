@@ -38,8 +38,11 @@ class _WebEmbeddedPlatformPlayerState extends State<WebEmbeddedPlatformPlayer> {
   late final JSFunction _loadListener;
   web.HTMLIFrameElement? _iframe;
   Timer? _commandTimer;
+  Timer? _controlTimer;
   int _commandAttempts = 0;
   bool _wasPlaying = false;
+  bool _isPlaying = false;
+  bool _showControl = true;
   bool _viewReported = false;
   String? _youtubeErrorCode;
 
@@ -66,14 +69,10 @@ class _WebEmbeddedPlatformPlayerState extends State<WebEmbeddedPlatformPlayer> {
           return;
         }
 
-        int? state;
-        if (payload['event'] == 'onStateChange' && payload['info'] is int) {
-          state = payload['info'] as int;
-        } else if (payload['event'] == 'infoDelivery' && payload['info'] is Map) {
-          final info = payload['info'] as Map;
-          if (info['playerState'] is int) state = info['playerState'] as int;
-        }
-        if (state == null) return;
+        // Solo usamos onStateChange; infoDelivery puede repetirse durante la reproducción
+        // y no debe reiniciar el temporizador del control de pausa en cada actualización.
+        if (payload['event'] != 'onStateChange' || payload['info'] is! int) return;
+        final state = payload['info'] as int;
 
         // El estado 1 significa PLAYING. Cuenta cada transición real a reproducción,
         // incluyendo cuando el usuario pausa y vuelve a reproducir el mismo video.
@@ -82,6 +81,23 @@ class _WebEmbeddedPlatformPlayerState extends State<WebEmbeddedPlatformPlayer> {
           _wasPlaying = true;
         } else if (state != 1) {
           _wasPlaying = false;
+        }
+        if (widget.isYouTube && mounted) {
+          _controlTimer?.cancel();
+          if (state == 1) {
+            setState(() {
+              _isPlaying = true;
+              _showControl = true;
+            });
+            _controlTimer = Timer(const Duration(milliseconds: 850), () {
+              if (mounted && _isPlaying) setState(() => _showControl = false);
+            });
+          } else if (state == 2 || state == 0 || state == 5) {
+            setState(() {
+              _isPlaying = false;
+              _showControl = true;
+            });
+          }
         }
       } catch (_) {
         // Otros mensajes del iframe no son eventos de estado que nos interesen.
@@ -148,6 +164,7 @@ class _WebEmbeddedPlatformPlayerState extends State<WebEmbeddedPlatformPlayer> {
       'enablejsapi': '1',
       'mute': widget.muted ? '1' : '0',
       'origin': web.window.location.origin,
+      'widget_referrer': web.window.location.href,
       'widgetid': _playerId,
     };
     return Uri.https('www.youtube.com', '/embed/$videoId', query).toString();
@@ -177,6 +194,13 @@ class _WebEmbeddedPlatformPlayerState extends State<WebEmbeddedPlatformPlayer> {
     );
   }
 
+  void _togglePlayback() {
+    if (!widget.isYouTube || _youtubeErrorCode != null) return;
+    _controlTimer?.cancel();
+    setState(() => _showControl = true);
+    _sendCommand(_isPlaying ? 'pauseVideo' : 'playVideo');
+  }
+
   @override
   void didUpdateWidget(covariant WebEmbeddedPlatformPlayer oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -192,6 +216,35 @@ class _WebEmbeddedPlatformPlayerState extends State<WebEmbeddedPlatformPlayer> {
           fit: StackFit.expand,
           children: [
             HtmlElementView(viewType: _viewType),
+            if (widget.isYouTube)
+              Positioned.fill(
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: _togglePlayback,
+                  child: IgnorePointer(
+                    child: Center(
+                      child: AnimatedOpacity(
+                        duration: const Duration(milliseconds: 180),
+                        opacity: _showControl ? 1 : 0,
+                        child: Container(
+                          width: 72,
+                          height: 72,
+                          decoration: BoxDecoration(
+                            color: Colors.black.withValues(alpha: .52),
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white70, width: 1.4),
+                          ),
+                          child: Icon(
+                            _isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
+                            color: Colors.white,
+                            size: 44,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             if (_youtubeErrorCode != null)
               ColoredBox(
                 color: Colors.black87,
@@ -230,6 +283,7 @@ class _WebEmbeddedPlatformPlayerState extends State<WebEmbeddedPlatformPlayer> {
   @override
   void dispose() {
     _commandTimer?.cancel();
+    _controlTimer?.cancel();
     _iframe?.removeEventListener('load', _loadListener);
     web.window.removeEventListener('message', _messageListener);
     _iframe = null;

@@ -44,7 +44,8 @@ class CompositeVideoRepository implements VideoRepository {
     final batches = await Future.wait(sources.map((source) async {
       try {
         return await source.fetchVideos(page: page, pageSize: 12);
-      } catch (_) {
+      } catch (error) {
+        debugPrint('Fuente ${source.sourceName} no disponible: $error');
         return <Map<String, dynamic>>[];
       }
     }));

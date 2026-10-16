@@ -1,4 +1,6 @@
 import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:toktik_app/config/api_keys.dart';
 import 'package:toktik_app/config/helpers/stable_video_id.dart';
@@ -18,11 +20,11 @@ class CoverrVideoDataSource implements VideoDataSource {
       'page': '${page - 1}',
       'page_size': '${pageSize.clamp(1, 20)}',
       'urls': 'true',
-      'sort': 'popularity',
     });
-    final response = await _client.get(uri, headers: {'Authorization': 'Bearer ${ApiKeys.coverr}'}).timeout(const Duration(seconds: 6));
+    final response = await _client.get(uri, headers: {'Authorization': 'Bearer ${ApiKeys.coverr}'}).timeout(const Duration(seconds: 10));
     if (response.statusCode != 200) {
-      throw Exception('Coverr respondió HTTP ${response.statusCode}. Revisa el acceso de tu API key.');
+      debugPrint('Coverr respondió HTTP ${response.statusCode}: ${response.body}');
+      throw Exception('Coverr respondió HTTP ${response.statusCode}. Revisa la clave y el acceso de tu API.');
     }
     final body = jsonDecode(response.body) as Map<String, dynamic>;
     final hits = (body['hits'] as List<dynamic>? ?? const []);
