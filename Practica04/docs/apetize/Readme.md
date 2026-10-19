@@ -143,9 +143,9 @@ Durante el desarrollo y las pruebas se identificaron aspectos relacionados con l
 
 | Incidencia | Acción realizada | Resultado |
 |---|---|---|
-| Reproducción de YouTube | Se revisó la configuración del reproductor integrado y su URL de origen. | [resultado verificado] |
-| Actualización del icono al cambiar de tema | Se revisó el mecanismo nativo de Android encargado de cambiar el icono. | [resultado verificado] |
-| Actualización automática según la fecha | Se revisó la sincronización del tema automático con la fecha del dispositivo. | [resultado verificado] |
+| Reproducción de YouTube | Se revisó la configuración del reproductor integrado y su URL de origen. | Problemas para las reproduccion de videos |
+| Actualización del icono al cambiar de tema | Se revisó el mecanismo nativo de Android encargado de cambiar el icono. | Se cargo correctamente |
+| Actualización automática según la fecha | Se revisó la sincronización del tema automático con la fecha del dispositivo. |Se cargo correctamente |
 
 Las correcciones se consideraron validadas solamente después de repetir las pruebas en la compilación actualizada.
 
