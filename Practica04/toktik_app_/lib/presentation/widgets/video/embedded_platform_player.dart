@@ -165,9 +165,10 @@ class _EmbeddedPlatformPlayerState extends State<EmbeddedPlatformPlayer>
             initialData: widget.isYouTube
                 ? InAppWebViewInitialData(
                     data: _youtubePlayerHtml(),
-                    // YouTube requiere Referer / identidad de cliente en WebView.
-                    // Este baseUrl identifica el paquete Android de la app.
-                    baseUrl: WebUri('https://com.example.toktik_app_/'),
+                    // YouTube exige un Referer con un origen HTTPS sintácticamente válido.
+                    // El host usa un dominio reservado de ejemplo para que WebView genere
+                    // la cabecera Referer en lugar de un host con guiones bajos.
+                    baseUrl: WebUri('https://com.example.toktikapp.example/'),
                   )
                 : null,
             initialUrlRequest: widget.isYouTube
@@ -381,8 +382,8 @@ function onYouTubeIframeAPIReady() {
     width: '100%', height: '100%', videoId: '$safeId',
     playerVars: {
       autoplay: 1, controls: 0, playsinline: 1, rel: 0, fs: 0, disablekb: 1,
-      iv_load_policy: 3, enablejsapi: 1, origin: 'https://com.example.toktik_app_',
-      widget_referrer: 'https://com.example.toktik_app_/'
+      iv_load_policy: 3, enablejsapi: 1, origin: 'https://com.example.toktikapp.example',
+      widget_referrer: 'https://com.example.toktikapp.example/'
     },
     events: {
       onReady: function(event) {

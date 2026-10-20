@@ -1,25 +1,29 @@
 import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:toktik_app/config/theme/seasonal_theme.dart';
 import 'package:toktik_app/infrastructure/storage/local_settings_storage.dart';
 import 'package:toktik_app/infrastructure/services/seasonal_app_icon_service.dart';
 
-class SeasonalThemeProvider extends ChangeNotifier {
+class SeasonalThemeProvider extends ChangeNotifier with WidgetsBindingObserver {
   SeasonalThemeProvider({LocalSettingsStorage? storage, DateTime Function()? clock})
       : _storage = storage ?? LocalSettingsStorage(),
         _clock = clock ?? DateTime.now {
-    // La aplicación y el icono arrancan siempre en Normal si no hay una
-    // preferencia guardada. El calendario solo se usa al elegir Automático.
+    // La primera apertura conserva el tema Normal; si el usuario activa
+    // Automático, la fecha del dispositivo se supervisa en segundo plano.
     _season = AppSeason.normal;
+    WidgetsBinding.instance.addObserver(this);
   }
 
   final LocalSettingsStorage _storage;
   final DateTime Function() _clock;
   AudioPlayer? _audioPlayer;
   Timer? _audioStopTimer;
+  Timer? _seasonRefreshTimer;
   SeasonMode _mode = SeasonMode.normal;
   late AppSeason _season;
+  int _changeRevision = 0;
   bool _initialized = false;
   bool _musicEnabled = true;
 
@@ -46,9 +50,9 @@ class SeasonalThemeProvider extends ChangeNotifier {
       orElse: () => SeasonMode.normal,
     );
     _updateSeason();
-    // Sincroniza el icono nativo con el tema restaurado. El canal aplica el
-    // alias seleccionado y mantiene otro intento al salir como respaldo.
-    unawaited(SeasonalAppIconService.apply(_season));
+    _startSeasonDateWatcher();
+    // Sincroniza el icono con las preferencias restauradas al iniciar la app.
+    await SeasonalAppIconService.apply(_season);
     // Arranca la melodía antes de marcar la inicialización como lista para que
     // el splash pueda contar sus cinco segundos desde el inicio del audio.
     await _playSeasonSound(_season);
@@ -57,28 +61,68 @@ class SeasonalThemeProvider extends ChangeNotifier {
   }
 
   Future<void> setMode(SeasonMode mode) async {
+    final revision = ++_changeRevision;
     final previousSeason = _season;
     _mode = mode;
     _updateSeason();
+    final selectedSeason = _season;
 
-    // La paleta, los sonidos y el icono corresponden al tema elegido.
+    // La interfaz se actualiza inmediatamente; el almacenamiento, el icono y
+    // el audio se sincronizan en el mismo orden que las selecciones del usuario.
     notifyListeners();
-
     await _storage.saveSeasonMode(mode.name);
-    unawaited(SeasonalAppIconService.apply(_season));
+    if (revision != _changeRevision) return;
 
-    // Cada tema tiene su propio sonido. Al cambiar de temporada detenemos
-    // cualquier audio anterior y reproducimos el efecto correspondiente.
-    if (previousSeason != _season) {
-      final selectedSeason = _season;
-      unawaited(() async {
-        await _stopCurrentAudio();
-        // Si el usuario cambia otra vez de tema mientras se detiene el audio,
-        // no iniciar una pista que ya dejó de estar seleccionada.
-        if (selectedSeason == _season) {
-          await _playSeasonSound(selectedSeason);
-        }
-      }());
+    await SeasonalAppIconService.apply(selectedSeason);
+    if (revision != _changeRevision) return;
+
+    if (previousSeason != selectedSeason) {
+      await _stopCurrentAudio();
+      // Si mientras se detenía el audio se eligió otro tema, no reproducir el anterior.
+      if (revision == _changeRevision && selectedSeason == _season) {
+        await _playSeasonSound(selectedSeason);
+      }
+    }
+  }
+
+  void _startSeasonDateWatcher() {
+    _seasonRefreshTimer ??= Timer.periodic(
+      const Duration(seconds: 30),
+      (_) => unawaited(_refreshSeasonFromDeviceDate()),
+    );
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      // Cubre el caso en que el usuario cambia la fecha desde Ajustes y regresa
+      // a TokTik, incluso si Android no recreó el proceso de Flutter.
+      unawaited(_refreshSeasonFromDeviceDate(forceIconSync: true));
+    }
+  }
+
+  Future<void> _refreshSeasonFromDeviceDate({bool forceIconSync = false}) async {
+    if (_mode != SeasonMode.automatic) {
+      if (forceIconSync) await SeasonalAppIconService.apply(_season);
+      return;
+    }
+
+    final previousSeason = _season;
+    _updateSeason();
+    final selectedSeason = _season;
+    if (selectedSeason == previousSeason) {
+      if (forceIconSync) await SeasonalAppIconService.apply(selectedSeason);
+      return;
+    }
+
+    final revision = ++_changeRevision;
+    notifyListeners();
+    await SeasonalAppIconService.apply(selectedSeason);
+    if (revision != _changeRevision || selectedSeason != _season) return;
+
+    await _stopCurrentAudio();
+    if (revision == _changeRevision && selectedSeason == _season) {
+      await _playSeasonSound(selectedSeason);
     }
   }
 
@@ -156,6 +200,8 @@ class SeasonalThemeProvider extends ChangeNotifier {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _seasonRefreshTimer?.cancel();
     _audioStopTimer?.cancel();
     final player = _audioPlayer;
     if (player != null) unawaited(player.dispose());
