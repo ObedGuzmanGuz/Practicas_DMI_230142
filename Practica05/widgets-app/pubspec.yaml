@@ -1,0 +1,25 @@
+name: widgets_app
+description: 'Laboratorio Digital: ejemplos interactivos de widgets, controles y animaciones en Flutter.'
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  animate_do: ^5.1.0
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^3.3.2
+  go_router: ^17.3.0
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
