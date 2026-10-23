@@ -1,13 +1,18 @@
+import 'package:cinemapedia_app/config/constants/environment.dart';
 import "package:flutter/material.dart";
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class HomeScreen extends StatelessWidget {
-  static const  name = "home_screen";
+  static const name = "home_screen";
+
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Placeholder(),
+    return Scaffold(
+      body: Center(
+        child: Text( Environment.theMovieDbKey),
+      ),
     );
   }
 }
