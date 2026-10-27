@@ -7,13 +7,25 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cinemapedia_app/main.dart';
+import 'package:cinemapedia_app/presentation/providers/movies/movies_providers.dart';
 
 void main() {
-  testWidgets('shows the home screen placeholder', (WidgetTester tester) async {
-    await tester.pumpWidget(const MainApp());
+  testWidgets('shows the now playing movies list', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          nowPlayingMoviesProvider.overrideWith(
+            (ref) =>
+                MoviesNotifier(fetchMoreMovies: ({int page = 1}) async => []),
+          ),
+        ],
+        child: const MainApp(),
+      ),
+    );
 
-    expect(find.byType(Placeholder), findsOneWidget);
+    expect(find.byType(ListView), findsOneWidget);
   });
 }
