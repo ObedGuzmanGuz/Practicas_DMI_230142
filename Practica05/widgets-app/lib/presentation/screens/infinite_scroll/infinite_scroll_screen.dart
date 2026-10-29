@@ -120,7 +120,9 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
                 width: double.infinity,
                 height: 300,
                 placeholder: const AssetImage('assets/images/jar-loading.gif'), 
-                image: NetworkImage('https://picsum.photos/id/${ imagesIds[index] }/500/300'),
+                image: const NetworkImage(
+  'https://images.unsplash.com/photo-1614728263952-84ea256f9679?w=500&h=300&fit=crop',
+),
               );
             },
           ),
