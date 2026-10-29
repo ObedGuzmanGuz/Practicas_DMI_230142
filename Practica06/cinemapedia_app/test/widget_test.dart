@@ -1,31 +1,48 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:cinemapedia_app/domain/entities/movie.dart';
 import 'package:cinemapedia_app/main.dart';
 import 'package:cinemapedia_app/presentation/providers/movies/movies_providers.dart';
+import 'package:cinemapedia_app/presentation/widgets/shared/custom_bottom_navigation.dart';
 
 void main() {
-  testWidgets('shows the now playing movies list', (WidgetTester tester) async {
+  testWidgets('Cinemapedia muestra la navegación principal sin conexión a TMDB',
+      (WidgetTester tester) async {
+    final testMovie = Movie(
+      adult: false,
+      backdropPath: '',
+      genreIds: const [],
+      id: 1,
+      originalLanguage: 'es',
+      originalTitle: 'Película de prueba',
+      overview: 'Película utilizada únicamente para la prueba.',
+      popularity: 1,
+      posterPath: 'https://example.com/poster.jpg',
+      releaseDate: DateTime(2024, 1, 1),
+      title: 'Película de prueba',
+      video: false,
+      voteAverage: 8,
+      voteCount: 10,
+    );
+
+    MoviesNotifier notifier() => MoviesNotifier(
+          fetchMoreMovies: ({int page = 1}) async => [testMovie],
+        );
+
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
-          nowPlayingMoviesProvider.overrideWith(
-            (ref) =>
-                MoviesNotifier(fetchMoreMovies: ({int page = 1}) async => []),
-          ),
+          nowPlayingMoviesProvider.overrideWith((ref) => notifier()),
+          popularMoviesProvider.overrideWith((ref) => notifier()),
+          topRatedMoviesProvider.overrideWith((ref) => notifier()),
+          upcomingMoviesProvider.overrideWith((ref) => notifier()),
         ],
         child: const MainApp(),
       ),
     );
 
-    expect(find.byType(ListView), findsOneWidget);
+    expect(find.byType(CustomBottomNavigation), findsOneWidget);
+    expect(find.text('Inicio'), findsOneWidget);
   });
 }
