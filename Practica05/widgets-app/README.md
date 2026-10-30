@@ -15,3 +15,7 @@ Aplicación de ejemplo desarrollada con Flutter para explorar componentes de int
 1. Instala Flutter y las dependencias del proyecto.
 2. Ejecuta `flutter pub get`.
 3. Ejecuta `flutter run`.
+
+## Diagrama de arquitectura
+
+Sitio interactivo disponible en [`docs/index.html`](docs/index.html). GitHub Pages: **pendiente de activar y verificar**. La URL esperada es `https://obedguzmanguz.github.io/Practicas_DMI_230142/`. Consulta [`docs/README.md`](docs/README.md) para abrirlo y configurar el despliegue desde la rama `Practica05`.

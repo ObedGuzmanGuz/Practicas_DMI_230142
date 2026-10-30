@@ -58,9 +58,11 @@ Sirve como material de práctica y consulta para comprender cómo se construyen 
 
 El diagrama de arquitectura se generará como una página interactiva con **Archify** y se publicará mediante **GitHub Pages**. La vista deberá mostrar las plataformas de ejecución, el arranque de Flutter, la navegación, la configuración, los proveedores de estado, las pantallas y los recursos utilizados.
 
-**Ruta prevista del sitio:** `docs/index.html`  
-**URL de GitHub Pages:** `https://<USUARIO>.github.io/<REPOSITORIO>/` *(pendiente de configurar con el usuario y repositorio reales).* 
+## 🏗️ Diagrama de arquitectura
 
+[![Arquitectura](https://img.shields.io/badge/Ver-Arquitectura-8A2BE2?style=for-the-badge&logo=github)](https://obedguzmanguz.github.io/Practicas_DMI_230142/Practica05/docs/architecture.archify.html)
+
+**[Ver arquitectura interactiva de la práctica 05 en GitHub Pages](https://obedguzmanguz.github.io/Practicas_DMI_230142/Practica05/docs/architecture.archify.html)**
 La copia ZIP revisada no incluye la carpeta `.git`, un remoto de GitHub ni la configuración de GitHub Pages; por eso todavía no es posible determinar una URL pública real. El archivo `PROMPT_CODEX_ARCHIFY.md` contiene las instrucciones para que Codex examine el código y genere el diagrama. El diagrama debe permitir seleccionar cada bloque y consultar su descripción, símbolos relevantes, archivo fuente, líneas de código y enlace directo al código en GitHub cuando el remoto esté configurado.
 
 ### Plataformas contempladas

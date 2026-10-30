@@ -1,0 +1,918 @@
+{
+  "components": [
+    {
+      "id": "android",
+      "section": "platform",
+      "title": "Android",
+      "icon": "◉",
+      "x": 75,
+      "y": 72,
+      "w": 190,
+      "h": 64,
+      "description": "Destino de compilación Flutter para Android. Kotlin y Gradle configuran el contenedor nativo.",
+      "symbols": [
+        "MainActivity.kt",
+        "Android Gradle"
+      ],
+      "evidence": [
+        {
+          "path": "android/app/src/main/kotlin/com/example/widgets_app/MainActivity.kt",
+          "start": 1,
+          "end": 6,
+          "symbol": "MainActivity",
+          "note": "Actividad anfitriona para la aplicación Flutter."
+        }
+      ]
+    },
+    {
+      "id": "ios",
+      "section": "platform",
+      "title": "iOS",
+      "icon": "◉",
+      "x": 295,
+      "y": 72,
+      "w": 190,
+      "h": 64,
+      "description": "Destino de compilación Flutter para iOS; el proyecto Swift aloja el runner nativo.",
+      "symbols": [
+        "AppDelegate.swift",
+        "Runner.xcodeproj"
+      ],
+      "evidence": [
+        {
+          "path": "ios/Runner/AppDelegate.swift",
+          "start": 1,
+          "end": 16,
+          "symbol": "AppDelegate",
+          "note": "Punto de entrada nativo del runner iOS."
+        }
+      ]
+    },
+    {
+      "id": "web",
+      "section": "platform",
+      "title": "Web",
+      "icon": "◎",
+      "x": 515,
+      "y": 72,
+      "w": 190,
+      "h": 64,
+      "description": "Destino web de la misma aplicación Flutter, con shell HTML y manifiesto web.",
+      "symbols": [
+        "web/index.html",
+        "manifest.json"
+      ],
+      "evidence": [
+        {
+          "path": "web/index.html",
+          "start": 1,
+          "end": 30,
+          "symbol": "Flutter web bootstrap",
+          "note": "Documento de inicio del destino web."
+        }
+      ]
+    },
+    {
+      "id": "windows",
+      "section": "platform",
+      "title": "Windows",
+      "icon": "▦",
+      "x": 735,
+      "y": 72,
+      "w": 190,
+      "h": 64,
+      "description": "Destino de escritorio Flutter para Windows. C++ y CMake forman el runner nativo.",
+      "symbols": [
+        "windows/runner",
+        "CMake"
+      ],
+      "evidence": [
+        {
+          "path": "windows/runner/main.cpp",
+          "start": 1,
+          "end": 30,
+          "symbol": "wWinMain",
+          "note": "Arranque del runner nativo para Windows."
+        }
+      ]
+    },
+    {
+      "id": "linux",
+      "section": "platform",
+      "title": "Linux",
+      "icon": "◈",
+      "x": 955,
+      "y": 72,
+      "w": 190,
+      "h": 64,
+      "description": "Destino de escritorio Flutter para Linux, integrado mediante su runner nativo C++.",
+      "symbols": [
+        "linux/main.cc",
+        "CMake"
+      ],
+      "evidence": [
+        {
+          "path": "linux/main.cc",
+          "start": 1,
+          "end": 6,
+          "symbol": "main",
+          "note": "Punto de inicio del runner Linux."
+        }
+      ]
+    },
+    {
+      "id": "macos",
+      "section": "platform",
+      "title": "macOS",
+      "icon": "◉",
+      "x": 1175,
+      "y": 72,
+      "w": 190,
+      "h": 64,
+      "description": "Destino de escritorio Flutter para macOS, con runner Swift y configuración Xcode.",
+      "symbols": [
+        "AppDelegate.swift",
+        "Runner.xcodeproj"
+      ],
+      "evidence": [
+        {
+          "path": "macos/Runner/AppDelegate.swift",
+          "start": 1,
+          "end": 9,
+          "symbol": "AppDelegate",
+          "note": "Punto de entrada nativo del runner macOS."
+        }
+      ]
+    },
+    {
+      "id": "app",
+      "section": "runtime",
+      "title": "Laboratorio Digital",
+      "sub": "Flutter · Dart · Material Design 3",
+      "x": 520,
+      "y": 183,
+      "w": 400,
+      "h": 70,
+      "description": "Aplicación educativa de demostración que presenta widgets, navegación, estado, temas y animaciones. Flutter la compila para los seis destinos mostrados arriba.",
+      "symbols": [
+        "widgets_app",
+        "Material 3",
+        "Flutter"
+      ],
+      "evidence": [
+        {
+          "path": "pubspec.yaml",
+          "start": 1,
+          "end": 25,
+          "symbol": "name, dependencies, flutter",
+          "note": "Identidad del paquete, SDK de Dart, dependencias, Material y assets declarados."
+        }
+      ]
+    },
+    {
+      "id": "bootstrap",
+      "section": "runtime",
+      "title": "main.dart ? runApp",
+      "sub": "ProviderScope ? MainApp ? MaterialApp.router",
+      "x": 520,
+      "y": 282,
+      "w": 400,
+      "h": 70,
+      "description": "main() ejecuta runApp(const ProviderScope(child: MainApp())). MainApp observa el estado AppTheme y crea MaterialApp.router con appRouter y el tema generado.",
+      "symbols": [
+        "main()",
+        "ProviderScope",
+        "MainApp.build",
+        "MaterialApp.router",
+        "themeNotifierProvider"
+      ],
+      "evidence": [
+        {
+          "path": "lib/main.dart",
+          "start": 7,
+          "end": 24,
+          "symbol": "main · MainApp.build",
+          "note": "Confirma ProviderScope, lectura de themeNotifierProvider y configuración de MaterialApp.router."
+        }
+      ]
+    },
+    {
+      "id": "router",
+      "section": "config",
+      "title": "Enrutamiento",
+      "sub": "GoRouter · inicio + diez módulos",
+      "x": 72,
+      "y": 440,
+      "w": 260,
+      "h": 78,
+      "description": "Define la ruta inicial / y las diez rutas de los módulos, resolviendo cada ubicación a su pantalla.",
+      "symbols": [
+        "appRouter",
+        "GoRouter",
+        "GoRoute",
+        "initialLocation"
+      ],
+      "evidence": [
+        {
+          "path": "lib/config/router/app_router.dart",
+          "start": 5,
+          "end": 75,
+          "symbol": "appRouter · GoRoute",
+          "note": "Configuración completa de GoRouter y las once rutas, incluida la inicial."
+        }
+      ]
+    },
+    {
+      "id": "menu",
+      "section": "config",
+      "title": "Menú de módulos",
+      "sub": "MenuItem · appMenuItems",
+      "x": 72,
+      "y": 535,
+      "w": 260,
+      "h": 78,
+      "description": "Mantiene títulos, descripciones, rutas e iconos para las diez opciones disponibles desde el menú.",
+      "symbols": [
+        "MenuItem",
+        "appMenuItems"
+      ],
+      "evidence": [
+        {
+          "path": "lib/config/menu/menu_items.dart",
+          "start": 3,
+          "end": 78,
+          "symbol": "MenuItem · appMenuItems",
+          "note": "Modelo y lista de las diez opciones navegables."
+        }
+      ]
+    },
+    {
+      "id": "theme",
+      "section": "config",
+      "title": "Tema y paleta",
+      "sub": "AppTheme · ColorScheme.fromSeed · Material 3",
+      "x": 72,
+      "y": 630,
+      "w": 260,
+      "h": 78,
+      "description": "Construye ThemeData claro u oscuro a partir de la paleta seleccionada; usa Material 3 y centraliza estilos comunes.",
+      "symbols": [
+        "colorList",
+        "AppTheme",
+        "getTheme()",
+        "copyWith()"
+      ],
+      "evidence": [
+        {
+          "path": "lib/config/theme/app_theme.dart",
+          "start": 4,
+          "end": 93,
+          "symbol": "colorList · AppTheme",
+          "note": "Paleta, nombre de colores, generación del tema Material 3 y copyWith."
+        }
+      ]
+    },
+    {
+      "id": "riverpod",
+      "section": "state",
+      "title": "Estado global · Riverpod",
+      "sub": "contador · tema y acento",
+      "x": 366,
+      "y": 440,
+      "w": 280,
+      "h": 78,
+      "description": "ProviderScope aloja estado compartido. counterProvider contiene el contador; themeNotifierProvider administra modo y color de acento.",
+      "symbols": [
+        "counterProvider",
+        "themeNotifierProvider",
+        "ThemeNotifier",
+        "toggleDarkmode()",
+        "changeColorIndex()"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/providers/counter_provider.dart",
+          "start": 3,
+          "end": 5,
+          "symbol": "counterProvider",
+          "note": "Provider del contador, cuyo valor inicial es 5."
+        },
+        {
+          "path": "lib/presentation/providers/theme_provider.dart",
+          "start": 18,
+          "end": 38,
+          "symbol": "themeNotifierProvider · ThemeNotifier",
+          "note": "Notifier global y acciones para alternar modo y seleccionar color."
+        }
+      ]
+    },
+    {
+      "id": "local",
+      "section": "state",
+      "title": "Estado local",
+      "sub": "setState · State · controllers",
+      "x": 366,
+      "y": 535,
+      "w": 280,
+      "h": 78,
+      "description": "Varias pantallas administran interacción dentro de su propio State y controladores; no es estado Riverpod compartido.",
+      "symbols": [
+        "_AnimatedScreenState",
+        "_UiControlsViewState",
+        "_InfiniteScrollScreenState",
+        "PageController"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/screens/animated/animated_screen.dart",
+          "start": 14,
+          "end": 35,
+          "symbol": "_AnimatedScreenState.changeShape",
+          "note": "State local y setState para cambiar forma y color."
+        },
+        {
+          "path": "lib/presentation/screens/ui_controls/ui_controls_screen.dart",
+          "start": 25,
+          "end": 42,
+          "symbol": "_UiControlsViewState",
+          "note": "Estado local de controles interactivos."
+        },
+        {
+          "path": "lib/presentation/screens/infinite_scroll/infinite_scroll_screen.dart",
+          "start": 15,
+          "end": 60,
+          "symbol": "_InfiniteScrollScreenState",
+          "note": "State y carga local de elementos en memoria."
+        }
+      ]
+    },
+    {
+      "id": "screens",
+      "section": "presentation",
+      "title": "Presentación · 11 pantallas",
+      "sub": "Inicio + diez módulos del menú",
+      "x": 688,
+      "y": 424,
+      "w": 390,
+      "h": 70,
+      "description": "Las once rutas conducen a la pantalla correspondiente. Selecciona una pantalla para ver clase, interacciones y código relacionado.",
+      "symbols": [
+        "HomeScreen",
+        "ConsumerWidget",
+        "StatefulWidget",
+        "StatelessWidget"
+      ],
+      "evidence": [
+        {
+          "path": "lib/config/router/app_router.dart",
+          "start": 9,
+          "end": 73,
+          "symbol": "GoRoute.builder",
+          "note": "Asocia cada ruta a las once clases de pantalla."
+        },
+        {
+          "path": "lib/presentation/screens/screens.dart",
+          "start": 1,
+          "end": 15,
+          "symbol": "exports",
+          "note": "Barrel de exports de las pantallas."
+        }
+      ]
+    },
+    {
+      "id": "home",
+      "section": "screen",
+      "title": "Inicio / panel principal",
+      "sub": "HomeScreen",
+      "x": 688,
+      "y": 524,
+      "w": 205,
+      "h": 68,
+      "description": "Pantalla de bienvenida. Presenta el banner y construye las opciones del menú desde appMenuItems.",
+      "symbols": [
+        "HomeScreen",
+        "_HomeView",
+        "_WelcomeBanner",
+        "appMenuItems"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/screens/home/home_screen.dart",
+          "start": 9,
+          "end": 52,
+          "symbol": "HomeScreen · _HomeView",
+          "note": "Pantalla inicial que recorre las opciones de menú."
+        }
+      ]
+    },
+    {
+      "id": "counter",
+      "section": "screen",
+      "title": "Contador interactivo",
+      "sub": "CounterScreen · Riverpod",
+      "x": 914,
+      "y": 524,
+      "w": 205,
+      "h": 68,
+      "description": "Muestra el contador compartido con Riverpod y observa también el modo del tema.",
+      "symbols": [
+        "CounterScreen",
+        "counterProvider",
+        "ref.watch"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/screens/counter/counter_screen.dart",
+          "start": 7,
+          "end": 20,
+          "symbol": "CounterScreen.build",
+          "note": "La pantalla consume counterProvider y themeNotifierProvider."
+        }
+      ]
+    },
+    {
+      "id": "buttons",
+      "section": "screen",
+      "title": "Galería de botones",
+      "sub": "ButtonsScreen",
+      "x": 1140,
+      "y": 524,
+      "w": 205,
+      "h": 68,
+      "description": "Muestra estilos de botones Material y un CustomButton.",
+      "symbols": [
+        "ButtonsScreen",
+        "_ButtonsView",
+        "CustomButton"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/screens/buttons/buttons_screen.dart",
+          "start": 4,
+          "end": 12,
+          "symbol": "ButtonsScreen",
+          "note": "Definición de pantalla de botones."
+        },
+        {
+          "path": "lib/presentation/screens/buttons/buttons_screen.dart",
+          "start": 94,
+          "end": 118,
+          "symbol": "CustomButton",
+          "note": "Widget de botón personalizado."
+        }
+      ]
+    },
+    {
+      "id": "cards",
+      "section": "screen",
+      "title": "Tarjetas visuales",
+      "sub": "CardsScreen",
+      "x": 688,
+      "y": 611,
+      "w": 205,
+      "h": 68,
+      "description": "Galería de tarjetas con estilos y elevaciones; una tarjeta carga imagen desde la red.",
+      "symbols": [
+        "CardsScreen",
+        "_CardType1…4",
+        "Image.network"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/screens/cards/cards_screen.dart",
+          "start": 16,
+          "end": 33,
+          "symbol": "CardsScreen",
+          "note": "Pantalla que compone la galería de tarjetas."
+        },
+        {
+          "path": "lib/presentation/screens/cards/cards_screen.dart",
+          "start": 211,
+          "end": 226,
+          "symbol": "Image.network",
+          "note": "Una tarjeta consume imagen remota."
+        }
+      ]
+    },
+    {
+      "id": "progress",
+      "section": "screen",
+      "title": "Indicadores de progreso",
+      "sub": "ProgressScreen · AnimationController",
+      "x": 914,
+      "y": 611,
+      "w": 205,
+      "h": 68,
+      "description": "Presenta indicadores circulares y una barra animada con controlador local de animación.",
+      "symbols": [
+        "ProgressScreen",
+        "_ControlledProgresIndicatorState",
+        "AnimationController"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/screens/progress/progress_screen.dart",
+          "start": 48,
+          "end": 79,
+          "symbol": "_ControlledProgresIndicatorState",
+          "note": "Widget con estado y ciclo de vida del controlador de progreso."
+        }
+      ]
+    },
+    {
+      "id": "alerts",
+      "section": "screen",
+      "title": "Avisos y diálogos",
+      "sub": "SnackbarScreen",
+      "x": 1140,
+      "y": 611,
+      "w": 205,
+      "h": 68,
+      "description": "Ofrece ejemplos de SnackBar y diálogo modal mediante acciones locales de la pantalla.",
+      "symbols": [
+        "SnackbarScreen",
+        "showCustomSnackbar()",
+        "openDialog()"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/screens/snackbar/snackbar_screen.dart",
+          "start": 4,
+          "end": 33,
+          "symbol": "showCustomSnackbar · openDialog",
+          "note": "Métodos que muestran un SnackBar y abren un diálogo."
+        }
+      ]
+    },
+    {
+      "id": "animated",
+      "section": "screen",
+      "title": "Formas animadas",
+      "sub": "AnimatedScreen · setState",
+      "x": 688,
+      "y": 698,
+      "w": 205,
+      "h": 68,
+      "description": "Cambia forma y color mediante estado local y transición animada.",
+      "symbols": [
+        "AnimatedScreen",
+        "_AnimatedScreenState",
+        "changeShape()"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/screens/animated/animated_screen.dart",
+          "start": 4,
+          "end": 40,
+          "symbol": "AnimatedScreen · changeShape",
+          "note": "Widget stateful y acción que modifica la forma."
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "section": "screen",
+      "title": "Controles de interfaz",
+      "sub": "UiControlsScreen · estado local",
+      "x": 914,
+      "y": 698,
+      "w": 205,
+      "h": 68,
+      "description": "Agrupa interruptores, opciones y casillas con valores locales administrados mediante setState.",
+      "symbols": [
+        "UiControlsScreen",
+        "_UiControlsViewState",
+        "setState"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/screens/ui_controls/ui_controls_screen.dart",
+          "start": 16,
+          "end": 42,
+          "symbol": "_UiControlsViewState",
+          "note": "State local que administra la selección de controles."
+        },
+        {
+          "path": "lib/presentation/screens/ui_controls/ui_controls_screen.dart",
+          "start": 43,
+          "end": 103,
+          "symbol": "onChanged",
+          "note": "Callbacks actualizan interruptores, opciones y casillas."
+        }
+      ]
+    },
+    {
+      "id": "tutorial",
+      "section": "screen",
+      "title": "Guía de bienvenida",
+      "sub": "AppTutorialScreen · PageView",
+      "x": 1140,
+      "y": 698,
+      "w": 205,
+      "h": 68,
+      "description": "Recorrido con páginas locales y una diapositiva inicial que usa una imagen remota.",
+      "symbols": [
+        "SlideInfo",
+        "slides",
+        "AppTutorialScreen",
+        "PageController"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/screens/app_tutorial/app_tutorial_screen.dart",
+          "start": 5,
+          "end": 52,
+          "symbol": "SlideInfo · slides · AppTutorialScreen",
+          "note": "Datos de diapositivas, estado del PageView y ciclo de vida del controller."
+        },
+        {
+          "path": "lib/presentation/screens/app_tutorial/app_tutorial_screen.dart",
+          "start": 127,
+          "end": 140,
+          "symbol": "Image.network",
+          "note": "Renderiza la diapositiva remota cuando isNetworkImage es true."
+        }
+      ]
+    },
+    {
+      "id": "scroll",
+      "section": "screen",
+      "title": "Galería desplazable",
+      "sub": "InfiniteScrollScreen · memoria",
+      "x": 688,
+      "y": 785,
+      "w": 205,
+      "h": 68,
+      "description": "Al llegar al final añade IDs a una lista en memoria y reutiliza una imagen remota. No llama a una API de paginación.",
+      "symbols": [
+        "imagesIds",
+        "loadNextPage()",
+        "addFiveImages()",
+        "NetworkImage"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/screens/infinite_scroll/infinite_scroll_screen.dart",
+          "start": 15,
+          "end": 60,
+          "symbol": "_InfiniteScrollScreenState · loadNextPage",
+          "note": "Controlador y mutaciones locales para añadir contenido en memoria."
+        },
+        {
+          "path": "lib/presentation/screens/infinite_scroll/infinite_scroll_screen.dart",
+          "start": 118,
+          "end": 128,
+          "symbol": "NetworkImage · AssetImage",
+          "note": "Combina una imagen remota repetida con placeholder local."
+        }
+      ]
+    },
+    {
+      "id": "colors",
+      "section": "screen",
+      "title": "Personalización de colores",
+      "sub": "ThemeChangerScreen · AppTheme",
+      "x": 914,
+      "y": 785,
+      "w": 205,
+      "h": 68,
+      "description": "Consume el estado de tema global para alternar modo y cambiar el índice del color de acento.",
+      "symbols": [
+        "ThemeChangerScreen",
+        "themeNotifierProvider",
+        "toggleDarkmode()",
+        "changeColorIndex()"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/screens/theme_changer/theme_changer_screen.dart",
+          "start": 6,
+          "end": 37,
+          "symbol": "ThemeChangerScreen · _ThemeChangerView",
+          "note": "Observa el tema y la paleta de colores globales."
+        },
+        {
+          "path": "lib/presentation/screens/theme_changer/theme_changer_screen.dart",
+          "start": 50,
+          "end": 63,
+          "symbol": "changeColorIndex",
+          "note": "Actualiza el color seleccionado desde la interfaz."
+        }
+      ]
+    },
+    {
+      "id": "assets",
+      "section": "resources",
+      "title": "Assets locales",
+      "sub": "assets/images/ · GIF y PNG",
+      "x": 72,
+      "y": 815,
+      "w": 260,
+      "h": 72,
+      "description": "Flutter declara assets/images/ como directorio de recursos. Incluye jar-loading.gif y tres PNG usados por la interfaz.",
+      "symbols": [
+        "assets/images/",
+        "jar-loading.gif",
+        "1.png · 2.png · 3.png"
+      ],
+      "evidence": [
+        {
+          "path": "pubspec.yaml",
+          "start": 20,
+          "end": 25,
+          "symbol": "flutter.assets",
+          "note": "Declara Material Design y el directorio de imágenes locales."
+        },
+        {
+          "path": "lib/presentation/screens/infinite_scroll/infinite_scroll_screen.dart",
+          "start": 118,
+          "end": 128,
+          "symbol": "AssetImage",
+          "note": "Usa el GIF local como placeholder de carga."
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "section": "resources",
+      "title": "Imágenes remotas",
+      "sub": "Houston's Eagle · Unsplash",
+      "x": 72,
+      "y": 903,
+      "w": 260,
+      "h": 72,
+      "description": "Home, tarjetas y tutorial consumen imagen desde Houston's Eagle; la galería desplazable usa una imagen Unsplash. Son dependencias de red, no backend propio.",
+      "symbols": [
+        "Image.network",
+        "NetworkImage",
+        "HTTP externo"
+      ],
+      "evidence": [
+        {
+          "path": "lib/presentation/screens/home/home_screen.dart",
+          "start": 6,
+          "end": 8,
+          "symbol": "alienImageUrl",
+          "note": "URL remota declarada para el banner de inicio."
+        },
+        {
+          "path": "lib/presentation/screens/infinite_scroll/infinite_scroll_screen.dart",
+          "start": 121,
+          "end": 128,
+          "symbol": "NetworkImage",
+          "note": "URL Unsplash repetida en la galería en memoria."
+        }
+      ]
+    },
+    {
+      "id": "dependencies",
+      "section": "resources",
+      "title": "Paquetes principales",
+      "sub": "Riverpod 3.3.2 · GoRouter 17.3.0 · animate_do 5.1.0",
+      "x": 366,
+      "y": 815,
+      "w": 330,
+      "h": 72,
+      "description": "Dependencias de aplicación declaradas en pubspec y bloqueadas a versiones concretas en pubspec.lock.",
+      "symbols": [
+        "flutter_riverpod ^3.3.2",
+        "go_router ^17.3.0",
+        "animate_do ^5.1.0"
+      ],
+      "evidence": [
+        {
+          "path": "pubspec.yaml",
+          "start": 8,
+          "end": 14,
+          "symbol": "dependencies",
+          "note": "Restricciones de versión declaradas por el proyecto."
+        },
+        {
+          "path": "pubspec.lock",
+          "start": 20,
+          "end": 29,
+          "symbol": "animate_do 5.1.0",
+          "note": "Versión resuelta y bloqueada."
+        },
+        {
+          "path": "pubspec.lock",
+          "start": 145,
+          "end": 152,
+          "symbol": "flutter_riverpod 3.3.2",
+          "note": "Versión resuelta y bloqueada."
+        },
+        {
+          "path": "pubspec.lock",
+          "start": 179,
+          "end": 186,
+          "symbol": "go_router 17.3.0",
+          "note": "Versión resuelta y bloqueada."
+        }
+      ]
+    },
+    {
+      "id": "git",
+      "section": "delivery",
+      "title": "Git",
+      "sub": "versiona archivos y cambios",
+      "x": 72,
+      "y": 1065,
+      "w": 250,
+      "h": 70,
+      "description": "El repositorio local usa la rama Practica05 y configura origin como remoto GitHub.",
+      "symbols": [
+        ".git",
+        "Practica05",
+        "origin"
+      ],
+      "evidence": [
+        {
+          "path": "docs/repository.json",
+          "start": 1,
+          "end": 8,
+          "symbol": "branch · remote",
+          "note": "Configuración centralizada del repositorio detectado."
+        }
+      ]
+    },
+    {
+      "id": "github",
+      "section": "delivery",
+      "title": "GitHub",
+      "sub": "aloja el repositorio",
+      "x": 385,
+      "y": 1065,
+      "w": 250,
+      "h": 70,
+      "description": "El remoto origin identifica el repositorio ObedGuzmanGuz/Practicas_DMI_230142. El acceso de red no permitió comprobar su contenido remoto.",
+      "symbols": [
+        "origin",
+        "owner/repo"
+      ],
+      "evidence": [
+        {
+          "path": "docs/repository.json",
+          "start": 1,
+          "end": 8,
+          "symbol": "remote · owner · repo",
+          "note": "Remote URL obtenido de git remote -v."
+        }
+      ]
+    },
+    {
+      "id": "archify",
+      "section": "delivery",
+      "title": "Archify",
+      "sub": "genera/documenta arquitectura",
+      "x": 698,
+      "y": 1065,
+      "w": 250,
+      "h": 70,
+      "description": "Especificación editable de arquitectura Archify, con una exportación web interactiva ampliada para las fichas detalladas de evidencia.",
+      "symbols": [
+        "architecture.archify.json",
+        "diagram_type: architecture"
+      ],
+      "evidence": [
+        {
+          "path": "docs/architecture.archify.json",
+          "start": 1,
+          "end": 31,
+          "symbol": "components · connections",
+          "note": "Fuente editable Archify con nodos de alto nivel y relaciones comprobadas."
+        }
+      ]
+    },
+    {
+      "id": "pages",
+      "section": "delivery",
+      "title": "GitHub Pages",
+      "sub": "publica el sitio estático",
+      "x": 1011,
+      "y": 1065,
+      "w": 250,
+      "h": 70,
+      "description": "La carpeta docs contiene el sitio estático. URL esperada calculada desde owner/repo; publicación no verificada. Configura Pages para servir /docs desde la rama Practica05.",
+      "symbols": [
+        "docs/index.html",
+        "URL esperada"
+      ],
+      "evidence": [
+        {
+          "path": "docs/index.html",
+          "start": 1,
+          "end": 15,
+          "symbol": "HTML estático",
+          "note": "Punto de entrada del diagrama sin servidor backend."
+        },
+        {
+          "path": "docs/repository.json",
+          "start": 1,
+          "end": 8,
+          "symbol": "pages · pagesVerified",
+          "note": "URL esperada y estado pendiente de publicación."
+        }
+      ]
+    }
+  ]
+}
