@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#081426"><meta name="description" content="Diagrama interactivo de arquitectura de Laboratorio Digital, Flutter/Dart.">
+  <title>Laboratorio Digital · Arquitectura</title><link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="brand-mark">LD</span><div><strong>Laboratorio Digital</strong><small>ARQUITECTURA · FLUTTER / DART</small></div></div><div class="actions"><button id="zoom-out" aria-label="Alejar">−</button><button id="zoom-reset" aria-label="Restablecer zoom">100%</button><button id="zoom-in" aria-label="Acercar">+</button><button id="close-inspector" class="close-top" aria-label="Cerrar ficha" title="Cerrar ficha">×</button></div></header>
+  <main><section class="intro"><div><p class="eyebrow">MAPA INTERACTIVO DEL PROYECTO</p><h1>Arquitectura de la aplicación</h1><p>Selecciona cualquier bloque para inspeccionar su función, símbolos y evidencia directa en el código.</p></div><div class="legend"><span><i class="dot cyan"></i>Flujo de ejecución</span><span><i class="dot gold"></i>Configuración</span><span><i class="dot violet"></i>Estado</span><span><i class="dot green"></i>Destinos Flutter</span></div></section>
+  <div class="workspace"><div class="diagram-wrap" id="diagram-wrap"><svg id="diagram" viewBox="0 0 1440 1280" role="img" aria-label="Diagrama interactivo de arquitectura. Usa rueda para zoom y arrastra para desplazar."></svg><div class="canvas-hint">Arrastra para desplazar · rueda para zoom · clic en un bloque para inspeccionar</div><a class="archify-view" href="architecture.archify.html">Vista Archify ↗</a></div>
+  <aside id="inspector" class="inspector" aria-live="polite" aria-label="Inspector de código"><div class="empty-state"><div class="empty-icon">⌕</div><h2>Explora el sistema</h2><p>Selecciona una tarjeta del diagrama. Verás qué hace, sus símbolos y las líneas que lo demuestran.</p><small>Los bloques también se pueden seleccionar con Tab y Enter.</small></div></aside></div></main>
+  <footer><span>Fuente del diagrama: <code>docs/architecture.archify.json</code> · fichas de evidencia: <code>docs/assets/components.json</code></span><span id="repo-status">Repositorio configurado · publicación pendiente de verificar</span></footer>
+  <script src="assets/app.js"></script>
+</body></html>

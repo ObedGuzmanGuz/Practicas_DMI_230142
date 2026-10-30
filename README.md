@@ -29,6 +29,8 @@ En este repositorio se documentan las actividades, prácticas y aplicaciones des
 | 3 | 👽 **Práctica 03: Yes No App** | Chat en Flutter que responde Sí, No o Tal vez a preguntas y muestra un GIF. | [Ver Practica](https://github.com/ObedGuzmanGuz/Practicas_DMI_230142/tree/main/Practica03/yes_no_app) | ⭐ 30 | ✅ Concluida |
 | 4 | 🎵 **Práctica 04: TokTik App** | Aplicación tipo TikTok con reproducción de videos, temas dinámicos por temporada, persistencia local y Clean Architecture. | [Ver Practica](https://github.com/ObedGuzmanGuz/Practicas_DMI_230142/tree/main/Practica04/) | ⭐ 30 | ✅ Concluida |
 | 5 | 📘 **Manual de instalación del entorno de desarrollo** | Guía de instalación y configuración de Flutter, Dart, Android Studio, JDK 21, WSL2, Docker y Git/GitHub. | [Ver carpeta](https://github.com/ObedGuzmanGuz/Practicas_DMI_230142/tree/main/Manual_Flutter/) | ⭐ — | ✅Conluida |
+| 6 | 🧪 **Práctica 05: Laboratorio Digital – Exploración de Widgets en Flutter** | Aplicación interactiva desarrollada con Flutter que explora diferentes componentes, widgets, navegación, gestión de estado con Riverpod y temas dinámicos. | [Ver Práctica](https://github.com/ObedGuzmanGuz/Practicas_DMI_230142/tree/main/Practica05) | ⭐ 40 | ✅ Concluida |
+
 
 ---
 

@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Laboratorio Digital — Arquitectura",
+    "quality_profile": "standard",
+    "visual_preset": "blueprint",
+    "repository": {
+      "url": "https://github.com/ObedGuzmanGuz/Practicas_DMI_230142",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "fe6f2dc9bf298193fd20743ad0423e1cf4ef1cea"
+    },
+    "viewBox": [
+      900,
+      720
+    ]
+  },
+  "components": [
+    {
+      "id": "main",
+      "type": "frontend",
+      "label": "main.dart",
+      "sublabel": "runApp ? Flutter entry point",
+      "tag": "ARRANQUE",
+      "pos": [
+        330,
+        60
+      ],
+      "size": [
+        240,
+        76
+      ],
+      "sources": [
+        {
+          "path": "Practica05/widgets-app/lib/main.dart",
+          "line": 7,
+          "end_line": 24,
+          "label": "main y MainApp"
+        }
+      ]
+    },
+    {
+      "id": "composition",
+      "type": "frontend",
+      "label": "ProviderScope ? MainApp",
+      "sublabel": "MaterialApp.router ? tema global",
+      "tag": "COMPOSICI?N",
+      "pos": [
+        330,
+        220
+      ],
+      "size": [
+        240,
+        76
+      ],
+      "sources": [
+        {
+          "path": "Practica05/widgets-app/lib/main.dart",
+          "line": 8,
+          "end_line": 24,
+          "label": "ProviderScope y MaterialApp.router"
+        },
+        {
+          "path": "Practica05/widgets-app/lib/presentation/providers/theme_provider.dart",
+          "line": 18,
+          "end_line": 38,
+          "label": "Proveedor del tema"
+        }
+      ]
+    },
+    {
+      "id": "router",
+      "type": "frontend",
+      "label": "GoRouter",
+      "sublabel": "ruta inicial + diez m?dulos",
+      "tag": "NAVEGACI?N",
+      "pos": [
+        330,
+        380
+      ],
+      "size": [
+        240,
+        76
+      ],
+      "sources": [
+        {
+          "path": "Practica05/widgets-app/lib/config/router/app_router.dart",
+          "line": 5,
+          "end_line": 75,
+          "label": "appRouter y GoRoute"
+        }
+      ]
+    },
+    {
+      "id": "screens",
+      "type": "frontend",
+      "label": "11 pantallas",
+      "sublabel": "Inicio + diez m?dulos",
+      "tag": "PRESENTACI?N",
+      "pos": [
+        330,
+        540
+      ],
+      "size": [
+        240,
+        76
+      ],
+      "sources": [
+        {
+          "path": "Practica05/widgets-app/lib/config/router/app_router.dart",
+          "line": 9,
+          "end_line": 73,
+          "label": "Builders de las pantallas"
+        },
+        {
+          "path": "Practica05/widgets-app/lib/presentation/screens/screens.dart",
+          "line": 1,
+          "end_line": 15,
+          "label": "Exports"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "main",
+      "to": "composition",
+      "label": "monta ProviderScope",
+      "labelDy": 24
+    },
+    {
+      "from": "composition",
+      "to": "router",
+      "label": "routerConfig",
+      "labelDy": 24
+    },
+    {
+      "from": "router",
+      "to": "screens",
+      "label": "resuelve rutas",
+      "labelDy": 24
+    }
+  ]
+}
