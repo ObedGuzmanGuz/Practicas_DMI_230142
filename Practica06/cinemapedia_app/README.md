@@ -1,17 +1,24 @@
-# Cinemapedia App
+# 🎬 Cinemapedia App
 
-Aplicación Flutter de consulta de películas con datos de **The Movie Database (TMDB)**.
+Aplicación móvil multiplataforma desarrollada con **Flutter y Dart** que permite explorar, buscar y consultar información de películas mediante la API de **[The Movie Database (TMDB)](https://www.themoviedb.org/)**.
 
-## Requisitos
+Cinemapedia ofrece una experiencia cinematográfica con información localizada por país, categorías, películas favoritas y una interfaz personalizable.
 
-- Flutter y Dart instalados.
+**Eslogan:** *Descubre, disfruta y vive el cine.*
+
+## 🚀 Requisitos
+
+- Flutter SDK instalado.
+- Dart SDK.
+- Visual Studio Code o Android Studio.
 - Una API Key de TMDB.
+- Conexión a internet para consultar la información de películas.
 
-## Configuración inicial
+## ⚙️ Configuración inicial
 
-1. Abre una terminal en la carpeta `cinemapedia_app`.
-2. Copia `.env.template` y crea un archivo llamado `.env` (ya se incluye uno vacío como plantilla local).
-3. Dentro de `.env`, agrega tu clave:
+1. Abre una terminal dentro de la carpeta `cinemapedia_app`.
+2. Copia el archivo `.env.template` y crea un archivo llamado `.env`.
+3. Dentro de `.env`, agrega tu API Key:
 
    ```env
    THE_MOVIEDB_KEY=TU_API_KEY_DE_TMDB
@@ -29,27 +36,152 @@ Aplicación Flutter de consulta de películas con datos de **The Movie Database 
    flutter run
    ```
 
-Puedes obtener una API Key desde la configuración de tu cuenta de TMDB: https://www.themoviedb.org/settings/api
+Para ejecutar la versión web en Chrome:
 
-## Funcionalidades integradas
+```bash
+flutter run -d chrome
+```
 
+Puedes obtener tu API Key desde la configuración de tu cuenta de TMDB:
+
+https://www.themoviedb.org/settings/api
+
+## ✨ Funcionalidades
+
+### 🎥 Exploración de películas
 - Listados de películas en cartelera, populares, próximas y mejor calificadas.
 - Carrusel de películas destacadas.
-- Búsqueda de películas.
-- Pantalla de detalle de película.
+- Tarjetas con póster, título y calificación visual mediante estrellas.
+- Pantalla de detalles con sinopsis, géneros y clasificación por edades.
 - Consulta del reparto y presentación de actores.
-- Menú hamburguesa con selector de país e idioma: México (Español), Estados Unidos (English), Japón (日本語) y Alemania (Deutsch).
-- Actualización del idioma de la interfaz y de los títulos/sinopsis disponibles en TMDB.
-- Filtro regional de TMDB y clasificación por edades según el país seleccionado.
-- Calificación visual de películas con cinco estrellas y puntuación numérica.
-- Paginación de los listados y navegación con GoRouter.
-- Gestión de estado con Riverpod; al cambiar de país se vuelven a cargar los listados y las búsquedas usan la nueva región.
+- Paginación de los listados.
 
-## Estructura
+### 🔎 Búsqueda
+- Buscador de películas mediante la API de TMDB.
+- Consulta de resultados según el país e idioma seleccionados.
 
-- `lib/config`: configuración, rutas, formato y tema.
-- `lib/domain`: entidades, contratos de datos y repositorios.
-- `lib/infrastructure`: comunicación con TMDB, modelos y mapeadores.
-- `lib/presentation`: pantallas, widgets y providers.
+### 🌎 País e idioma
+- Menú hamburguesa con selector regional.
+- México (Español).
+- Estados Unidos (English).
+- Japón (日本語).
+- Alemania (Deutsch).
+- Actualización del idioma de la interfaz y de los datos disponibles de las películas.
+- Consulta de información regional y clasificación por edades según el país seleccionado.
 
-> El archivo `.env` contiene la clave privada y está excluido de Git mediante `.gitignore`. No publiques tu API Key en el repositorio.
+### 🎭 Categorías
+- Exploración de películas por género.
+- Consulta de películas relacionadas con cada categoría.
+- Obtención de géneros y resultados desde TMDB.
+
+### ❤️ Favoritos
+- Agregar y quitar películas de la lista de favoritos.
+- Acceso a una sección independiente de películas favoritas.
+- Conservación de los favoritos mediante almacenamiento local.
+
+### 🎨 Apariencia e identidad visual
+- Identidad gráfica personalizada de Cinemapedia.
+- Icono de aplicación inspirado en un ojo cinematográfico de estilo macabro.
+- Modo claro y modo oscuro.
+- Preferencia de apariencia conservada en el dispositivo.
+- Interfaz con elementos visuales inspirados en el mundo del cine.
+
+## 🛠️ Tecnologías utilizadas
+
+| Tecnología | Uso |
+|---|---|
+| Flutter | Desarrollo de la aplicación |
+| Dart | Lenguaje de programación |
+| TMDB API | Consulta de información cinematográfica |
+| Riverpod | Gestión de estado |
+| GoRouter | Navegación y rutas |
+| Dio | Solicitudes HTTP |
+| Flutter Dotenv | Configuración de variables de entorno |
+
+## 📁 Estructura del proyecto
+
+```text
+cinemapedia_app/
+│
+├── android/
+├── ios/
+├── web/
+├── windows/
+├── macos/
+├── linux/
+│
+├── assets/
+│   └── ...
+│
+├── lib/
+│   ├── config/
+│   │   └── Configuración, rutas y temas
+│   │
+│   ├── domain/
+│   │   └── Entidades, contratos y repositorios
+│   │
+│   ├── infrastructure/
+│   │   └── Conexión con TMDB, modelos y mapeadores
+│   │
+│   └── presentation/
+│       └── Pantallas, widgets y providers
+│
+├── test/
+├── .env.template
+├── .gitignore
+├── pubspec.yaml
+└── README.md
+```
+
+## 🔐 Seguridad
+
+El archivo `.env` contiene la API Key de TMDB y debe mantenerse privado.
+
+- El archivo `.env` está excluido del repositorio mediante `.gitignore`.
+- Utiliza `.env.template` como plantilla de configuración.
+- No publiques tu API Key en GitHub ni la compartas en capturas de pantalla.
+- Cada desarrollador debe configurar su propia API Key para ejecutar el proyecto.
+
+## ▶️ Comandos útiles
+
+Instalar dependencias:
+
+```bash
+flutter pub get
+```
+
+Ejecutar la aplicación:
+
+```bash
+flutter run
+```
+
+Ejecutar en Chrome:
+
+```bash
+flutter run -d chrome
+```
+
+Verificar errores y advertencias:
+
+```bash
+flutter analyze
+```
+
+Ejecutar pruebas:
+
+```bash
+flutter test
+```
+
+Limpiar archivos de compilación:
+
+```bash
+flutter clean
+```
+
+---
+
+**Cinemapedia App**
+
+*Descubre, disfruta y vive el cine.* 🍿
