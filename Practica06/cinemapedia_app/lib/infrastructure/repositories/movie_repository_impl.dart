@@ -40,4 +40,9 @@ class MovieRepositoryImpl extends MoviesRepository {
   }
 
 
+  @override
+  Future<List<Movie>> getMoviesByGenre(int genreId, {int page = 1}) {
+    return datasource.getMoviesByGenre(genreId, page: page);
+  }
+
 }

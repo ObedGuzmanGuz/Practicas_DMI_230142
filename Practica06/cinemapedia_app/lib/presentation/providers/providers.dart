@@ -11,3 +11,7 @@ export 'movies/movies_slideshow_provider.dart';
 
 export 'search/search_movies_provider.dart';
 export 'settings/movie_region_provider.dart';
+
+export 'movies/movies_by_genre_provider.dart';
+export 'movies/favorite_movies_provider.dart';
+export 'settings/theme_mode_provider.dart';

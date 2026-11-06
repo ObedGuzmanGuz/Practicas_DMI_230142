@@ -10,6 +10,7 @@ import 'package:cinemapedia_app/presentation/widgets/shared/movie_star_rating.da
 
 import 'package:cinemapedia_app/presentation/providers/providers.dart';
 import 'package:cinemapedia_app/presentation/providers/movies/movie_info_provider.dart';
+import 'package:cinemapedia_app/presentation/providers/movies/favorite_movies_provider.dart';
 
 
 class MovieScreen extends ConsumerStatefulWidget {
@@ -280,83 +281,63 @@ class _ActorsByMovie extends ConsumerWidget {
 
 
 
-class _CustomSliverAppBar extends StatelessWidget {
-
+class _CustomSliverAppBar extends ConsumerWidget {
   final Movie movie;
 
-  const _CustomSliverAppBar({
-    required this.movie
-  });
+  const _CustomSliverAppBar({required this.movie});
 
   @override
-  Widget build(BuildContext context) {
-
+  Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
+    final isFavorite = ref.watch(
+      favoriteMoviesProvider.select(
+        (items) => items.any((item) => item.id == movie.id),
+      ),
+    );
 
     return SliverAppBar(
+      pinned: true,
       backgroundColor: Colors.black,
-      expandedHeight: size.height * 0.7,
+      expandedHeight: size.height * 0.62,
       foregroundColor: Colors.white,
+      actions: [
+        IconButton(
+          tooltip: isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos',
+          onPressed: () => ref.read(favoriteMoviesProvider.notifier).toggle(movie),
+          icon: Icon(
+            isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+            color: isFavorite ? const Color(0xFFFF6B9A) : Colors.white,
+          ),
+        ),
+      ],
       flexibleSpace: FlexibleSpaceBar(
-        titlePadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        // title: Text( 
-        //   movie.title,
-        //   style: const TextStyle(fontSize: 20),
-        //   textAlign: TextAlign.start,
-        // ),
         background: Stack(
+          fit: StackFit.expand,
           children: [
-
-            SizedBox.expand(
-              child: Image.network(
-                movie.posterPath,
-                fit: BoxFit.cover,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if ( loadingProgress != null ) return const SizedBox();
-                  return FadeIn(child: child);
-                },
+            Image.network(
+              movie.posterPath,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) => const ColoredBox(
+                color: Colors.black,
+                child: Center(child: Icon(Icons.movie_outlined, color: Colors.white, size: 48)),
+              ),
+              loadingBuilder: (context, child, loadingProgress) => loadingProgress == null
+                  ? FadeIn(child: child)
+                  : const ColoredBox(color: Colors.black),
+            ),
+            const DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.42, 1.0],
+                  colors: [Colors.transparent, Colors.black87],
+                ),
               ),
             ),
-
-            const SizedBox.expand(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    stops: [0.7, 1.0],
-                    colors: [
-                      Colors.transparent,
-                      Colors.black87
-                    ]
-                  )
-                )
-              ),
-            ),
-
-            const SizedBox.expand(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    stops: [0.0, 0.3],
-                    colors: [
-                      Colors.black87,
-                      Colors.transparent,
-                    ]
-                  )
-                )
-              ),
-            ),
-
-
-
           ],
         ),
       ),
     );
   }
 }
-
-
-

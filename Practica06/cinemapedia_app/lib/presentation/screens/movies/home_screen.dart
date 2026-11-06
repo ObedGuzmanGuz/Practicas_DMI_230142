@@ -3,6 +3,7 @@ import 'package:cinemapedia_app/presentation/providers/providers.dart';
 import 'package:cinemapedia_app/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   static const name = 'home-screen';
@@ -14,7 +15,7 @@ class HomeScreen extends StatelessWidget {
     return const Scaffold(
       drawer: CountryDrawer(),
       body: _HomeView(),
-      bottomNavigationBar: CustomBottomNavigation(),
+      bottomNavigationBar: CustomBottomNavigation(currentIndex: 0),
     );
   }
 }
@@ -80,6 +81,27 @@ class _HomeViewState extends ConsumerState<_HomeView> {
           delegate: SliverChildBuilderDelegate(
             (context, index) => Column(
               children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 2),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          strings.homeIntro,
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                                fontStyle: FontStyle.italic,
+                              ),
+                        ),
+                      ),
+                      TextButton.icon(
+                        onPressed: () => context.go('/categories'),
+                        icon: const Icon(Icons.grid_view_rounded, size: 16),
+                        label: Text(strings.categories),
+                      ),
+                    ],
+                  ),
+                ),
                 MoviesSlideshow(movies: slideShowMovies),
                 MovieHorizontalListview(
                   movies: nowPlayingMovies,
