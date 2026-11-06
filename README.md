@@ -30,7 +30,7 @@ En este repositorio se documentan las actividades, prácticas y aplicaciones des
 | 4 | 🎵 **Práctica 04: TokTik App** | Aplicación tipo TikTok con reproducción de videos, temas dinámicos por temporada, persistencia local y Clean Architecture. | [Ver Practica](https://github.com/ObedGuzmanGuz/Practicas_DMI_230142/tree/main/Practica04/) | ⭐ 30 | ✅ Concluida |
 | 5 | 📘 **Manual de instalación del entorno de desarrollo** | Guía de instalación y configuración de Flutter, Dart, Android Studio, JDK 21, WSL2, Docker y Git/GitHub. | [Ver carpeta](https://github.com/ObedGuzmanGuz/Practicas_DMI_230142/tree/main/Manual_Flutter/) | ⭐ — | ✅Conluida |
 | 6 | 🧪 **Práctica 05: Laboratorio Digital – Exploración de Widgets en Flutter** | Aplicación interactiva desarrollada con Flutter que explora diferentes componentes, widgets, navegación, gestión de estado con Riverpod y temas dinámicos. | [Ver Práctica](https://github.com/ObedGuzmanGuz/Practicas_DMI_230142/tree/main/Practica05) | ⭐ 40 | ✅ Concluida |
-| 7 | 🎬 **Práctica 06: Cinemapedia App** | Aplicación de consulta de películas desarrollada con Flutter y TMDB, con búsqueda, categorías, favoritos, selector de país e idioma, clasificación regional y temas claro/oscuro. | [Ver Práctica](https://github.com/ObedGuzmanGuz/Practicas_DMI_230142/tree/main/Practica06/cinemapedia_app) | ⭐ — | ✅ Concluida |
+| 7 | 🎬 **Práctica 06: Cinemapedia App** | Aplicación de consulta de películas desarrollada con Flutter y TMDB, con búsqueda, categorías, favoritos, selector de país e idioma, clasificación regional y temas claro/oscuro. | [Ver Práctica](https://github.com/ObedGuzmanGuz/Practicas_DMI_230142/tree/Practica06/Practica06/cinemapedia_app) | ⭐ — | ✅ Concluida |
 
 ---
 
