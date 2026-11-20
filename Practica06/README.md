@@ -152,6 +152,24 @@ Las siguientes capturas muestran las pantallas y funciones principales de Cinema
   </tr>
 </table>
 
+
+## 📱 Prueba Cinemapedia en línea – Appetize.io
+
+¿Quieres probar Cinemapedia sin instalarla directamente en tu dispositivo? Puedes acceder a la demostración interactiva mediante Appetize.io.
+
+<div align="center">
+
+### 🎬 ¡Prueba la aplicación!
+
+[![Probar en Appetize.io](https://img.shields.io/badge/Probar%20Cinemapedia-Appetize.io-6C63FF?style=for-the-badge&logo=android&logoColor=white)](https://appetize.io/app/b_gejiojsogx5wnyps3q7fwytepa)
+
+**[🚀 Abrir Cinemapedia en Appetize.io](https://appetize.io/app/b_gejiojsogx5wnyps3q7fwytepa)**
+
+*Explora la interfaz y las funcionalidades de la aplicación desde el navegador.*
+
+</div>
+
+
 ## 🏗️ Diagrama de arquitectura
 
 La arquitectura documenta las capas internas de Cinemapedia, la comunicación con TMDB y YouTube, el almacenamiento local, las plataformas objetivo y el flujo de desarrollo y publicación.
