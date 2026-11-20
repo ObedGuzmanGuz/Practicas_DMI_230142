@@ -1,9 +1,13 @@
 import 'package:cinemapedia_app/config/l10n/app_strings.dart';
 import 'package:cinemapedia_app/presentation/providers/movies/favorite_movies_provider.dart';
 import 'package:cinemapedia_app/presentation/providers/settings/movie_region_provider.dart';
+import 'package:cinemapedia_app/presentation/providers/settings/content_mode_provider.dart';
 import 'package:cinemapedia_app/presentation/widgets/movies/movie_poster_card.dart';
 import 'package:cinemapedia_app/presentation/widgets/shared/custom_bottom_navigation.dart';
 import 'package:cinemapedia_app/presentation/widgets/shared/country_drawer.dart';
+import 'package:cinemapedia_app/presentation/delegates/search_movie_delegate.dart';
+import 'package:cinemapedia_app/presentation/providers/search/search_movies_provider.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,12 +20,13 @@ class FavoritesScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final region = ref.watch(selectedMovieRegionProvider);
     final strings = AppStrings(region);
-    final favorites = ref.watch(favoriteMoviesProvider);
+    final isSeries = ref.watch(contentModeProvider) == ContentMode.series;
+    final favorites = ref.watch(favoriteMoviesProvider).where((item) => item.isTv == isSeries).toList();
     final colors = Theme.of(context).colorScheme;
 
     return Scaffold(
       drawer: const CountryDrawer(),
-      bottomNavigationBar: const CustomBottomNavigation(currentIndex: 2),
+      bottomNavigationBar: const CustomBottomNavigation(currentIndex: 3),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -85,6 +90,23 @@ class FavoritesScreen extends ConsumerWidget {
                         strings.addFavoritesHint,
                         textAlign: TextAlign.center,
                         style: TextStyle(color: colors.onSurfaceVariant),
+                      ),
+                      const SizedBox(height: 18),
+                      FilledButton.icon(
+                        onPressed: () {
+                          showSearch(
+                            context: context,
+                            delegate: SearchMovieDelegate(
+                              initialMovies: ref.read(searchedMoviesProvider),
+                              searchMovies: ref.read(searchedMoviesProvider.notifier).searchMoviesByQuery,
+                              searchFieldLabel: strings.searchMovies,
+                            ),
+                          ).then((movie) {
+                            if (movie != null && context.mounted) context.push('/movie/${movie.id}');
+                          });
+                        },
+                        icon: const Icon(Icons.search_rounded),
+                        label: Text(strings.searchMovies),
                       ),
                     ],
                   ),

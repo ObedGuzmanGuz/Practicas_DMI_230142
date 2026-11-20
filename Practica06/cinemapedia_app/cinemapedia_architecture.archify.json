@@ -1,0 +1,595 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "CINEMAPEDIA APP – ARQUITECTURA DEL SISTEMA",
+    "subtitle": "Aplicación multiplataforma Flutter y Dart para explorar películas y series mediante TMDB.",
+    "quality_profile": "showcase",
+    "visual_preset": "blueprint",
+    "viewBox": [
+      1360,
+      850
+    ],
+    "output": "cinemapedia_architecture.html",
+    "animation": "trace",
+    "views": [
+      {
+        "id": "app-flow",
+        "label": "Flujo principal",
+        "focus": [
+          "ui",
+          "state",
+          "domain",
+          "data",
+          "tmdb"
+        ],
+        "note": "Consulta del catálogo y respuesta JSON a la interfaz."
+      },
+      {
+        "id": "local-data",
+        "label": "Almacenamiento local",
+        "focus": [
+          "state",
+          "prefs",
+          "navigation"
+        ],
+        "note": "Preferencias y favoritos se guardan en el dispositivo."
+      },
+      {
+        "id": "platforms",
+        "label": "Plataformas",
+        "focus": [
+          "flutter",
+          "android",
+          "ios",
+          "web",
+          "windows",
+          "linux",
+          "macos"
+        ],
+        "note": "Destinos configurados; ejecución pendiente de validar."
+      },
+      {
+        "id": "publishing",
+        "label": "Desarrollo y documentación",
+        "focus": [
+          "git",
+          "github",
+          "archify",
+          "pages"
+        ],
+        "note": "Publicación Pages es el destino solicitado, no configurado."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "ui",
+      "type": "frontend",
+      "label": "PRESENTACIÓN · FLUTTER",
+      "sublabel": "Catalog UI.",
+      "tag": "Flutter · screens",
+      "pos": [
+        30,
+        40
+      ],
+      "size": [
+        200,
+        120
+      ]
+    },
+    {
+      "id": "navigation",
+      "type": "frontend",
+      "label": "NAVEGACIÓN Y CONFIGURACIÓN",
+      "sublabel": "GoRouter.",
+      "tag": "RUTAS + PREFERENCIAS",
+      "pos": [
+        30,
+        190
+      ],
+      "size": [
+        200,
+        110
+      ]
+    },
+    {
+      "id": "state",
+      "type": "backend",
+      "label": "ESTADO · RIVERPOD",
+      "sublabel": "Riverpod.",
+      "tag": "Riverpod · providers",
+      "pos": [
+        290,
+        40
+      ],
+      "size": [
+        200,
+        120
+      ]
+    },
+    {
+      "id": "domain",
+      "type": "backend",
+      "label": "DOMINIO · CONTRATOS Y ENTIDADES",
+      "sublabel": "Movie · Actor.",
+      "tag": "Movie · Actor",
+      "pos": [
+        550,
+        40
+      ],
+      "size": [
+        200,
+        120
+      ]
+    },
+    {
+      "id": "data",
+      "type": "backend",
+      "label": "INFRAESTRUCTURA Y DATOS",
+      "sublabel": "Dio · JSON.",
+      "tag": "Dio · JSON · mappers",
+      "pos": [
+        810,
+        40
+      ],
+      "size": [
+        200,
+        120
+      ]
+    },
+    {
+      "id": "tmdb",
+      "type": "external",
+      "label": "THE MOVIE DATABASE · TMDB",
+      "sublabel": "REST API.",
+      "tag": "REST API",
+      "pos": [
+        1080,
+        25
+      ],
+      "size": [
+        200,
+        120
+      ]
+    },
+    {
+      "id": "youtube",
+      "type": "external",
+      "label": "YOUTUBE",
+      "sublabel": "YouTube.",
+      "tag": "iframe · url_launcher",
+      "pos": [
+        1080,
+        215
+      ],
+      "size": [
+        200,
+        110
+      ]
+    },
+    {
+      "id": "prefs",
+      "type": "database",
+      "label": "SHAREDPREFERENCES · DISPOSITIVO",
+      "sublabel": "Local data.",
+      "tag": "local device data",
+      "pos": [
+        290,
+        210
+      ],
+      "size": [
+        200,
+        110
+      ]
+    },
+    {
+      "id": "flutter",
+      "type": "frontend",
+      "label": "FLUTTER + DART",
+      "sublabel": "Flutter · Dart.",
+      "tag": "Flutter · Dart",
+      "pos": [
+        550,
+        420
+      ],
+      "size": [
+        260,
+        85
+      ]
+    },
+    {
+      "id": "android",
+      "type": "cloud",
+      "label": "◉ ANDROID",
+      "sublabel": "Falta validar.",
+      "tag": "COMPONENTE",
+      "pos": [
+        20,
+        590
+      ],
+      "size": [
+        200,
+        85
+      ]
+    },
+    {
+      "id": "ios",
+      "type": "cloud",
+      "label": "● iOS",
+      "sublabel": "Falta validar.",
+      "tag": "COMPONENTE",
+      "pos": [
+        240,
+        590
+      ],
+      "size": [
+        200,
+        85
+      ]
+    },
+    {
+      "id": "web",
+      "type": "cloud",
+      "label": "◎ WEB",
+      "sublabel": "Falta validar.",
+      "tag": "COMPONENTE",
+      "pos": [
+        460,
+        590
+      ],
+      "size": [
+        200,
+        85
+      ]
+    },
+    {
+      "id": "windows",
+      "type": "cloud",
+      "label": "⊞ WINDOWS",
+      "sublabel": "Falta validar.",
+      "tag": "COMPONENTE",
+      "pos": [
+        680,
+        590
+      ],
+      "size": [
+        200,
+        85
+      ]
+    },
+    {
+      "id": "linux",
+      "type": "cloud",
+      "label": "🐧 LINUX",
+      "sublabel": "Falta validar.",
+      "tag": "COMPONENTE",
+      "pos": [
+        900,
+        590
+      ],
+      "size": [
+        200,
+        85
+      ]
+    },
+    {
+      "id": "macos",
+      "type": "cloud",
+      "label": " macOS",
+      "sublabel": "Falta validar.",
+      "tag": "COMPONENTE",
+      "pos": [
+        1120,
+        590
+      ],
+      "size": [
+        200,
+        85
+      ]
+    },
+    {
+      "id": "git",
+      "type": "backend",
+      "label": "Git",
+      "sublabel": "Git VCS.",
+      "tag": "CONTROL DE VERSIONES",
+      "pos": [
+        20,
+        735
+      ],
+      "size": [
+        200,
+        85
+      ]
+    },
+    {
+      "id": "github",
+      "type": "cloud",
+      "label": "GitHub",
+      "sublabel": "Git repo.",
+      "tag": "REPOSITORIO",
+      "pos": [
+        270,
+        735
+      ],
+      "size": [
+        200,
+        85
+      ],
+      "brand": "github"
+    },
+    {
+      "id": "archify",
+      "type": "backend",
+      "label": "Archify",
+      "sublabel": "Archify.",
+      "tag": "DOCUMENTACIÓN DE ARQUITECTURA",
+      "pos": [
+        520,
+        735
+      ],
+      "size": [
+        200,
+        85
+      ]
+    },
+    {
+      "id": "pages",
+      "type": "cloud",
+      "label": "GitHub Pages",
+      "sublabel": "Static docs.",
+      "tag": "PUBLICACIÓN WEB",
+      "brand": "github",
+      "pos": [
+        770,
+        735
+      ],
+      "size": [
+        240,
+        85
+      ]
+    },
+    {
+      "id": "flow",
+      "type": "messagebus",
+      "label": "FLUJO DE DATOS",
+      "sublabel": "Request ↔ JSON ↔ UI state.",
+      "tag": "ZONA 3",
+      "pos": [
+        280,
+        330
+      ],
+      "size": [
+        700,
+        60
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "ui",
+      "to": "state",
+      "label": "consulta"
+    },
+    {
+      "from": "state",
+      "to": "domain",
+      "label": "contratos"
+    },
+    {
+      "from": "domain",
+      "to": "data",
+      "label": "repositorio"
+    },
+    {
+      "from": "data",
+      "to": "tmdb",
+      "label": "HTTP REST"
+    },
+    {
+      "from": "navigation",
+      "to": "ui",
+      "label": "rutas"
+    },
+    {
+      "from": "state",
+      "to": "prefs",
+      "label": "lee / escribe",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 30
+    },
+    {
+      "from": "tmdb",
+      "to": "youtube",
+      "label": "video key",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 30
+    },
+    {
+      "from": "flutter",
+      "to": "android",
+      "label": "COMPILA",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [
+        120,
+        580
+      ]
+    },
+    {
+      "from": "flutter",
+      "to": "ios",
+      "label": "COMPILA",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [
+        340,
+        580
+      ]
+    },
+    {
+      "from": "flutter",
+      "to": "web",
+      "label": "COMPILA",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [
+        560,
+        580
+      ]
+    },
+    {
+      "from": "flutter",
+      "to": "windows",
+      "label": "COMPILA",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [
+        780,
+        580
+      ]
+    },
+    {
+      "from": "flutter",
+      "to": "linux",
+      "label": "COMPILA",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [
+        1000,
+        580
+      ]
+    },
+    {
+      "from": "flutter",
+      "to": "macos",
+      "label": "COMPILA",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [
+        1220,
+        580
+      ]
+    },
+    {
+      "from": "git",
+      "to": "github",
+      "label": "VERSIONA"
+    },
+    {
+      "from": "github",
+      "to": "archify",
+      "label": "PROPORCIONA EL CÓDIGO FUENTE",
+      "labelDy": -44
+    },
+    {
+      "from": "archify",
+      "to": "pages",
+      "label": "GENERA / DOCUMENTA",
+      "labelDy": -44
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Flujo de consulta y pantallas",
+      "items": [
+        "Flutter → Riverpod → repositorios → Dio → TMDB REST → JSON → modelos/mappers → entidades → providers → Flutter.",
+        "Inicio: bienvenida/carga, carrusel, En cines/En emisión, próximos, mejor calificadas; populares, categorías, búsqueda, favoritos, detalle, reparto y tráileres.",
+        "GoRouter: /, /popular, /categories, /favorites, /movie/:id. Selector películas/series, región e idioma, tema claro/oscuro."
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Servicios y persistencia",
+      "items": [
+        "TMDB: listados movie/TV, búsqueda, detalles, géneros, reparto, imágenes, vídeos, similares y certificaciones regionales. Respuesta JSON paginada; errores de red.",
+        "YouTube: key elegida desde TMDB; reproductor youtube_player_iframe y apertura alternativa url_launcher.",
+        "SharedPreferences local del dispositivo: favoritos movie/series, región/idioma, tipo de contenido y tema. No es una base de datos de servidor."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Dominio e infraestructura",
+      "items": [
+        "Movie representa registros de películas y TV; Actor; géneros, puntuación y certificación. No hay entidad Series independiente.",
+        "Dio + datasources/repositories + modelos JSON + mappers Movie/Actor. Paginación activa; caché persistente de catálogo no identificada."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Plataformas",
+      "items": [
+        "Android, iOS, Web, Windows, Linux y macOS tienen carpeta objetivo. Soporte configurado; ejecución pendiente de validar."
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Publicación documental",
+      "items": [
+        "Git → GitHub → Archify → GitHub Pages.",
+        "GitHub Pages se representa como destino requerido; no se encontró configuración de despliegue en el repositorio."
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "ZONA 1 · ARQUITECTURA CENTRAL",
+      "wraps": [
+        "ui",
+        "state",
+        "domain",
+        "data",
+        "navigation",
+        "prefs"
+      ],
+      "pad": 12
+    },
+    {
+      "kind": "region",
+      "label": "ZONA 2 · SERVICIOS EXTERNOS",
+      "wraps": [
+        "tmdb",
+        "youtube"
+      ],
+      "pad": 12
+    },
+    {
+      "kind": "region",
+      "label": "ZONA 3 · FLUJO DE DATOS",
+      "wraps": [
+        "flow"
+      ],
+      "pad": 10
+    },
+    {
+      "kind": "region",
+      "label": "ZONA 4 · PLATAFORMAS DEL PROYECTO",
+      "wraps": [
+        "flutter",
+        "android",
+        "ios",
+        "web",
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "pad": 12
+    },
+    {
+      "kind": "region",
+      "label": "ZONA 5 · DESARROLLO Y DOCUMENTACIÓN",
+      "wraps": [
+        "git",
+        "github",
+        "archify",
+        "pages"
+      ],
+      "pad": 12
+    }
+  ]
+}

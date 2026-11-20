@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// País utilizado para solicitar los datos localizados a TMDB.
 class MovieRegion {
   final String isoCode;
   final String languageCode;
@@ -22,40 +21,11 @@ class MovieRegion {
   String get shortLabel => '$isoCode ($languageName)';
 }
 
-/// Se incluyen los cuatro países escritos en las indicaciones.
-/// México y Estados Unidos pertenecen al mismo continente; Japón y Alemania
-/// agregan Asia y Europa, respectivamente.
 const movieRegions = <MovieRegion>[
-  MovieRegion(
-    isoCode: 'MX',
-    languageCode: 'es-MX',
-    countryName: 'México',
-    languageName: 'Español',
-    flag: '🇲🇽',
-    locale: Locale('es', 'MX'),
-  ),
-  MovieRegion(
-    isoCode: 'US',
-    languageCode: 'en-US',
-    countryName: 'Estados Unidos',
-    languageName: 'English',
-    flag: '🇺🇸',
-    locale: Locale('en', 'US'),
-  ),
-  MovieRegion(
-    isoCode: 'JP',
-    languageCode: 'ja-JP',
-    countryName: 'Japón',
-    languageName: '日本語',
-    flag: '🇯🇵',
-    locale: Locale('ja', 'JP'),
-  ),
-  MovieRegion(
-    isoCode: 'DE',
-    languageCode: 'de-DE',
-    countryName: 'Alemania',
-    languageName: 'Deutsch',
-    flag: '🇩🇪',
-    locale: Locale('de', 'DE'),
-  ),
+  MovieRegion(isoCode: 'MX', languageCode: 'es-MX', countryName: 'México', languageName: 'Español', flag: '🇲🇽', locale: Locale('es', 'MX')),
+  MovieRegion(isoCode: 'US', languageCode: 'en-US', countryName: 'Estados Unidos', languageName: 'English', flag: '🇺🇸', locale: Locale('en', 'US')),
+  MovieRegion(isoCode: 'JP', languageCode: 'ja-JP', countryName: 'Japón', languageName: '日本語', flag: '🇯🇵', locale: Locale('ja', 'JP')),
+  MovieRegion(isoCode: 'DE', languageCode: 'de-DE', countryName: 'Alemania', languageName: 'Deutsch', flag: '🇩🇪', locale: Locale('de', 'DE')),
+  MovieRegion(isoCode: 'CN', languageCode: 'zh-CN', countryName: 'China', languageName: '中文', flag: '🇨🇳', locale: Locale('zh', 'CN')),
+  MovieRegion(isoCode: 'SA', languageCode: 'ar-SA', countryName: 'Arabia Saudita', languageName: 'العربية', flag: '🇸🇦', locale: Locale('ar', 'SA')),
 ];

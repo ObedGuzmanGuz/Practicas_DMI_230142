@@ -20,6 +20,7 @@ class SearchMovieDelegate extends SearchDelegate<Movie?>{
 
 
   Timer? _debounceTimer;
+  bool _streamsClosed = false;
 
   SearchMovieDelegate({
     required this.searchMovies,
@@ -31,27 +32,36 @@ class SearchMovieDelegate extends SearchDelegate<Movie?>{
   );
 
   void clearStreams() {
+    _debounceTimer?.cancel();
+    if (_streamsClosed) return;
+    _streamsClosed = true;
     debouncedMovies.close();
+    isLoadingStream.close();
   }
 
-  void _onQueryChanged( String query ) {
-    isLoadingStream.add(true);
-
-    if ( _debounceTimer?.isActive ?? false ) _debounceTimer!.cancel();
-
-    _debounceTimer = Timer(const Duration( milliseconds: 500 ), () async {
-      // if ( query.isEmpty ) {
-      //   debouncedMovies.add([]);
-      //   return;
-      // }
-
-      final movies = await searchMovies( query );
-      initialMovies = movies;
-      debouncedMovies.add(movies);
+  void _onQueryChanged(String query) {
+    if (_streamsClosed) return;
+    if (_debounceTimer?.isActive ?? false) _debounceTimer!.cancel();
+    if (query.trim().isEmpty) {
+      initialMovies = [];
+      debouncedMovies.add([]);
       isLoadingStream.add(false);
+      return;
+    }
 
+    isLoadingStream.add(true);
+    _debounceTimer = Timer(const Duration(milliseconds: 420), () async {
+      try {
+        final movies = await searchMovies(query.trim());
+        if (_streamsClosed) return;
+        initialMovies = movies;
+        debouncedMovies.add(movies);
+      } catch (_) {
+        if (!_streamsClosed) debouncedMovies.add([]);
+      } finally {
+        if (!_streamsClosed) isLoadingStream.add(false);
+      }
     });
-
   }
 
   Widget buildResultsAndSuggestions() {
@@ -176,8 +186,13 @@ class _MovieItem extends StatelessWidget {
               width: size.width * 0.2,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.network( 
+                child: Image.network(
                   movie.posterPath,
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) => const ColoredBox(
+                    color: Colors.black12,
+                    child: Center(child: Icon(Icons.movie_outlined)),
+                  ),
                   loadingBuilder: (context, child, loadingProgress) => FadeIn(child: child),
                 ),
               ),
@@ -191,7 +206,7 @@ class _MovieItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text( movie.title, style: textStyles.titleMedium ),
+                  Text(movie.title, style: textStyles.titleMedium),
     
                   ( movie.overview.length > 100 )
                     ? Text( '${movie.overview.substring(0,100)}...' )

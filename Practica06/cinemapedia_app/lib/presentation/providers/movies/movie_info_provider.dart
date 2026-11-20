@@ -2,36 +2,36 @@ import 'package:cinemapedia_app/presentation/providers/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cinemapedia_app/domain/entities/movie.dart';
 
+final movieInfoErrorsProvider = StateProvider<Map<String, String>>((ref) => {});
+
 final movieInfoProvider = StateNotifierProvider<MovieMapNotifier, Map<String, Movie>>((ref) {
-  final movieRepository = ref.watch( movieRepositoryProvider );
-  return MovieMapNotifier(getMovie: movieRepository.getMovieById );
+  final repository = ref.watch(movieRepositoryProvider);
+  return MovieMapNotifier(
+    getMovie: repository.getMovieById,
+    onLoadError: (id, message) => ref.read(movieInfoErrorsProvider.notifier).update((state) => {...state, id: message}),
+    onSuccess: (id) => ref.read(movieInfoErrorsProvider.notifier).update((state) { final next = {...state}; next.remove(id); return next; }),
+  );
 });
 
+typedef GetMovieCallback = Future<Movie> Function(String movieId);
+typedef MovieLoadCallback = void Function(String id, String message);
+typedef MovieSuccessCallback = void Function(String id);
 
-/*
-  {
-    '505642': Movie(),
-    '505643': Movie(),
-    '505645': Movie(),
-    '501231': Movie(),
-  }
-*/
-
-typedef GetMovieCallback = Future<Movie>Function(String movieId);
-
-class MovieMapNotifier extends StateNotifier<Map<String,Movie>> {
-
+class MovieMapNotifier extends StateNotifier<Map<String, Movie>> {
   final GetMovieCallback getMovie;
+  final MovieLoadCallback onLoadError;
+  final MovieSuccessCallback onSuccess;
 
-  MovieMapNotifier({
-    required this.getMovie,
-  }): super({});
+  MovieMapNotifier({required this.getMovie, required this.onLoadError, required this.onSuccess}) : super({});
 
-
-  Future<void> loadMovie( String movieId ) async {
-    if ( state[movieId] != null ) return;
-    final movie = await getMovie( movieId );
-    state = { ...state, movieId: movie };
+  Future<void> loadMovie(String movieId, {bool force = false}) async {
+    if (!force && state[movieId] != null) return;
+    try {
+      final movie = await getMovie(movieId);
+      state = {...state, movieId: movie};
+      onSuccess(movieId);
+    } catch (error) {
+      onLoadError(movieId, error.toString());
+    }
   }
-
 }

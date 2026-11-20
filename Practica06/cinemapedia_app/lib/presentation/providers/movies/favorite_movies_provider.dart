@@ -33,20 +33,20 @@ class FavoriteMoviesNotifier extends StateNotifier<List<Movie>> {
     }
   }
 
-  bool isFavorite(int movieId) => state.any((movie) => movie.id == movieId);
+  bool isFavorite(int movieId, {bool isTv = false}) => state.any((movie) => movie.id == movieId && movie.isTv == isTv);
 
   Future<void> toggle(Movie movie) async {
     await _ready;
-    final exists = state.any((item) => item.id == movie.id);
+    final exists = state.any((item) => item.id == movie.id && item.isTv == movie.isTv);
     state = exists
-        ? state.where((item) => item.id != movie.id).toList()
+        ? state.where((item) => !(item.id == movie.id && item.isTv == movie.isTv)).toList()
         : [movie, ...state];
     await _saveFavorites();
   }
 
-  Future<void> remove(int movieId) async {
+  Future<void> remove(int movieId, {bool isTv = false}) async {
     await _ready;
-    state = state.where((movie) => movie.id != movieId).toList();
+    state = state.where((movie) => !(movie.id == movieId && movie.isTv == isTv)).toList();
     await _saveFavorites();
   }
 

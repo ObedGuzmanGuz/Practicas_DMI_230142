@@ -41,6 +41,9 @@ void main() {
         child: const MainApp(),
       ),
     );
+    // La pantalla muestra el splash y luego espera la primera respuesta del catálogo.
+    await tester.pump(const Duration(milliseconds: 1800));
+    await tester.pumpAndSettle();
 
     expect(find.byType(CustomBottomNavigation), findsOneWidget);
     expect(find.text('Inicio'), findsOneWidget);

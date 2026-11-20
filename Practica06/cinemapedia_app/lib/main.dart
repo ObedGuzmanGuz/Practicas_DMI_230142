@@ -9,7 +9,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: '.env');
+  try {
+    await dotenv.load(fileName: '.env');
+  } catch (_) {
+    // Se permite mostrar la interfaz aunque el usuario aún no configure su API key.
+  }
   runApp(const ProviderScope(child: MainApp()));
 }
 
@@ -34,7 +38,14 @@ class MainApp extends ConsumerWidget {
         Locale('en', 'US'),
         Locale('ja', 'JP'),
         Locale('de', 'DE'),
+        Locale('zh', 'CN'),
+        Locale('ar', 'SA'),
       ],
+      builder: (context, child) => Directionality(
+        // La interfaz conserva orientación LTR incluso al mostrar árabe.
+        textDirection: TextDirection.ltr,
+        child: child ?? const SizedBox.shrink(),
+      ),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
